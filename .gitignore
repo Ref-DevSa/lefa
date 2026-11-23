@@ -7,3 +7,6 @@ coverage/
 .DS_Store
 *.log
 supabase/.temp/
+
+# Personal notes (never committed)
+private/

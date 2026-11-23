@@ -18,7 +18,7 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 
 **Who pays:** families can use Lefa free (R0) or pay **R29/month** for Family Plus. **Brokers** pay **R15 per client per month**, because Lefa cuts lapses (which protects their commission) and saves hours of claim admin. One broker with 80 clients brings in R1 200/month, and 100 brokers make about **R1.44m a year**. Running costs per user are cents.
 
-> **Mentor line:** "Lefa makes sure the cover families already pay for actually reaches them. We sell to brokers, who already have the families' trust, so we earn from day one."
+> **In one sentence:** "Lefa makes sure the cover families already pay for actually reaches them. We sell to brokers, who already have the families' trust, so we earn from day one."
 
 ---
 
@@ -72,7 +72,7 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
   - **RLS is the locked pantry.** The database itself checks every row against the rules, so no app bug can show Thandi's policies to Lerato.
 - **How we know it works:** 16 automated tests run against the real database. They try to cheat: Thandi tries to read Lerato's profile, Thandi tries to make herself admin, Lerato tries to sign up as admin, and a stranger tries to read the table. Every attempt must be blocked. All the test data is undone afterwards. We also confirmed live that an anonymous request is refused (401).
 
-> **Mentor line:** "Privacy isn't a promise in our code, it's enforced by the database, and we have automated tests that try to break in every time we change anything."
+> **In one sentence:** "Privacy isn't a promise in our code, it's enforced by the database, and we have automated tests that try to break in every time we change anything."
 
 ---
 

@@ -11,6 +11,7 @@
     "typecheck": "tsc -p jsconfig.json"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.119.2",
     "express": "^5.3.0"
   },
   "devDependencies": {

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary": "#004734", "surface-bright": "#fcf9f4", "on-tertiary-container": "#99cfff", "surface-dim": "#dcdad5", "on-secondary-fixed": "#281800", "tertiary-fixed-dim": "#94ccfd", "secondary-fixed-dim": "#fabc56", "secondary": "#805600", "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "on-secondary-fixed-variant": "#614000", "surface-container": "#f0ede9", "on-tertiary-fixed": "#001d31", "tertiary-fixed": "#cce5ff", "on-secondary-container": "#724d00", "primary-fixed-dim": "#94d4b9", "surface-container-low": "#f6f3ee", "inverse-primary": "#94d4b9", "on-primary": "#ffffff", "on-primary-fixed-variant": "#0a513d", "on-primary-container": "#97d7bc", "primary-container": "#1f5f4a", "tertiary": "#004165", "background": "#fcf9f4", "on-secondary": "#ffffff", "secondary-fixed": "#ffddaf", "on-surface": "#1c1c19", "on-error": "#ffffff", "surface-tint": "#2b6953", "outline-variant": "#bfc9c2", "primary-fixed": "#b0f0d4", "error": "#ba1a1a", "on-error-container": "#93000a", "surface-variant": "#e5e2dd", "inverse-surface": "#31302d", "on-background": "#1c1c19", "on-surface-variant": "#404944", "inverse-on-surface": "#f3f0eb", "on-primary-fixed": "#002116", "surface-container-highest": "#e5e2dd", "outline": "#707974", "surface": "#fcf9f4", "tertiary-container": "#165984", "on-tertiary-fixed-variant": "#004b73", "surface-container-high": "#ebe8e3", "secondary-container": "#fdbe58", "error-container": "#ffdad6" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-sm": "0.5rem", "margin": "2rem", "gutter-mobile": "1rem", "gutter": "1.5rem", "space-xl": "2rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "margin-mobile": "1rem", "space-md": "1rem" }, fontFamily: { "label-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "body-sm-medium": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md-semibold": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"] }, fontSize: { "label-md": ["13px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "600" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.015em", fontWeight: "700" }], "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }], "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }], "body-sm-medium": ["14px", { lineHeight: "20px", fontWeight: "500" }], "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }], "body-md-semibold": ["16px", { lineHeight: "24px", fontWeight: "600" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }], "headline-lg-mobile": ["26px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }], "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }], "headline-xl": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-sm": ["11px", { lineHeight: "16px", letterSpacing: "0.03em", fontWeight: "600" }], "headline-xl-mobile": ["30px", { lineHeight: "38px", letterSpacing: "-0.015em", fontWeight: "700" }] } } } };</script><style>@layer base { html, body { width: 100%; margin: 0; padding: 0; } body { overscroll-behavior-y: none; } .pb-safe { padding-bottom: max(env(safe-area-inset-bottom, 0px), 1rem); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style></head><body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="Go back or close" class="min-w-[44px] min-h-[44px] flex items-center justify-center text-primary hover:bg-surface-container rounded-full transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[22px]">arrow_back</span></button><div class="flex items-center gap-2"><div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-on-primary flex-shrink-0"><span class="material-symbols-outlined text-[16px]">key</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface truncate">Add Policy Document</h1></div></div><div class="flex items-center gap-space-sm"><div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed"><span class="material-symbols-outlined text-[12px] text-secondary">lock</span><span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider">AES-256 Vault</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full px-gutter-mobile pt-16 pb-safe bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full pb-32">
+<!-- Top Trust & Protection Banner -->
+<div class="mb- space-md bg-secondary-fixed/40 rounded-xl p-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-on-secondary-fixed shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<p class="font-body-sm text-body-sm text-on-secondary-fixed leading-tight">
+      Bank-grade encryption. Nominees only receive access upon verified Home Affairs death certificate.
+    </p>
+</div>
+<!-- Main Card Container -->
+<form class="flex flex-col gap-space-lg bg-surface-container-lowest rounded-xl p-space-md shadow-sm" id="add-policy-form" onsubmit="event.preventDefault();">
+<!-- Field 1: Insurer / Underwriter -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface flex items-center justify-between" for="insurer-input">
+<span>Underwriter / Insurer <span class="text-error font-bold">*</span></span>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[14px]">lock</span> Encrypted field
+        </span>
+</label>
+<div class="relative flex items-center">
+<input class="w-full h-12 bg-surface-container-low text-on-surface font-body-md rounded-[10px] pl-3 pr-10 focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#1F5F4A] transition-all" id="insurer-input" placeholder="Select or enter underwriter" type="text" value="Old Mutual"/>
+<div class="absolute right-3 w-5 h-5 rounded-full bg-primary-container text-on-primary flex items-center justify-center pointer-events-none">
+<span class="material-symbols-outlined text-[13px]">check</span>
+</div>
+</div>
+<!-- Quick Insurer Pills -->
+<div class="flex items-center gap-1.5 overflow-x-auto py-1.5 -mx-1 px-1 no-scrollbar">
+<button class="insurer-chip shrink-0 px-3 py-1.5 rounded-full font-label-sm text-label-sm font-semibold transition-all bg-primary-container text-on-primary" data-name="Old Mutual" type="button">Old Mutual</button>
+<button class="insurer-chip shrink-0 px-3 py-1.5 rounded-full font-label-sm text-label-sm font-semibold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container" data-name="Sanlam" type="button">Sanlam</button>
+<button class="insurer-chip shrink-0 px-3 py-1.5 rounded-full font-label-sm text-label-sm font-semibold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container" data-name="AVBOB" type="button">AVBOB</button>
+<button class="insurer-chip shrink-0 px-3 py-1.5 rounded-full font-label-sm text-label-sm font-semibold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container" data-name="Hollard" type="button">Hollard</button>
+<button class="insurer-chip shrink-0 px-3 py-1.5 rounded-full font-label-sm text-label-sm font-semibold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container" data-name="Assupol" type="button">Assupol</button>
+<button class="insurer-chip shrink-0 px-3 py-1.5 rounded-full font-label-sm text-label-sm font-semibold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container" data-name="Clientèle" type="button">Clientèle</button>
+<button class="insurer-chip shrink-0 px-3 py-1.5 rounded-full font-label-sm text-label-sm font-semibold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container" data-name="Metropolitan" type="button">Metropolitan</button>
+<button class="insurer-chip shrink-0 px-3 py-1.5 rounded-full font-label-sm text-label-sm font-semibold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container" data-name="Other" type="button">Other</button>
+</div>
+</div>
+<!-- Field 2: Policy Number (Explicit Validation Error State) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-error font-semibold flex items-center gap-1" for="policy-number-input">
+          Policy number <span class="text-error font-bold">*</span>
+</label>
+<span class="font-label-sm text-label-sm text-error font-medium">Required</span>
+</div>
+<div class="relative flex items-center">
+<input aria-describedby="policy-number-error" aria-invalid="true" class="w-full h-12 bg-error-container/40 text-on-surface font-body-md rounded-[10px] pl-3 pr-10 shadow-[0_0_0_1.5px_#ba1a1a] focus:outline-none focus:shadow-[0_0_0_2px_#ba1a1a] transition-all" id="policy-number-input" placeholder="e.g. OM-9938210-L" type="text" value=""/>
+<div class="absolute right-3 w-5 h-5 rounded-full bg-error text-on-error flex items-center justify-center pointer-events-none">
+<span class="material-symbols-outlined text-[13px] font-bold">priority_high</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5" id="policy-number-error">
+<span class="material-symbols-outlined text-[16px] text-error">error</span>
+<p class="font-body-sm text-body-sm text-error font-medium">Policy number is required to index the claim schedule</p>
+</div>
+</div>
+<!-- Field 3: Policy Type Segmented Control -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface">Policy type</label>
+<div class="grid grid-cols-4 gap-1 p-1 bg-surface-container-low rounded-xl" role="tablist">
+<button class="policy-type-btn py-2 px-1 rounded-lg text-center font-label-md text-label-md transition-all bg-primary-container text-on-primary shadow-sm" data-type="Funeral" type="button">Funeral</button>
+<button class="policy-type-btn py-2 px-1 rounded-lg text-center font-label-md text-label-md transition-all text-on-surface-variant hover:text-on-surface" data-type="Life" type="button">Life</button>
+<button class="policy-type-btn py-2 px-1 rounded-lg text-center font-label-md text-label-md transition-all text-on-surface-variant hover:text-on-surface" data-type="Credit life" type="button">Credit life</button>
+<button class="policy-type-btn py-2 px-1 rounded-lg text-center font-label-md text-label-md transition-all text-on-surface-variant hover:text-on-surface" data-type="Other" type="button">Other</button>
+</div>
+</div>
+<!-- Field 4: Cover Amount & Monthly Premium (2-Column Grid) -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface truncate" for="cover-amount">Cover amount (R)</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 font-body-md font-semibold text-on-surface-variant pointer-events-none">R</span>
+<input class="w-full h-12 bg-surface-container-low text-on-surface font-body-md rounded-[10px] pl-8 pr-3 focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#1F5F4A] transition-all" id="cover-amount" inputmode="numeric" placeholder="85 000" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface truncate" for="monthly-premium">Monthly premium</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 font-body-md font-semibold text-on-surface-variant pointer-events-none">R</span>
+<input class="w-full h-12 bg-surface-container-low text-on-surface font-body-md rounded-[10px] pl-8 pr-3 focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#1F5F4A] transition-all" id="monthly-premium" inputmode="numeric" placeholder="199" type="text"/>
+</div>
+</div>
+</div>
+<!-- Field 5: Debit Day & Status (2-Column Grid) -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface" for="debit-day">Debit day</label>
+<div class="relative flex items-center">
+<input class="w-full h-12 bg-surface-container-low text-on-surface font-body-md rounded-[10px] px-3 focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#1F5F4A] transition-all" id="debit-day" max="31" min="1" placeholder="25" type="number"/>
+<span class="material-symbols-outlined absolute right-3 text-[18px] text-on-surface-variant pointer-events-none">calendar_today</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Day of month (1–31)</p>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface" for="policy-status">Policy status</label>
+<div class="relative flex items-center">
+<select class="w-full h-12 bg-surface-container-low text-on-surface font-body-md rounded-[10px] pl-3 pr-8 appearance-none focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#1F5F4A] transition-all cursor-pointer font-medium" id="policy-status">
+<option selected="" value="Active">Active</option>
+<option value="Lapsed">Lapsed</option>
+<option value="Paid-up">Paid-up</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 text-[20px] text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-primary-container font-semibold">Active &amp; verified</span>
+</div>
+</div>
+</div>
+<!-- Field 6: Beneficiaries -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface" for="beneficiaries">Beneficiaries</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Private vault</span>
+</div>
+<textarea class="w-full bg-surface-container-low text-on-surface font-body-md rounded-[10px] p-3 focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#1F5F4A] transition-all resize-none" id="beneficiaries" placeholder="e.g. Lerato Mokoena (Daughter, 100%)" rows="2"></textarea>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Designated recipients or covered family members.</p>
+</div>
+<!-- Field 7: Private Vault Notes -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface" for="vault-notes">Private vault notes</label>
+<textarea class="w-full bg-surface-container-low text-on-surface font-body-md rounded-[10px] p-3 focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#1F5F4A] transition-all resize-none" id="vault-notes" placeholder="e.g. Policy document kept in office filing cabinet or with broker Thabo." rows="2"></textarea>
+</div>
+<!-- Field 8: Policy Schedule Document / Camera Attachment -->
+<div class="flex flex-col gap-space-xs pt-1">
+<label class="font-label-md text-label-md text-on-surface">Supporting document</label>
+<button class="w-full py-3.5 px-4 rounded-xl bg-surface-container-low hover:bg-surface-container text-primary flex items-center justify-center gap-2 transition-all active:scale-[0.99]" id="attach-schedule-btn" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary">add_a_photo</span>
+<span class="font-body-md-semibold text-body-md-semibold text-primary">+ Attach policy schedule or photo</span>
+</button>
+<div class="hidden items-center justify-between bg-primary-fixed/30 rounded-lg p-2.5 mt-1" id="attachment-preview">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">description</span>
+<span class="font-label-md text-label-md text-on-surface truncate max-w-[200px]">Old_Mutual_Schedule_2024.pdf</span>
+</div>
+<button class="w-6 h-6 flex items-center justify-center text-error hover:bg-error-container/40 rounded-full" id="remove-attachment-btn" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+</form>
+<!-- Sticky Bottom Action Bar -->
+<div class="fixed bottom-0 inset-x-0 bg-surface-container-lowest/95 backdrop-blur-md pb-safe pt-3 px-gutter-mobile shadow-[0_-4px_16px_rgba(0,0,0,0.06)] z-40">
+<div class="flex items-center gap-space-sm mb-2">
+<button class="h-12 px-5 rounded-[10px] bg-surface-container hover:bg-surface-container-high text-on-surface font-body-md-semibold text-body-md-semibold transition-all active:scale-95 flex items-center justify-center shrink-0" onclick="history.back()" type="button">
+        Cancel
+      </button>
+<button class="flex-1 h-12 rounded-[10px] bg-primary hover:bg-primary-container text-on-primary font-body-md-semibold text-body-md-semibold shadow-sm transition-all active:scale-[0.98] flex items-center justify-center gap-2" id="save-policy-action" type="button">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span>Save policy</span>
+</button>
+</div>
+</div>
+<!-- Toast Notification Container for interactive delight -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-300 opacity-0 translate-y-2" id="toast-message">
+<div class="bg-inverse-surface text-inverse-on-surface px-4 py-2.5 rounded-full shadow-lg flex items-center gap-2 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-primary-fixed">check_circle</span>
+<span id="toast-text">Policy encrypted and saved</span>
+</div>
+</div>
+</div>
+<script>
+  // Insurer Chip Interactive Switching
+  const chips = document.querySelectorAll('.insurer-chip');
+  const insurerInput = document.getElementById('insurer-input');
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => {
+        c.classList.remove('bg-primary-container', 'text-on-primary');
+        c.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+      });
+      chip.classList.add('bg-primary-container', 'text-on-primary');
+      chip.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+      insurerInput.value = chip.getAttribute('data-name');
+    });
+  });
+
+  // Policy Type Segmented Control
+  const typeButtons = document.querySelectorAll('.policy-type-btn');
+  typeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      typeButtons.forEach(b => {
+        b.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+        b.classList.add('text-on-surface-variant');
+      });
+      btn.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+      btn.classList.remove('text-on-surface-variant');
+    });
+  });
+
+  // Attachment Simulation
+  const attachBtn = document.getElementById('attach-schedule-btn');
+  const attachPreview = document.getElementById('attachment-preview');
+  const removeAttachBtn = document.getElementById('remove-attachment-btn');
+
+  attachBtn.addEventListener('click', () => {
+    attachPreview.classList.remove('hidden');
+    attachPreview.classList.add('flex');
+    attachBtn.classList.add('hidden');
+  });
+
+  removeAttachBtn.addEventListener('click', () => {
+    attachPreview.classList.add('hidden');
+    attachPreview.classList.remove('flex');
+    attachBtn.classList.remove('hidden');
+  });
+
+  // Form Save Interaction & Validation Feedback
+  const saveBtn = document.getElementById('save-policy-action');
+  const policyInput = document.getElementById('policy-number-input');
+  const toast = document.getElementById('toast-message');
+  const toastText = document.getElementById('toast-text');
+
+  function showToast(message, isSuccess = true) {
+    toastText.textContent = message;
+    toast.classList.remove('opacity-0', 'translate-y-2');
+    toast.classList.add('opacity-100', 'translate-y-0');
+    setTimeout(() => {
+      toast.classList.remove('opacity-100', 'translate-y-0');
+      toast.classList.add('opacity-0', 'translate-y-2');
+    }, 2800);
+  }
+
+  saveBtn.addEventListener('click', () => {
+    if (!policyInput.value.trim()) {
+      policyInput.focus();
+      policyInput.classList.add('animate-pulse');
+      setTimeout(() => policyInput.classList.remove('animate-pulse'), 600);
+      showToast('Please provide a policy number to continue');
+    } else {
+      showToast('Policy encrypted & saved to Lefa Vault!');
+    }
+  });
+
+  policyInput.addEventListener('input', (e) => {
+    const errorContainer = document.getElementById('policy-number-error');
+    if (e.target.value.trim().length > 0) {
+      policyInput.classList.remove('bg-error-container/40', 'shadow-[0_0_0_1.5px_#ba1a1a]');
+      policyInput.classList.add('bg-surface-container-low', 'shadow-[0_0_0_1.5px_#1F5F4A]');
+      errorContainer.classList.add('hidden');
+    } else {
+      policyInput.classList.add('bg-error-container/40', 'shadow-[0_0_0_1.5px_#ba1a1a]');
+      policyInput.classList.remove('bg-surface-container-low', 'shadow-[0_0_0_1.5px_#1F5F4A]');
+      errorContainer.classList.remove('hidden');
+    }
+  });
+</script></main><footer class="w-full pb-safe bg-surface/80 backdrop-blur-md"><div class="py-space-sm px-gutter-mobile flex items-center justify-center"><div class="w-32 h-1 bg-outline-variant/60 rounded-full"></div></div></footer></body></html>

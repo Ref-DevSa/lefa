@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lefa Design System & Component Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lefa: {
+              green: '#1F5F4A',
+              greenDark: '#174A3A',
+              ochre: '#C8902E',
+              cream: '#FAF7F2',
+              white: '#FFFFFF',
+              border: '#E7E1D7',
+              ink: '#1C1C1C',
+              muted: '#6B6B6B',
+              statusSuccess: '#2E7D32',
+              statusWarning: '#B26A00',
+              statusDanger: '#B3261E',
+              statusInfo: '#1F5F8A',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          boxShadow: {
+            soft: '0 1px 3px rgba(0, 0, 0, 0.06)',
+            elevated: '0 4px 16px rgba(0, 0, 0, 0.05)',
+            modal: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+          },
+          borderRadius: {
+            'card': '12px',
+            'control': '10px',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #FAF7F2;
+      color: #1C1C1C;
+      -webkit-font-smoothing: antialiased;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #E7E1D7;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="p-6 md:p-12 min-h-screen text-lefa-ink">
+  <div class="max-w-7xl mx-auto space-y-12">
+
+    <!-- Header / Brand Intro -->
+    <header class="border-b border-lefa-border pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-control bg-lefa-green flex items-center justify-center text-white shadow-soft">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <span class="text-xs uppercase tracking-widest font-semibold px-2.5 py-1 bg-[#F0EBE1] text-lefa-green rounded-full border border-lefa-border">
+            South African Family Policy Vault
+          </span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-lefa-ink">Lefa Design System & UI Specification</h1>
+        <p class="mt-2 text-lefa-muted max-w-2xl text-base leading-relaxed">
+          Designed for a dignified, calm, and trustworthy experience. Accommodates sensitive situations, including claims and bereavement, balancing warm South African heritage tones with institutional security.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-4 bg-white px-4 py-3 rounded-card border border-lefa-border shadow-soft">
+        <div class="w-2.5 h-2.5 rounded-full bg-lefa-statusSuccess animate-pulse"></div>
+        <div class="text-xs">
+          <p class="font-medium text-lefa-ink">Design Tokens Active</p>
+          <p class="text-lefa-muted">v1.0.0 • Production Baseline</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: FOUNDATIONS (Colors & Typography & Conventions) -->
+    <section class="space-y-6">
+      <div class="flex items-center justify-between border-b border-lefa-border pb-3">
+        <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-lefa-ink flex items-center gap-2">
+          <span>01. Foundations & Visual Tokens</span>
+        </h2>
+        <span class="text-xs font-medium text-lefa-muted">Color Palette • Typography • Micro-Tokens</span>
+      </div>
+
+      <!-- Color Swatches Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <!-- Primary -->
+        <div class="bg-white p-3 rounded-card border border-lefa-border shadow-soft flex flex-col justify-between">
+          <div class="h-20 rounded-control bg-lefa-green flex items-end p-2.5 text-white">
+            <span class="text-xs font-mono font-medium">#1F5F4A</span>
+          </div>
+          <div class="mt-3">
+            <p class="text-sm font-semibold text-lefa-ink">Lefa Green</p>
+            <p class="text-xs text-lefa-muted">Primary (Active, CTAs)</p>
+            <div class="mt-2 text-[10px] text-lefa-muted flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-sm bg-lefa-greenDark inline-block border border-black/10"></span>
+              Hover #174A3A
+            </div>
+          </div>
+        </div>
+
+        <!-- Ochre Accent -->
+        <div class="bg-white p-3 rounded-card border border-lefa-border shadow-soft flex flex-col justify-between">
+          <div class="h-20 rounded-control bg-lefa-ochre flex items-end p-2.5 text-white">
+            <span class="text-xs font-mono font-medium">#C8902E</span>
+          </div>
+          <div class="mt-3">
+            <p class="text-sm font-semibold text-lefa-ink">Ochre Accent</p>
+            <p class="text-xs text-lefa-muted">Warmth & highlights</p>
+            <p class="text-[10px] text-lefa-ochre font-medium mt-2">Used sparingly</p>
+          </div>
+        </div>
+
+        <!-- Cream Background -->
+        <div class="bg-white p-3 rounded-card border border-lefa-border shadow-soft flex flex-col justify-between">
+          <div class="h-20 rounded-control bg-lefa-cream border border-lefa-border flex items-end p-2.5 text-lefa-ink">
+            <span class="text-xs font-mono font-medium">#FAF7F2</span>
+          </div>
+          <div class="mt-3">
+            <p class="text-sm font-semibold text-lefa-ink">Cream Canvas</p>
+            <p class="text-xs text-lefa-muted">App Background</p>
+            <p class="text-[10px] text-lefa-muted mt-2">Warm, reassuring canvas</p>
+          </div>
+        </div>
+
+        <!-- Surface White & Border -->
+        <div class="bg-white p-3 rounded-card border border-lefa-border shadow-soft flex flex-col justify-between">
+          <div class="h-20 rounded-control bg-white border-2 border-lefa-border flex flex-col justify-between p-2 text-lefa-ink">
+            <span class="text-[10px] font-mono text-lefa-muted">Border: #E7E1D7</span>
+            <span class="text-xs font-mono font-medium">#FFFFFF</span>
+          </div>
+          <div class="mt-3">
+            <p class="text-sm font-semibold text-lefa-ink">Surface White</p>
+            <p class="text-xs text-lefa-muted">Vault Cards & Containers</p>
+            <p class="text-[10px] text-lefa-muted mt-2">Border: 1px solid #E7E1D7</p>
+          </div>
+        </div>
+
+        <!-- Ink / Muted Typography -->
+        <div class="bg-white p-3 rounded-card border border-lefa-border shadow-soft flex flex-col justify-between">
+          <div class="h-20 rounded-control bg-lefa-ink flex items-end p-2.5 text-white">
+            <span class="text-xs font-mono font-medium">#1C1C1C</span>
+          </div>
+          <div class="mt-3">
+            <p class="text-sm font-semibold text-lefa-ink">Ink & Muted</p>
+            <p class="text-xs text-lefa-muted">Body & Headings</p>
+            <div class="mt-2 text-[10px] text-lefa-muted flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-sm bg-lefa-muted inline-block"></span>
+              Muted #6B6B6B
+            </div>
+          </div>
+        </div>
+
+        <!-- Status Colors -->
+        <div class="bg-white p-3 rounded-card border border-lefa-border shadow-soft flex flex-col justify-between">
+          <div class="grid grid-cols-2 grid-rows-2 gap-1.5 h-20 rounded-control overflow-hidden">
+            <div class="bg-lefa-statusSuccess flex items-center justify-center text-[10px] text-white font-mono">2E7D32</div>
+            <div class="bg-lefa-statusWarning flex items-center justify-center text-[10px] text-white font-mono">B26A00</div>
+            <div class="bg-lefa-statusDanger flex items-center justify-center text-[10px] text-white font-mono">B3261E</div>
+            <div class="bg-lefa-statusInfo flex items-center justify-center text-[10px] text-white font-mono">1F5F8A</div>
+          </div>
+          <div class="mt-3">
+            <p class="text-sm font-semibold text-lefa-ink">Status Tokens</p>
+            <p class="text-xs text-lefa-muted">Success, Warn, Danger, Info</p>
+            <p class="text-[10px] text-lefa-muted mt-2">High contrast, accessible</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typography & Formatting Spec Card -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-white p-6 rounded-card border border-lefa-border shadow-soft">
+        <div class="lg:col-span-8 space-y-4">
+          <h3 class="text-xs uppercase font-bold tracking-wider text-lefa-muted">Typography Scale ("Plus Jakarta Sans")</h3>
+          
+          <div class="space-y-3 divide-y divide-lefa-border/60">
+            <div class="pt-2 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+              <span class="text-xs font-mono text-lefa-muted w-28 shrink-0">H1 (32/40 Bold)</span>
+              <p class="text-[32px] leading-[40px] font-bold text-lefa-ink tracking-tight flex-1">
+                Protecting your family's future legacy
+              </p>
+            </div>
+            <div class="pt-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+              <span class="text-xs font-mono text-lefa-muted w-28 shrink-0">H2 (24/32 Semibold)</span>
+              <p class="text-[24px] leading-[32px] font-semibold text-lefa-ink tracking-tight flex-1">
+                Funeral & Life Assurance Vault
+              </p>
+            </div>
+            <div class="pt-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+              <span class="text-xs font-mono text-lefa-muted w-28 shrink-0">Body (16/24 Regular)</span>
+              <p class="text-[16px] leading-[24px] text-lefa-ink flex-1">
+                Policies stored within Lefa are encrypted and immediately accessible to nominated guardians when claims are lodged.
+              </p>
+            </div>
+            <div class="pt-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+              <span class="text-xs font-mono text-lefa-muted w-28 shrink-0">Small (14/20 Muted)</span>
+              <p class="text-[14px] leading-[20px] text-lefa-muted flex-1">
+                Authenticated via BankID & Home Affairs National Registry verification protocols.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- South African Locales & Formatting Rules -->
+        <div class="lg:col-span-4 bg-lefa-cream/60 p-5 rounded-card border border-lefa-border space-y-4">
+          <h3 class="text-xs uppercase font-bold tracking-wider text-lefa-muted flex items-center justify-between">
+            <span>SA Localization Standards</span>
+            <span class="text-sm">🇿🇦</span>
+          </h3>
+
+          <div class="space-y-3">
+            <div class="p-3 bg-white rounded-control border border-lefa-border">
+              <span class="text-xs text-lefa-muted block">Currency Format (Space Separator)</span>
+              <div class="text-xl font-bold text-lefa-green mt-0.5">R85 000</div>
+              <span class="text-[11px] text-lefa-muted">e.g., Cover payout amount • No comma</span>
+            </div>
+
+            <div class="p-3 bg-white rounded-control border border-lefa-border">
+              <span class="text-xs text-lefa-muted block">Date Format (Standard South African)</span>
+              <div class="text-base font-semibold text-lefa-ink mt-0.5">22 Nov 2026</div>
+              <span class="text-[11px] text-lefa-muted">Clear month abbreviation avoids US/UK ambiguity</span>
+            </div>
+
+            <div class="flex items-center justify-between pt-1 text-xs text-lefa-muted">
+              <span>Corner Radius:</span>
+              <span class="font-mono text-lefa-ink font-semibold">12px card / 10px inputs</span>
+            </div>
+            <div class="flex items-center justify-between text-xs text-lefa-muted">
+              <span>Shadow System:</span>
+              <span class="font-mono text-lefa-ink font-semibold">0 1px 3px rgba(0,0,0,.06)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: INTERACTIVE CONTROLS (Buttons, Inputs, Select, Dropzone) -->
+    <section class="space-y-6">
+      <div class="flex items-center justify-between border-b border-lefa-border pb-3">
+        <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-lefa-ink">
+          02. Form Controls & Interactive States
+        </h2>
+        <span class="text-xs font-medium text-lefa-muted">Buttons • Inputs • Dropzone • Dropdowns</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Buttons Palette -->
+        <div class="lg:col-span-6 bg-white p-6 rounded-card border border-lefa-border shadow-soft space-y-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-lefa-muted">Button Variants (10px Radius)</h3>
+            <span class="text-xs text-lefa-muted font-mono">h-11 px-5</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Primary -->
+            <div class="space-y-2">
+              <span class="text-xs text-lefa-muted font-medium">Primary (Default & Hover)</span>
+              <button class="w-full h-11 px-5 bg-lefa-green hover:bg-lefa-greenDark active:scale-[0.99] text-white font-medium text-sm rounded-control shadow-soft transition-all flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+                <span>Add New Policy</span>
+              </button>
+            </div>
+
+            <!-- Secondary -->
+            <div class="space-y-2">
+              <span class="text-xs text-lefa-muted font-medium">Secondary (Surface outline)</span>
+              <button class="w-full h-11 px-5 bg-white hover:bg-lefa-cream text-lefa-ink font-medium text-sm rounded-control border border-lefa-border shadow-soft transition-all flex items-center justify-center gap-2">
+                <span>View Guardians</span>
+              </button>
+            </div>
+
+            <!-- Ghost -->
+            <div class="space-y-2">
+              <span class="text-xs text-lefa-muted font-medium">Ghost (Tertiary)</span>
+              <button class="w-full h-11 px-5 bg-transparent hover:bg-lefa-cream text-lefa-green font-medium text-sm rounded-control transition-all flex items-center justify-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                <span>Back to Vault</span>
+              </button>
+            </div>
+
+            <!-- Danger -->
+            <div class="space-y-2">
+              <span class="text-xs text-lefa-muted font-medium">Danger (Revocation / Delete)</span>
+              <button class="w-full h-11 px-5 bg-[#FDF2F2] hover:bg-[#FBE8E8] text-lefa-statusDanger border border-[#F8D2D2] font-medium text-sm rounded-control transition-all flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                <span>Revoke Access</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Lock Badge / Trust Indicator Component -->
+          <div class="pt-4 border-t border-lefa-border flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-full bg-lefa-green/10 flex items-center justify-center text-lefa-green">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-lefa-ink">Bank-Grade Vault Encryption</p>
+                <p class="text-[11px] text-lefa-muted">AES-256 multi-signature access</p>
+              </div>
+            </div>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#EBF4F0] text-lefa-green border border-[#CEE4DB]">
+              <span class="w-1.5 h-1.5 rounded-full bg-lefa-green"></span>
+              POPIA Compliant
+            </span>
+          </div>
+        </div>
+
+        <!-- Form Inputs & Validation States -->
+        <div class="lg:col-span-6 bg-white p-6 rounded-card border border-lefa-border shadow-soft space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-lefa-muted">Input Fields & Select</h3>
+            <span class="text-xs text-lefa-muted">Standard, Error & Select</span>
+          </div>
+
+          <!-- Input: Default with helper -->
+          <div class="space-y-1.5">
+            <label class="block text-xs font-semibold text-lefa-ink" for="policy-no">
+              South African ID / Policy Number <span class="text-lefa-statusDanger">*</span>
+            </label>
+            <div class="relative">
+              <input type="text" id="policy-no" value="940822 5082 08 4" 
+                class="w-full h-11 px-3.5 bg-white border border-lefa-border rounded-control text-sm text-lefa-ink placeholder:text-lefa-muted/50 focus:outline-none focus:ring-2 focus:ring-lefa-green/20 focus:border-lefa-green transition-all">
+              <span class="absolute right-3 top-3 text-lefa-muted">
+                <svg class="w-5 h-5 text-lefa-statusSuccess" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+            </div>
+            <p class="text-[12px] text-lefa-muted">Matches 13-digit Department of Home Affairs format.</p>
+          </div>
+
+          <!-- Input: Error State -->
+          <div class="space-y-1.5">
+            <label class="block text-xs font-semibold text-lefa-ink" for="policy-holder">
+              Policy Underwriter Email <span class="text-lefa-statusDanger">*</span>
+            </label>
+            <div class="relative">
+              <input type="email" id="policy-holder" value="claims@sanlam-invalid" 
+                class="w-full h-11 px-3.5 bg-[#FFFBFB] border border-lefa-statusDanger rounded-control text-sm text-lefa-ink focus:outline-none focus:ring-2 focus:ring-lefa-statusDanger/20 transition-all">
+              <span class="absolute right-3 top-3 text-lefa-statusDanger">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+            </div>
+            <p class="text-[12px] text-lefa-statusDanger flex items-center gap-1 font-medium">
+              Please enter a verified South African underwriter email domain.
+            </p>
+          </div>
+
+          <!-- Select Component -->
+          <div class="space-y-1.5">
+            <label class="block text-xs font-semibold text-lefa-ink" for="cover-type">
+              Policy Category
+            </label>
+            <div class="relative">
+              <select id="cover-type" class="w-full h-11 px-3.5 bg-white border border-lefa-border rounded-control text-sm text-lefa-ink focus:outline-none focus:ring-2 focus:ring-lefa-green/20 focus:border-lefa-green appearance-none transition-all pr-10">
+                <option>Family Funeral Cover (Direct Vault)</option>
+                <option>Comprehensive Life Annuity</option>
+                <option>Credit Life Protection</option>
+                <option>Guardian Education Trust</option>
+              </select>
+              <div class="absolute right-3.5 top-3.5 pointer-events-none text-lefa-muted">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- File Upload Dropzone (Full Width in Grid) -->
+        <div class="lg:col-span-12 bg-white p-6 rounded-card border border-lefa-border shadow-soft space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-sm font-bold uppercase tracking-wider text-lefa-muted">Policy Document Dropzone</h3>
+              <p class="text-xs text-lefa-muted mt-0.5">Upload certified policy schedules, beneficiary forms, or Death Certificates (BI-1663)</p>
+            </div>
+            <span class="text-xs font-mono text-lefa-muted">PDF, PNG, JPG up to 25MB</span>
+          </div>
+
+          <div class="border-2 border-dashed border-lefa-border hover:border-lefa-green/60 bg-lefa-cream/40 rounded-card p-6 text-center cursor-pointer transition-colors group">
+            <div class="max-w-md mx-auto flex flex-col items-center">
+              <div class="w-12 h-12 rounded-full bg-white border border-lefa-border shadow-soft flex items-center justify-center text-lefa-green group-hover:scale-105 transition-transform mb-3">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                </svg>
+              </div>
+              <p class="text-sm font-medium text-lefa-ink">
+                <span class="text-lefa-green font-semibold underline underline-offset-2">Click to select file</span> or drag schedule here
+              </p>
+              <p class="text-xs text-lefa-muted mt-1">
+                Documents are stored with asymmetric cryptographic timestamping.
+              </p>
+
+              <!-- Uploading progress preview item -->
+              <div class="w-full mt-4 bg-white p-3 rounded-control border border-lefa-border shadow-soft flex items-center justify-between gap-3 text-left">
+                <div class="flex items-center gap-2.5 min-w-0">
+                  <div class="w-8 h-8 rounded bg-[#EBF4F0] text-lefa-green flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  </div>
+                  <div class="truncate">
+                    <p class="text-xs font-semibold text-lefa-ink truncate">Sanlam_Life_Schedule_Signed.pdf</p>
+                    <p class="text-[11px] text-lefa-muted">2.4 MB • Encrypted & Scanned</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 shrink-0">
+                  <span class="text-xs font-semibold text-lefa-statusSuccess">Verified</span>
+                  <button class="text-lefa-muted hover:text-lefa-statusDanger p-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: VAULT STATUS PILLS & BADGES -->
+    <section class="space-y-6">
+      <div class="flex items-center justify-between border-b border-lefa-border pb-3">
+        <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-lefa-ink">
+          03. Claim & Policy Lifecycle Badges
+        </h2>
+        <span class="text-xs font-medium text-lefa-muted">6 Core Lifecycle Status Indicators</span>
+      </div>
+
+      <div class="bg-white p-6 rounded-card border border-lefa-border shadow-soft">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          
+          <!-- Not started -->
+          <div class="flex flex-col items-center text-center p-3 rounded-control bg-lefa-cream/50 border border-lefa-border">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#EFECE6] text-[#555555] border border-[#DDD7CD]">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#888888]"></span>
+              Not started
+            </span>
+            <span class="text-[11px] text-lefa-muted mt-2">Dormant policy file</span>
+          </div>
+
+          <!-- Submitted -->
+          <div class="flex flex-col items-center text-center p-3 rounded-control bg-lefa-cream/50 border border-lefa-border">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#E8F1F5] text-lefa-statusInfo border border-[#C5DCF0]">
+              <span class="w-1.5 h-1.5 rounded-full bg-lefa-statusInfo"></span>
+              Submitted
+            </span>
+            <span class="text-[11px] text-lefa-muted mt-2">Claim lodged with insurer</span>
+          </div>
+
+          <!-- Documents requested -->
+          <div class="flex flex-col items-center text-center p-3 rounded-control bg-lefa-cream/50 border border-lefa-border">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#FEF6E9] text-lefa-statusWarning border border-[#F6DCB3]">
+              <span class="w-1.5 h-1.5 rounded-full bg-lefa-statusWarning animate-pulse"></span>
+              Documents requested
+            </span>
+            <span class="text-[11px] text-lefa-muted mt-2">ID or BI-1663 needed</span>
+          </div>
+
+          <!-- Approved -->
+          <div class="flex flex-col items-center text-center p-3 rounded-control bg-lefa-cream/50 border border-lefa-border">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#EBF4EC] text-lefa-statusSuccess border border-[#C6E4C8]">
+              <svg class="w-3 h-3 text-lefa-statusSuccess" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Approved
+            </span>
+            <span class="text-[11px] text-lefa-muted mt-2">Assessor validated</span>
+          </div>
+
+          <!-- Paid -->
+          <div class="flex flex-col items-center text-center p-3 rounded-control bg-lefa-cream/50 border border-lefa-border">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#E7F3EE] text-lefa-green border border-[#BCE1D1]">
+              <span class="w-1.5 h-1.5 rounded-full bg-lefa-green"></span>
+              Paid
+            </span>
+            <span class="text-[11px] text-lefa-muted mt-2">Funds cleared to trust</span>
+          </div>
+
+          <!-- Rejected -->
+          <div class="flex flex-col items-center text-center p-3 rounded-control bg-lefa-cream/50 border border-lefa-border">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#FDF2F2] text-lefa-statusDanger border border-[#F9D4D4]">
+              <span class="w-1.5 h-1.5 rounded-full bg-lefa-statusDanger"></span>
+              Rejected
+            </span>
+            <span class="text-[11px] text-lefa-muted mt-2">Disputed / Ineligible</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: DISPLAY SURFACES, CARDS & STAT TILES -->
+    <section class="space-y-6">
+      <div class="flex items-center justify-between border-b border-lefa-border pb-3">
+        <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-lefa-ink">
+          04. Cards, Stat Tiles & Progress Checklists
+        </h2>
+        <span class="text-xs font-medium text-lefa-muted">Policy Containers • R85 000 Currency • Guardian Avatars</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Stat Tile 1: Total Cover Protected -->
+        <div class="bg-white p-5 rounded-card border border-lefa-border shadow-soft flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-lefa-muted uppercase tracking-wider">Total Vault Value</span>
+            <span class="p-1.5 rounded-md bg-[#FAF7F2] text-lefa-green border border-lefa-border">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </span>
+          </div>
+          <div class="mt-4">
+            <div class="text-2xl font-bold text-lefa-ink">R1 450 000</div>
+            <p class="text-xs text-lefa-muted mt-1 flex items-center gap-1">
+              Across <span class="font-semibold text-lefa-ink">4 verified policies</span>
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-lefa-border/60 flex items-center justify-between text-xs">
+            <span class="text-lefa-muted">Last audited: 22 Nov 2026</span>
+            <span class="text-lefa-green font-semibold">Active</span>
+          </div>
+        </div>
+
+        <!-- Stat Tile 2: Next Claim Payout Example (R85 000) -->
+        <div class="bg-white p-5 rounded-card border border-lefa-border shadow-soft flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-lefa-muted uppercase tracking-wider">Immediate Funeral Liquidity</span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-[#E7F3EE] text-lefa-green">
+              24h Payout
+            </span>
+          </div>
+          <div class="mt-4">
+            <div class="text-2xl font-bold text-lefa-green">R85 000</div>
+            <p class="text-xs text-lefa-muted mt-1">
+              Guaranteed payout to nominated next-of-kin
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-lefa-border/60 flex items-center justify-between text-xs">
+            <span class="text-lefa-muted">Beneficiary: Thabo Molefe</span>
+            <span class="text-lefa-ochre font-semibold">Ready</span>
+          </div>
+        </div>
+
+        <!-- Stat Tile 3: Designated Guardians with Avatars -->
+        <div class="bg-white p-5 rounded-card border border-lefa-border shadow-soft flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-lefa-muted uppercase tracking-wider">Family Guardians</span>
+            <button class="text-xs font-semibold text-lefa-green hover:underline">Manage</button>
+          </div>
+          
+          <div class="mt-4 flex items-center gap-3">
+            <div class="flex -space-x-2">
+              <div class="w-9 h-9 rounded-full bg-lefa-green text-white font-bold text-xs flex items-center justify-center border-2 border-white shadow-soft">
+                NM
+              </div>
+              <div class="w-9 h-9 rounded-full bg-lefa-ochre text-white font-bold text-xs flex items-center justify-center border-2 border-white shadow-soft">
+                KM
+              </div>
+              <div class="w-9 h-9 rounded-full bg-[#4A6B82] text-white font-bold text-xs flex items-center justify-center border-2 border-white shadow-soft">
+                ZS
+              </div>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-lefa-ink">3 Nominated Trustees</p>
+              <p class="text-xs text-lefa-muted">2 of 3 quorum required</p>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-lefa-border/60 flex items-center justify-between text-xs">
+            <span class="text-lefa-muted">Protocol: Bereavement Key</span>
+            <span class="text-lefa-statusSuccess font-medium">Verified ID</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Policy Vault Card Detail & Progress Checklist -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Primary Policy Vault Card -->
+        <div class="lg:col-span-7 bg-white p-6 rounded-card border border-lefa-border shadow-soft space-y-5">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-control bg-[#FAF7F2] border border-lefa-border flex items-center justify-center text-lefa-green">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h4 class="font-bold text-lefa-ink text-base">Old Mutual Family Protector</h4>
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-[#E7F3EE] text-lefa-green">
+                    Paid
+                  </span>
+                </div>
+                <p class="text-xs text-lefa-muted">Policy #OM-90284-ZA • Registered 14 Jan 2024</p>
+              </div>
+            </div>
+
+            <div class="text-right">
+              <span class="text-xs text-lefa-muted block">Benefit Amount</span>
+              <span class="text-lg font-bold text-lefa-green">R85 000</span>
+            </div>
+          </div>
+
+          <div class="p-3 bg-lefa-cream/60 rounded-control border border-lefa-border/80 grid grid-cols-3 gap-2 text-xs">
+            <div>
+              <span class="text-lefa-muted block text-[11px]">Primary Beneficiary</span>
+              <span class="font-semibold text-lefa-ink">Nandi Molefe (Spouse)</span>
+            </div>
+            <div>
+              <span class="text-lefa-muted block text-[11px]">Next Debit Order</span>
+              <span class="font-semibold text-lefa-ink">R420 / mo (01 Dec)</span>
+            </div>
+            <div>
+              <span class="text-lefa-muted block text-[11px]">Claim Turnaround</span>
+              <span class="font-semibold text-lefa-ink">Under 4 hours</span>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-2">
+            <div class="flex items-center gap-2 text-xs text-lefa-muted">
+              <svg class="w-4 h-4 text-lefa-green" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              <span>Certified schedule attached (SHA-256)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="h-9 px-3.5 bg-white border border-lefa-border text-lefa-ink hover:bg-lefa-cream rounded-control text-xs font-semibold shadow-soft">
+                View Schedule
+              </button>
+              <button class="h-9 px-3.5 bg-lefa-green text-white hover:bg-lefa-greenDark rounded-control text-xs font-semibold shadow-soft">
+                Initiate Assist
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Checklist Component -->
+        <div class="lg:col-span-5 bg-white p-6 rounded-card border border-lefa-border shadow-soft space-y-4">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-lefa-ink text-sm uppercase tracking-wider text-lefa-muted">
+              Vault Readiness Checklist
+            </h4>
+            <span class="text-xs font-bold text-lefa-green">3 of 4 Complete</span>
+          </div>
+
+          <div class="space-y-3">
+            <!-- Item 1: Complete -->
+            <div class="flex items-start gap-3 p-2.5 rounded-control bg-lefa-cream/40 border border-lefa-border/60">
+              <div class="w-5 h-5 rounded-full bg-lefa-statusSuccess text-white flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-lefa-ink line-through opacity-70">Identity & Home Affairs verification</p>
+                <p class="text-[11px] text-lefa-muted">Confirmed on 12 Aug 2026</p>
+              </div>
+            </div>
+
+            <!-- Item 2: Complete -->
+            <div class="flex items-start gap-3 p-2.5 rounded-control bg-lefa-cream/40 border border-lefa-border/60">
+              <div class="w-5 h-5 rounded-full bg-lefa-statusSuccess text-white flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-lefa-ink line-through opacity-70">Upload original signed policy PDF</p>
+                <p class="text-[11px] text-lefa-muted">Old Mutual Schedule stored</p>
+              </div>
+            </div>
+
+            <!-- Item 3: Complete -->
+            <div class="flex items-start gap-3 p-2.5 rounded-control bg-lefa-cream/40 border border-lefa-border/60">
+              <div class="w-5 h-5 rounded-full bg-lefa-statusSuccess text-white flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-lefa-ink line-through opacity-70">Nominate 2 secondary family guardians</p>
+                <p class="text-[11px] text-lefa-muted">Nandi & Kagiso accepted invites</p>
+              </div>
+            </div>
+
+            <!-- Item 4: Pending / In Progress with Ochre indicator -->
+            <div class="flex items-start gap-3 p-2.5 rounded-control bg-white border-2 border-lefa-ochre/40 shadow-soft">
+              <div class="w-5 h-5 rounded-full border-2 border-lefa-ochre text-lefa-ochre flex items-center justify-center shrink-0 mt-0.5 font-bold text-[10px]">
+                4
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <p class="text-xs font-bold text-lefa-ink">Specify Funeral Director instructions</p>
+                  <span class="text-[10px] font-semibold text-lefa-ochre uppercase">Pending</span>
+                </div>
+                <p class="text-[11px] text-lefa-muted mt-0.5">Ensure preferred service and location are recorded.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: NAVIGATION CHROME (Desktop Top Nav & Mobile Bottom Bar) -->
+    <section class="space-y-6">
+      <div class="flex items-center justify-between border-b border-lefa-border pb-3">
+        <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-lefa-ink">
+          05. Navigation Archetypes (Desktop & Mobile)
+        </h2>
+        <span class="text-xs font-medium text-lefa-muted">Top Navigation Bar • Mobile Bottom Tab Bar</span>
+      </div>
+
+      <!-- Desktop Top Nav Component -->
+      <div class="bg-white p-6 rounded-card border border-lefa-border shadow-soft space-y-3">
+        <div class="flex items-center justify-between text-xs text-lefa-muted mb-1">
+          <span class="font-bold uppercase tracking-wider">Desktop Header Navigation (Sticky 64px)</span>
+          <span class="font-mono">Surface White • Border Bottom #E7E1D7</span>
+        </div>
+
+        <nav class="h-16 px-6 bg-white border border-lefa-border rounded-control flex items-center justify-between shadow-soft">
+          <!-- Logo & Brand -->
+          <div class="flex items-center gap-8">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-control bg-lefa-green flex items-center justify-center text-white">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              </div>
+              <span class="font-bold text-lg text-lefa-ink tracking-tight">lefa</span>
+            </div>
+
+            <!-- Links -->
+            <div class="hidden md:flex items-center gap-6 text-sm">
+              <a href="#" class="font-semibold text-lefa-green border-b-2 border-lefa-green py-5 -mb-px">My Vault</a>
+              <a href="#" class="text-lefa-muted hover:text-lefa-ink transition-colors">Guardians & Trustees</a>
+              <a href="#" class="text-lefa-muted hover:text-lefa-ink transition-colors">Claims & Assistance</a>
+              <a href="#" class="text-lefa-muted hover:text-lefa-ink transition-colors">Emergency Protocol</a>
+            </div>
+          </div>
+
+          <!-- Actions & Profile -->
+          <div class="flex items-center gap-3">
+            <span class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-lefa-cream text-lefa-muted border border-lefa-border">
+              <svg class="w-3.5 h-3.5 text-lefa-green" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              Vault Locked
+            </span>
+            <div class="flex items-center gap-2 pl-2 border-l border-lefa-border">
+              <div class="w-8 h-8 rounded-full bg-lefa-green text-white text-xs font-bold flex items-center justify-center">
+                SM
+              </div>
+              <div class="hidden lg:block text-left text-xs">
+                <p class="font-semibold text-lefa-ink">Sipho Molefe</p>
+                <p class="text-lefa-muted text-[10px]">Primary Vaultholder</p>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Mobile Bottom Tab Bar Preview in Phone Frame -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div class="md:col-span-5 bg-white p-6 rounded-card border border-lefa-border shadow-soft flex flex-col items-center">
+          <div class="w-full flex items-center justify-between text-xs text-lefa-muted mb-4">
+            <span class="font-bold uppercase tracking-wider">Mobile Tab Navigation</span>
+            <span class="font-mono">390px viewport</span>
+          </div>
+
+          <!-- Mobile Frame Container -->
+          <div class="w-full max-w-[340px] bg-lefa-cream rounded-[24px] border-4 border-lefa-border overflow-hidden shadow-elevated flex flex-col justify-between h-[280px]">
+            <div class="p-4 text-center">
+              <div class="w-12 h-1 bg-lefa-border rounded-full mx-auto mb-3"></div>
+              <p class="text-xs font-semibold text-lefa-ink">Mobile Viewport Simulation</p>
+              <p class="text-[11px] text-lefa-muted mt-1">Calm, clear touch targets (min 44px)</p>
+            </div>
+
+            <!-- Mobile Bottom Bar -->
+            <div class="h-16 bg-white border-t border-lefa-border px-3 flex items-center justify-around">
+              <a href="#" class="flex flex-col items-center gap-1 text-lefa-green">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <span class="text-[10px] font-bold">Vault</span>
+              </a>
+              <a href="#" class="flex flex-col items-center gap-1 text-lefa-muted hover:text-lefa-ink">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span class="text-[10px] font-medium">Policies</span>
+              </a>
+              <a href="#" class="flex flex-col items-center gap-1 text-lefa-muted hover:text-lefa-ink">
+                <div class="w-8 h-8 -mt-4 rounded-full bg-lefa-green text-white flex items-center justify-center shadow-soft">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+                </div>
+                <span class="text-[10px] font-medium text-lefa-green">Add</span>
+              </a>
+              <a href="#" class="flex flex-col items-center gap-1 text-lefa-muted hover:text-lefa-ink">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                <span class="text-[10px] font-medium">Trustees</span>
+              </a>
+              <a href="#" class="flex flex-col items-center gap-1 text-lefa-muted hover:text-lefa-ink">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <span class="text-[10px] font-medium">Settings</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty State with Line Illustration -->
+        <div class="md:col-span-7 bg-white p-6 rounded-card border border-lefa-border shadow-soft flex flex-col justify-between">
+          <div class="flex items-center justify-between text-xs text-lefa-muted mb-2">
+            <span class="font-bold uppercase tracking-wider">Empty State Pattern</span>
+            <span class="text-xs">Subtle line art, no playful mascots</span>
+          </div>
+
+          <div class="py-8 px-4 text-center max-w-sm mx-auto space-y-4">
+            <!-- Dignified Line Illustration -->
+            <div class="w-16 h-16 rounded-full bg-lefa-cream mx-auto flex items-center justify-center border border-lefa-border text-lefa-green">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v4a1 1 0 001 1h4"/>
+              </svg>
+            </div>
+
+            <div>
+              <h4 class="text-base font-bold text-lefa-ink">No Claims Initiated</h4>
+              <p class="text-xs text-lefa-muted mt-1 leading-relaxed">
+                When you or a nominated guardian need assistance, your stored funeral and life policies can be activated with a single confidential request.
+              </p>
+            </div>
+
+            <button class="h-10 px-4 bg-lefa-green hover:bg-lefa-greenDark text-white text-xs font-semibold rounded-control shadow-soft inline-flex items-center gap-2">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Learn How Claims Work</span>
+            </button>
+          </div>
+
+          <div class="pt-3 border-t border-lefa-border text-[11px] text-lefa-muted flex items-center justify-between">
+            <span>Tone note: Emotionally considerate</span>
+            <span>Avoids gamification or cartoon illustrations</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 6: FEEDBACK & OVERLAYS (Toast & Modal) -->
+    <section class="space-y-6 pb-8">
+      <div class="flex items-center justify-between border-b border-lefa-border pb-3">
+        <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-lefa-ink">
+          06. Overlays, Toast Notifications & Dialogs
+        </h2>
+        <span class="text-xs font-medium text-lefa-muted">Alert Banners • Bereavement Dialog • Confirmation</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Toast Notifications Stack -->
+        <div class="lg:col-span-5 bg-white p-6 rounded-card border border-lefa-border shadow-soft space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-lefa-muted">Toast Alerts (4sec auto-dismiss)</h3>
+            <span class="text-xs text-lefa-muted">Top-Right Floating</span>
+          </div>
+
+          <!-- Toast 1: Success -->
+          <div class="p-3.5 bg-white rounded-card border-l-4 border-l-lefa-statusSuccess border border-lefa-border shadow-soft flex items-start gap-3">
+            <div class="text-lefa-statusSuccess shrink-0 mt-0.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-bold text-lefa-ink">Policy Schedule Securely Saved</p>
+              <p class="text-[11px] text-lefa-muted mt-0.5">Old Mutual Funeral Plan #OM-90284 verified.</p>
+            </div>
+            <button class="text-lefa-muted hover:text-lefa-ink text-xs">✕</button>
+          </div>
+
+          <!-- Toast 2: Information / Dignified Notification -->
+          <div class="p-3.5 bg-white rounded-card border-l-4 border-l-lefa-ochre border border-lefa-border shadow-soft flex items-start gap-3">
+            <div class="text-lefa-ochre shrink-0 mt-0.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-bold text-lefa-ink">Guardian Invitation Sent</p>
+              <p class="text-[11px] text-lefa-muted mt-0.5">SMS and email delivered to Nandi Molefe.</p>
+            </div>
+            <button class="text-lefa-muted hover:text-lefa-ink text-xs">✕</button>
+          </div>
+        </div>
+
+        <!-- Dignified Modal Dialog -->
+        <div class="lg:col-span-7 bg-[#F4EFEA] p-6 rounded-card border border-lefa-border shadow-soft flex items-center justify-center">
+          <div class="w-full max-w-lg bg-white rounded-card border border-lefa-border shadow-modal p-6 space-y-4">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-[#EBF4F0] text-lefa-green flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                </div>
+                <div>
+                  <h4 class="text-base font-bold text-lefa-ink">Confirm Bereavement Protocol</h4>
+                  <p class="text-xs text-lefa-muted">Initiating claim on behalf of the deceased</p>
+                </div>
+              </div>
+              <button class="text-lefa-muted hover:text-lefa-ink p-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </button>
+            </div>
+
+            <p class="text-xs text-lefa-ink leading-relaxed">
+              We understand this is an extraordinarily difficult moment. By continuing, Lefa will unlock the pre-authorized policy schedules for <strong class="font-semibold">Sipho Molefe</strong> and alert Old Mutual to expedite the <strong class="text-lefa-green font-semibold">R85 000</strong> payout.
+            </p>
+
+            <div class="p-3 bg-lefa-cream rounded-control border border-lefa-border space-y-1.5 text-xs">
+              <div class="flex justify-between">
+                <span class="text-lefa-muted">Required Document:</span>
+                <span class="font-medium text-lefa-ink">BI-1663 or Death Certificate</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-lefa-muted">Dedicated Case Lead:</span>
+                <span class="font-medium text-lefa-ink">Lefa Care Team (Johannesburg)</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-end gap-3 pt-2">
+              <button class="h-10 px-4 bg-white hover:bg-lefa-cream border border-lefa-border text-lefa-ink text-xs font-semibold rounded-control transition-colors">
+                Cancel
+              </button>
+              <button class="h-10 px-5 bg-lefa-green hover:bg-lefa-greenDark text-white text-xs font-semibold rounded-control shadow-soft transition-colors flex items-center gap-2">
+                <span>Confirm & Release Schedule</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer Meta -->
+    <footer class="pt-6 border-t border-lefa-border flex flex-col sm:flex-row items-center justify-between text-xs text-lefa-muted gap-4">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-lefa-green"></span>
+        <span>Lefa Design Tokens • Dignified Sanctuary System</span>
+      </div>
+      <div>
+        <span>Typography: Plus Jakarta Sans • Precision Radius: 12px Cards, 10px Controls</span>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

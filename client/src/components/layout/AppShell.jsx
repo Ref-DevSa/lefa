@@ -25,7 +25,7 @@ export function AppShell({ navItems, actions, children }) {
                     to={item.to}
                     className={({ isActive }) =>
                       cn(
-                        'rounded-[var(--radius-control)] px-3 py-2 font-medium',
+                        'rounded-control px-3 py-2 font-medium',
                         isActive ? 'bg-primary/10 text-primary' : 'text-muted hover:text-ink',
                       )
                     }

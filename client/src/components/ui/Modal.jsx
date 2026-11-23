@@ -45,7 +45,7 @@ export function Modal({ open, onClose, title, children, footer }) {
         aria-modal="true"
         aria-labelledby={titleId}
         tabIndex={-1}
-        className="relative w-full max-w-md rounded-[var(--radius-card)] bg-surface p-6 shadow-lg"
+        className="relative w-full max-w-md rounded-card bg-surface p-6 shadow-lg"
       >
         <h2 id={titleId} className="mb-3 text-xl font-semibold text-ink">
           {title}

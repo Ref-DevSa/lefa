@@ -34,7 +34,7 @@ export function Button({
       disabled={disabled || loading}
       aria-busy={loading || undefined}
       className={cn(
-        'inline-flex items-center justify-center gap-2 rounded-[var(--radius-control)] font-semibold transition-colors',
+        'inline-flex items-center justify-center gap-2 rounded-control font-semibold transition-colors',
         'disabled:cursor-not-allowed disabled:opacity-60',
         VARIANTS[variant],
         SIZES[size],

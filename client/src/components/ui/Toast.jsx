@@ -43,7 +43,7 @@ export function ToastProvider({ children, duration = 4000 }) {
             key={t.id}
             role={t.tone === 'error' ? 'alert' : 'status'}
             className={cn(
-              'pointer-events-auto flex w-full max-w-sm items-center justify-between gap-3 rounded-[var(--radius-control)] border-l-4 bg-surface px-4 py-3 shadow-lg',
+              'pointer-events-auto flex w-full max-w-sm items-center justify-between gap-3 rounded-control border-l-4 bg-surface px-4 py-3 shadow-lg',
               TONES[t.tone],
             )}
           >

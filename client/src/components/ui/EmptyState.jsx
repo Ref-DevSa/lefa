@@ -3,7 +3,7 @@
  */
 export function EmptyState({ title, description, action, icon }) {
   return (
-    <div className="flex flex-col items-center gap-3 rounded-[var(--radius-card)] border border-dashed border-border px-6 py-12 text-center">
+    <div className="flex flex-col items-center gap-3 rounded-card border border-dashed border-border px-6 py-12 text-center">
       <span aria-hidden="true" className="text-accent">
         {icon ?? (
           <svg viewBox="0 0 48 48" className="size-12" fill="none" stroke="currentColor" strokeWidth="2">

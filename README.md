@@ -20,6 +20,7 @@ South Africans hold **17 million funeral policies**, yet roughly **R88.5 billion
 | Loom pitch + demo | _TODO_ |
 | Business case | [BUSINESS.md](BUSINESS.md) |
 | PRD | [docs/PRD.md](docs/PRD.md) |
+| How it works (plain language) | [docs/HOW_IT_WORKS.md](docs/HOW_IT_WORKS.md) |
 | Designs (exports) | [docs/designs/](docs/designs/README.md) |
 | Implementation plan | [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) _(Mon 23 Nov)_ |
 

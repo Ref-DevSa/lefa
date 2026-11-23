@@ -25,6 +25,8 @@ export default [
   {
     files: ['server/**/*.js', '*.js', '**/*.config.{js,cjs}'],
     languageOptions: { ecmaVersion: 'latest', sourceType: 'module', globals: globals.node },
+    // Express error handlers must declare 4 params even if `_next` is unused.
+    rules: { 'no-unused-vars': ['error', { argsIgnorePattern: '^_' }] },
   },
   {
     files: ['**/*.cjs'],

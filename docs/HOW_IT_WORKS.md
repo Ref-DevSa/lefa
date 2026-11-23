@@ -91,6 +91,27 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 
 > **In one sentence:** "Signing up takes under a minute, everyone lands on the right screen for their role, and nobody can give themselves broker powers, because roles are granted by people, not by forms."
 
+### #8 The API checks who's asking
+- **What:**
+  - **A login check on the API ("the waiter checks your wristband").** Every request to a protected address must carry the user's login token. The API asks Supabase "is this token real and still valid?" before doing anything.
+  - **The API acts *as* the user.** It talks to the database using that same user's token, so the database's RLS rules (#6) apply exactly as if the user asked directly. The API never uses the master key for user requests.
+  - **`GET /api/me`** answers "who am I?" with the caller's profile and role.
+  - **`requireRole`:** a check that later broker-only features (verifying deaths, the claims pipeline) will use. A member who tries them gets **403**.
+  - **One error format everywhere:** `{ "error": { "code": "...", "message": "..." } }`.
+- **Why each detail:**
+  - **Checking the token with Supabase every time,** not just reading it, means a logged-out or blocked session is refused immediately instead of working for up to an hour.
+  - **Using the user's token for the database** means even an API bug can't show one family's data to another: the database still applies its rules.
+  - **Different codes for different problems:**
+    - **401** means "you need to log in".
+    - **403** means "you're logged in, but this isn't for you".
+    - **503** means "our login service is down, it's not your fault".
+    - **500** means "something broke on our side", with a generic message.
+    The app can then react correctly, for example sending you to log-in only when your login is actually the problem.
+  - **The error handler hides internal details** (database errors, code paths) from the browser and logs them for us instead. Leaked internals help attackers.
+- **How we know it works:** 15 automated server tests cover no token, a fake token, an expired token, a valid token, Supabase being down, a missing profile, member vs broker access, broken JSON and unexpected crashes, including a check that secret details never reach the response. We also tested the live API against the real Supabase: a forged token is refused (401).
+
+> **In one sentence:** "Every request is checked at the door and then handled with the user's own permissions, so the database's privacy rules apply no matter which route the request takes."
+
 ---
 
 ## 4. Keys and secrets
@@ -143,4 +164,7 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 - **Session:** the "you're logged in" state the browser keeps after log-in, so you don't type your password on every page.
 - **Guard:** a check in front of a page that decides whether to show it, redirect to log-in, or show 403.
 
-*Next up: #8 API login checks.*
+- **Middleware:** a check that runs before an API route, like the doorman before the waiter.
+- **401 / 403 / 404 / 500 / 503:** standard response codes: not logged in / not allowed / not found / our bug / temporarily down.
+
+*Next up: #9 the policies table and API (the vault itself).*

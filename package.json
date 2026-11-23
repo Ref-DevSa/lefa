@@ -16,7 +16,12 @@
     "test": "npm test -w client -w server",
     "build": "npm run build -w client",
     "start": "npm run start -w server",
-    "check": "npm run lint && npm run typecheck && npm test && npm run build"
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "db:link": "supabase link",
+    "db:migration": "supabase migration new",
+    "db:check": "supabase db push --remote --dry-run",
+    "db:push": "supabase db push --remote",
+    "db:test": "supabase test db --remote"
   },
   "engines": {
     "node": ">=20.19"
@@ -30,6 +35,7 @@
     "eslint-plugin-react-hooks": "^5",
     "eslint-plugin-react-refresh": "^0.4",
     "globals": "^16",
+    "supabase": "^3.3.0",
     "typescript": "^5.9"
   }
 }

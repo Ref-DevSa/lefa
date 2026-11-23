@@ -2,6 +2,9 @@
 -- Everything runs in a transaction and is rolled back.
 begin;
 create extension if not exists pgtap with schema extensions;
+-- `supabase test db --remote` logs in as a limited CLI role that can't use the
+-- extensions schema, so act as the database owner (as migrations do).
+set local role postgres;
 set search_path = public, extensions;
 
 select plan(16);
@@ -95,7 +98,7 @@ select is(
 );
 
 -- As anon -------------------------------------------------------------------
-reset role;
+set local role postgres;
 set local role anon;
 select set_config('request.jwt.claims', '{"role":"anon"}', true);
 
@@ -106,7 +109,7 @@ select throws_ok(
   'anonymous visitors cannot read profiles'
 );
 
-reset role;
+set local role postgres;
 
 select is(
   (select count(*)::int from profiles where role = 'admin'),

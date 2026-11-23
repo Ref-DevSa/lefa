@@ -74,6 +74,23 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 
 > **In one sentence:** "Privacy isn't a promise in our code, it's enforced by the database, and we have automated tests that try to break in every time we change anything."
 
+### #7 Sign up, log in and page guards
+- **What:**
+  - **Sign-up and log-in screens** (S2) with friendly, specific error messages.
+  - **A session provider:** one place in the app that knows who is logged in and what their role is, so every screen asks it instead of working it out alone.
+  - **Guards** on protected pages:
+    - a logged-out visitor is sent to log-in, and returns to the page they wanted afterwards;
+    - a member who opens a broker page sees a polite 403 page with a link back to *their* home.
+  - **Role-based landing:** after log-in, members go to **My Vault** and brokers/admins go to the **Broker Dashboard**.
+- **Why each detail:**
+  - **Checks in the form** (valid email, SA phone number, password of at least 8 characters with a letter and a number, POPIA consent) catch mistakes instantly, before anything is sent. The phone is saved in one format (`+27821234567`), so later features like SMS reminders can rely on it.
+  - **Friendly errors:** "Incorrect email or password" instead of technical messages. It also never says *which* part was wrong, so nobody can use the form to discover who has an account.
+  - **The sign-up never sends a role.** Even the "I'm a broker" button creates a normal member account, with a note that Lefa activates brokers after a check. Brokers verify deaths, so this has to be a human decision.
+  - **The guards are for convenience, not security.** They give users a smooth experience. The real lock is still RLS in the database (#6): even if someone bypasses a page, the database hands them nothing.
+- **How we know it works:** automated tests click through the app like a person would. They cover empty forms, wrong passwords, duplicate emails, member vs broker landing, returning to the original page, blocked pages, a failed profile load with a "Try again" button, and logging out (which locks the vault again). The tests use a pretend Supabase, so they're fast and never touch real data.
+
+> **In one sentence:** "Signing up takes under a minute, everyone lands on the right screen for their role, and nobody can give themselves broker powers, because roles are granted by people, not by forms."
+
 ---
 
 ## 4. Keys and secrets
@@ -107,6 +124,8 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 - [ ] Get a POPIA review of the privacy notice and of how long death certificates are kept.
 - [ ] Run backups and a restore test.
 - [ ] Add rate limiting on sign-up and log-in.
+- [ ] Publish a full privacy notice page and link it from the sign-up consent checkbox.
+- [ ] Add "Forgot password?" (needs email sending, so it comes with custom SMTP).
 
 ---
 
@@ -121,4 +140,7 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 - **CI:** the robot that tests every change automatically on GitHub.
 - **Gitignored:** a file Git deliberately never uploads (used for secrets).
 
-*Next up: #7 sign-up/log-in screens and #8 API login checks. Each will get its own section here.*
+- **Session:** the "you're logged in" state the browser keeps after log-in, so you don't type your password on every page.
+- **Guard:** a check in front of a page that decides whether to show it, redirect to log-in, or show 403.
+
+*Next up: #8 API login checks.*

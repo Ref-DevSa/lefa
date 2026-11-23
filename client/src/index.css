@@ -1,0 +1,37 @@
+@import 'tailwindcss';
+
+/* Lefa design tokens (from docs/designs/STITCH_PROMPTS.md, prompt 0).
+   Update these once the Stitch exports are in docs/designs/. */
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary: #1f5f4a;
+  --color-primary-hover: #174a3a;
+  --color-accent: #c8902e;
+  --color-cream: #faf7f2;
+  --color-surface: #ffffff;
+  --color-border: #e7e1d7;
+  --color-ink: #1c1c1c;
+  --color-muted: #6b6b6b;
+
+  --color-success: #2e7d32;
+  --color-warning: #b26a00;
+  --color-danger: #b3261e;
+  --color-info: #1f5f8a;
+
+  --radius-card: 12px;
+  --radius-control: 10px;
+  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+}

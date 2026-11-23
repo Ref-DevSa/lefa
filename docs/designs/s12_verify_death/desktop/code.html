@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-bright":"#fcf9f4","surface-variant":"#e5e2dd","surface-tint":"#2b6953","on-primary-container":"#97d7bc","surface-container-highest":"#e5e2dd","inverse-primary":"#94d4b9","surface-container-low":"#f6f3ee","outline-variant":"#bfc9c2","on-tertiary-fixed":"#001d31","primary":"#004734","on-error-container":"#93000a","secondary":"#805600","inverse-on-surface":"#f3f0eb","on-background":"#1c1c19","on-secondary-fixed":"#281800","on-tertiary-fixed-variant":"#004b73","on-surface":"#1c1c19","primary-fixed-dim":"#94d4b9","tertiary-fixed-dim":"#94ccfd","inverse-surface":"#31302d","secondary-fixed":"#ffddaf","primary-container":"#1f5f4a","on-secondary-fixed-variant":"#614000","on-error":"#ffffff","on-primary-fixed-variant":"#0a513d","primary-fixed":"#b0f0d4","surface-container":"#f0ede9","on-tertiary-container":"#99cfff","on-secondary":"#ffffff","outline":"#707974","on-tertiary":"#ffffff","surface-dim":"#dcdad5","error":"#ba1a1a","on-secondary-container":"#724d00","error-container":"#ffdad6","surface-container-lowest":"#ffffff","surface-container-high":"#ebe8e3","background":"#fcf9f4","tertiary":"#004165","secondary-container":"#fdbe58","secondary-fixed-dim":"#fabc56","on-primary-fixed":"#002116","on-primary":"#ffffff","on-surface-variant":"#404944","tertiary-container":"#165984","tertiary-fixed":"#cce5ff","surface":"#fcf9f4"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-lg":"1.5rem","space-xl":"2rem","space-md":"1rem","margin-mobile":"1rem","space-xs":"0.25rem","gutter-mobile":"1rem","margin":"2rem","space-sm":"0.5rem","gutter":"1.5rem"},fontFamily:{"headline-xl":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"body-md-semibold":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-sm-medium":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"]},fontSize:{"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-xl-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.015em","fontWeight":"700"}],"body-md-semibold":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg-mobile":["26px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-sm":["14px",{"lineHeight":"20px","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.015em","fontWeight":"700"}],"label-sm":["11px",{"lineHeight":"16px","letterSpacing":"0.03em","fontWeight":"600"}],"body-sm-medium":["14px",{"lineHeight":"20px","fontWeight":"500"}],"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-[72px] px-6 flex items-center gap-3 bg-surface-container-low"><div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[22px]">shield_with_heart</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-tight tracking-tight">Lefa</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-wide uppercase">Broker Portal</span></div></div><div class="px-6 py-2"><div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm"><span class="material-symbols-outlined text-[13px]">lock</span><span>256-bit Encrypted Vault</span></div></div><nav class="px-4 mt-4 flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-body-md-semibold shadow-sm"><a class="flex items-center justify-between px-3.5 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard" href="#"><div class="flex items-center gap-3.5"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-sm-medium text-body-sm-medium">Dashboard</span></div></a><a class="flex items-center justify-between px-3.5 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="verifications" href="#"><div class="flex items-center gap-3.5"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-body-sm-medium text-body-sm-medium">Verifications</span></div><span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm">2</span></a><a class="flex items-center justify-between px-3.5 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="claims" href="#"><div class="flex items-center gap-3.5"><span class="material-symbols-outlined text-[20px]">document_scanner</span><span class="font-body-sm-medium text-body-sm-medium">Claims</span></div><span class="px-2 py-0.5 rounded-full bg-tertiary text-on-tertiary font-label-sm text-label-sm">7</span></a><a class="flex items-center justify-between px-3.5 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="clients" href="#"><div class="flex items-center gap-3.5"><span class="material-symbols-outlined text-[20px]">groups</span><span class="font-body-sm-medium text-body-sm-medium">Clients</span></div></a></nav></div><div class="p-4 flex flex-col gap-3"><div class="p-3 rounded-xl bg-surface-container text-on-surface-variant flex flex-col gap-1"><div class="flex items-center gap-1.5 text-primary"><span class="material-symbols-outlined text-[16px]">verified</span><span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider">Compliance Status</span></div><p class="font-label-sm text-label-sm text-on-surface-variant leading-snug">FSP #51842 • POPIA Registered Estate Vault</p></div><div class="flex flex-col gap-1"><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="support" href="#"><span class="material-symbols-outlined text-[18px]">help_center</span><span class="font-body-sm text-body-sm">Help &amp; Support</span></a><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="sign-out" href="#"><span class="material-symbols-outlined text-[18px]">logout</span><span class="font-body-sm text-body-sm font-medium">Sign Out</span></a></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-[72px] bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-8"><div class="flex-1 max-w-lg"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px]">search</span><input class="w-full h-11 pl-11 pr-4 bg-surface-container-low rounded-xl text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:bg-surface-container transition-colors" placeholder="Search clients, deceased ID, policy #..." type="text"/></div></div><div class="flex items-center gap-5"><button aria-label="Notifications" class="relative w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></button><div class="flex items-center gap-3 pl-3 border-l border-surface-variant"><div class="flex flex-col text-right"><span class="font-body-sm-medium text-body-sm-medium text-on-surface">Naledi Khumalo</span><span class="font-label-sm text-label-sm text-on-surface-variant">FSP Compliance Officer</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-[72px] bg-background px-8 min-h-screen"><div class="flex flex-col w-full pb-16">
+<!-- Top Breadcrumb & Workflow Bar -->
+<div class="flex flex-col gap-4 mb-6">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors font-body-sm-medium text-body-sm-medium" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Back to Verifications</span>
+</a>
+<span class="text-outline-variant font-body-sm text-body-sm">/</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">tag</span>
+<span>VRF-2026-8841</span>
+</span>
+</div>
+<!-- Action Utility Buttons -->
+<div class="flex items-center gap-3">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container transition-colors font-body-sm-medium text-body-sm-medium" type="button">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">download</span>
+<span>Download PDF Record</span>
+</button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors font-body-sm-medium text-body-sm-medium" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">gavel</span>
+<span>Escalate to DHA Legal</span>
+</button>
+</div>
+</div>
+<!-- Screen Title & Status Badges Strip -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-5">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface leading-tight">Verify Death Report — Thandi Mokoena</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Statutory post-mortem authentication &amp; irrevocable policy trigger gateway</p>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-2.5">
+<!-- SLA Pill -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px] text-secondary">hourglass_top</span>
+<span class="font-bold">Urgent SLA:</span>
+<span>1h 14m left</span>
+</div>
+<!-- Status Pill -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span>Status: Pending Statutory Review</span>
+</div>
+<!-- Timestamp Pill -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Reported 22 Nov 2026, 14:32 SAST</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Asymmetric Workspace Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT COLUMN: Document Forensic Viewer & Integrity Metadata (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-5">
+<!-- Viewer Frame -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col">
+<!-- Viewer Toolbar -->
+<div class="px-5 py-3.5 bg-surface-container-high flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">description</span>
+<span class="font-label-md text-label-md text-on-surface truncate max-w-[280px] sm:max-w-md">
+              DHA-1663 Medical Certificate of Death (Notice of Death)
+            </span>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Zoom in" class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">zoom_in</span>
+</button>
+<button aria-label="Zoom out" class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">zoom_out</span>
+</button>
+<button aria-label="Rotate" class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">rotate_right</span>
+</button>
+<div class="h-4 w-px bg-surface-variant mx-1"></div>
+<button aria-label="Fullscreen preview" class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- Rendered Canonical DHA-1663 Certificate Document Canvas -->
+<div class="p-6 md:p-8 bg-surface-container-low flex justify-center">
+<div class="w-full max-w-[580px] bg-white rounded-lg shadow-md p-6 sm:p-8 flex flex-col gap-5 text-on-surface select-none relative overflow-hidden">
+<!-- Document Watermark Seal -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.035]">
+<span class="material-symbols-outlined text-[320px]">shield</span>
+</div>
+<!-- Department Header & Crest Emulation -->
+<div class="flex flex-col items-center text-center gap-1.5 pb-4 bg-surface-container-lowest relative">
+<div class="w-11 h-11 rounded-full bg-surface-container-high flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+<span class="font-label-sm text-label-sm tracking-widest uppercase text-on-surface-variant">Republic of South Africa</span>
+<h2 class="font-headline-sm text-headline-sm text-primary tracking-tight leading-tight uppercase font-bold">
+                Department of Home Affairs
+              </h2>
+<div class="inline-flex items-center gap-2 mt-0.5 px-2.5 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold tracking-wider">
+                FORM BI-1663 / DHA-1663 • NOTICE OF DEATH
+              </div>
+<span class="font-label-sm text-label-sm text-outline">Issued under Section 15 of Births and Deaths Registration Act, 1992</span>
+</div>
+<!-- Barcode & Tracking Matrix Strip -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Serial Tracking Number</span>
+<span class="font-body-md-semibold text-body-md-semibold tracking-widest text-on-surface font-mono">1663-88201-GA</span>
+</div>
+<div class="flex items-center gap-1">
+<!-- Barcode Simulation bars -->
+<div class="flex items-center h-7 gap-[2px] bg-surface-container-highest px-2 rounded">
+<div class="w-[2px] h-6 bg-on-surface"></div>
+<div class="w-[1px] h-6 bg-on-surface"></div>
+<div class="w-[3px] h-6 bg-on-surface"></div>
+<div class="w-[1px] h-6 bg-on-surface"></div>
+<div class="w-[2px] h-6 bg-on-surface"></div>
+<div class="w-[4px] h-6 bg-on-surface"></div>
+<div class="w-[1px] h-6 bg-on-surface"></div>
+<div class="w-[2px] h-6 bg-on-surface"></div>
+<div class="w-[3px] h-6 bg-on-surface"></div>
+<div class="w-[1px] h-6 bg-on-surface"></div>
+<div class="w-[2px] h-6 bg-on-surface"></div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-primary">qr_code_2</span>
+</div>
+</div>
+<!-- SECTION A: Particulars of Deceased -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-primary">Section A: Particulars of Deceased</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary">
+<span class="material-symbols-outlined text-[13px]">check_circle</span> HANIS Match
+                </span>
+</div>
+<div class="grid grid-cols-2 gap-3 text-left">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Full Legal Name</span>
+<span class="font-body-sm-medium text-body-sm-medium text-on-surface">Thandi Busisiwe Mokoena</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">South African ID Number</span>
+<span class="font-body-sm-medium text-body-sm-medium text-on-surface font-mono">680414 5289 085</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Date of Decease</span>
+<span class="font-body-sm-medium text-body-sm-medium text-on-surface">22 November 2026</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Age &amp; Gender</span>
+<span class="font-body-sm-medium text-body-sm-medium text-on-surface">58 Years • Female</span>
+</div>
+</div>
+</div>
+<!-- SECTION B: Attending Practitioner & Certified Stamp -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-3">
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-primary">Section B: Medical Cause &amp; Certification</span>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div class="flex flex-col gap-2">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Certified Cause of Death</span>
+<span class="font-body-sm-medium text-body-sm-medium text-on-surface">Natural causes: Cardiopulmonary arrest secondary to acute myocardial infarction</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Attending Medical Practitioner</span>
+<span class="font-body-sm-medium text-body-sm-medium text-on-surface">Dr. M. Dlamini, MBChB (Wits)</span>
+<span class="font-label-sm text-label-sm text-outline">HPCSA Reg: MP-0492182</span>
+</div>
+</div>
+<!-- Hospital Official Ink Stamp Replica -->
+<div class="flex items-center justify-center p-3">
+<div class="w-36 h-28 rounded-xl bg-surface-container-high p-2.5 flex flex-col items-center justify-center text-center rotate-[-3deg] shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">local_hospital</span>
+<span class="font-label-sm text-label-sm font-bold tracking-tight uppercase text-primary">Pretoria Mediclinic</span>
+<span class="font-label-sm text-[10px] leading-tight text-on-surface-variant uppercase mt-0.5">Bereavement Office</span>
+<span class="font-label-sm text-[10px] text-outline">Date: 2026-11-22</span>
+<div class="mt-1 px-2 py-0.5 rounded bg-surface-container-lowest text-primary font-label-sm text-[9px] font-bold tracking-wider">
+                      CERTIFIED ORIGINAL
+                    </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Registrar Seal & Digital Forensic Note -->
+<div class="pt-2 flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[15px]">verified_user</span>
+</div>
+<span class="font-label-sm text-label-sm">DHA Registrar Electronic Signature Encoded</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Page 1 of 1 (Original Form)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Cryptographic Forensic Audit Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">fingerprint</span>
+</div>
+<span class="font-body-md-semibold text-body-md-semibold text-on-surface">Cryptographic File Authenticity</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Verified Match with DHA Gateway</span>
+</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 p-3.5 rounded-xl bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">File Name &amp; Size</span>
+<span class="font-body-sm-medium text-body-sm-medium text-on-surface truncate">DHA-1663_Medical_Notice_T_Mokoena.pdf</span>
+<span class="font-label-sm text-label-sm text-outline">2.4 MB (Encrypted PDF/A)</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Uploaded By</span>
+<span class="font-body-sm-medium text-body-sm-medium text-on-surface">Lerato Mokoena (Nominee)</span>
+<span class="font-label-sm text-label-sm text-outline">via Lefa Secure Mobile Web</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Audit Timestamp</span>
+<span class="font-body-sm-medium text-body-sm-medium text-on-surface">14:32:09 SAST • 22 Nov 2026</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">SHA-256: 4f98...c210</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Verification Dossier & Action Controls (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-5">
+<!-- Section 1: Deceased Member Dossier -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between pb-3 bg-surface-container-lowest">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px]">person_outline</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Deceased Member Dossier</h3>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+            Vault #LFA-88102
+          </span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-start py-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Full Legal Name</span>
+<span class="font-body-sm-semibold text-body-sm-semibold text-on-surface text-right">Thandi Busisiwe Mokoena</span>
+</div>
+<div class="flex justify-between items-start py-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">SA National ID</span>
+<div class="text-right">
+<span class="font-body-sm-semibold text-body-sm-semibold text-on-surface font-mono">680414 5289 085</span>
+<p class="font-label-sm text-label-sm text-primary flex items-center justify-end gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+<span>Verified with DHA HANIS</span>
+</p>
+</div>
+</div>
+<div class="flex justify-between items-start py-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Age at Death &amp; Date</span>
+<span class="font-body-sm text-body-sm text-on-surface text-right">58 years • 22 November 2026</span>
+</div>
+<div class="flex justify-between items-start py-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Facility of Passing</span>
+<span class="font-body-sm text-body-sm text-on-surface text-right">Pretoria Mediclinic Bereavement Desk</span>
+</div>
+<div class="flex justify-between items-start py-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Residential Address</span>
+<span class="font-body-sm text-body-sm text-on-surface text-right max-w-[240px]">1442 Vilakazi St, Orlando West, Soweto, Gauteng</span>
+</div>
+</div>
+</div>
+<!-- Section 2: Reported By (Designated Claimant / Nominee) -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between pb-3 bg-surface-container-lowest">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">family_restroom</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Designated Claimant</h3>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[12px]">security</span>
+<span>Biometric L3</span>
+</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-start py-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Nominee Name</span>
+<div class="text-right">
+<span class="font-body-sm-semibold text-body-sm-semibold text-on-surface">Lerato Mokoena</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Daughter • Appointed 12 Jan 2024</span>
+</div>
+</div>
+<div class="flex justify-between items-start py-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Contact Channels</span>
+<div class="text-right font-body-sm text-body-sm text-on-surface">
+<span>+27 82 555 4412</span>
+<span class="block text-outline font-label-sm text-label-sm">lerato.m***@gmail.com</span>
+</div>
+</div>
+<div class="flex justify-between items-start py-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Statutory Ref &amp; Desk</span>
+<span class="font-body-sm-medium text-body-sm-medium text-on-surface text-right font-mono">1663-88201-GA</span>
+</div>
+</div>
+<!-- Informant Note Callout -->
+<div class="p-3.5 rounded-xl bg-surface-container flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 text-on-surface font-label-sm text-label-sm font-semibold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px] text-secondary">chat</span>
+<span>Informant Bereavement Notes</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic leading-relaxed">
+            “Funeral parlour is AVBOB Soweto. Please contact Thandi's brother Sipho if additional documents are needed.”
+          </p>
+</div>
+</div>
+<!-- Section 4: Policies Becoming Active Claims (3 Policies - R85,000) -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between pb-3 bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance_wallet</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Eligible Policies Triggered</h3>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-body-sm-semibold text-body-sm-semibold">
+            Total R85,000
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Verifying this report unlocks Thandi's vault and immediately generates 3 claim packets:
+        </p>
+<div class="flex flex-col gap-3">
+<!-- Policy 1 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-body-sm-semibold text-body-sm-semibold text-on-surface">Old Mutual • Family Funeral Plan</span>
+</div>
+<span class="font-body-md-semibold text-body-md-semibold text-primary">R40,000</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="font-mono">Policy #OM-9938210-L</span>
+<span class="text-primary font-medium">Direct Capitec payout eligible within 24h</span>
+</div>
+</div>
+<!-- Policy 2 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-body-sm-semibold text-body-sm-semibold text-on-surface">AVBOB • Comprehensive Funeral</span>
+</div>
+<span class="font-body-md-semibold text-body-md-semibold text-primary">R25,000</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="font-mono">Policy #AV-1944-882</span>
+<span>Undertaker guarantee ready • Soweto Branch</span>
+</div>
+</div>
+<!-- Policy 3 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-body-sm-semibold text-body-sm-semibold text-on-surface">Sanlam • Life &amp; Burial Support</span>
+</div>
+<span class="font-body-md-semibold text-body-md-semibold text-primary">R20,000</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="font-mono">Policy #SL-774109</span>
+<span>Beneficiary disbursement nominated</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Rejection Expansion Panel (Interactive via JS toggle) -->
+<div class="hidden bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col gap-3" id="rejectionSection">
+<div class="flex items-center gap-2 text-error">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<span class="font-body-md-semibold text-body-md-semibold">Specify Statutory Rejection Reason</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Nominee Lerato Mokoena will receive an urgent notification to remedy the marked deficiency.
+        </p>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="rejectionReason">Audit Reason</label>
+<select class="h-11 px-3 rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none" id="rejectionReason">
+<option>Illegible medical practitioner stamp / signature</option>
+<option>Department of Home Affairs HANIS mismatch</option>
+<option>Duplicate death report / already under estate process</option>
+<option>Coroner / Inquest investigation pending</option>
+</select>
+<textarea class="p-3 rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none placeholder:text-outline mt-1" placeholder="Provide specific feedback for the bereaved claimant..." rows="2"></textarea>
+</div>
+<div class="flex justify-end gap-2 mt-1">
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant font-body-sm text-body-sm hover:bg-surface-container" onclick="document.getElementById('rejectionSection').classList.add('hidden')" type="button">Cancel</button>
+<button class="px-4 py-1.5 rounded-lg bg-error text-on-error font-body-sm-medium text-body-sm-medium" type="button">Confirm &amp; Notify Nominee</button>
+</div>
+</div>
+<!-- Action Bar & Decision Controls -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col sm:flex-row items-center gap-3">
+<button class="w-full sm:w-auto flex-1 h-12 rounded-xl bg-surface-container-high text-error hover:bg-error-container hover:text-on-error-container font-body-md-semibold text-body-md-semibold transition-colors flex items-center justify-center gap-2" onclick="document.getElementById('rejectionSection').classList.toggle('hidden')" type="button">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+<span>Reject Report</span>
+</button>
+<button class="w-full sm:w-auto flex-[2] h-12 rounded-xl bg-primary text-on-primary hover:bg-primary-container font-body-md-semibold text-body-md-semibold transition-colors flex items-center justify-center gap-2 shadow-md" onclick="document.getElementById('unsealModal').classList.remove('hidden')" type="button">
+<span class="material-symbols-outlined text-[20px]">lock_open</span>
+<span>Verify &amp; Unlock Vault</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Confirmation Modal Overlay (Static / Interactive Fidelity Component) -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-inverse-surface/40 backdrop-blur-sm" id="unsealModal">
+<div class="bg-surface-container-lowest rounded-2xl max-w-[540px] w-full p-6 md:p-8 shadow-xl flex flex-col gap-6 relative">
+<!-- Modal Header -->
+<div class="flex items-start justify-between gap-4">
+<div class="flex items-center gap-3.5">
+<div class="w-12 h-12 rounded-2xl bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[26px]">key_vertical</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-snug">Confirm Vault Unsealing &amp; Claim Initiation</h3>
+<span class="font-label-sm text-label-sm text-primary font-semibold uppercase tracking-wider">Licensed FSP Statutory Action</span>
+</div>
+</div>
+<button aria-label="Close dialog" class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-surface-container flex items-center justify-center" onclick="document.getElementById('unsealModal').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Statutory Irrevocable Warning Callout -->
+<div class="p-4 rounded-xl bg-secondary-fixed text-on-secondary-fixed flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">verified_user</span>
+<span class="font-body-md-semibold text-body-md-semibold">Irrevocable Estate Action</span>
+</div>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-secondary-fixed-variant">
+          This will grant <strong>Lerato Mokoena</strong> authenticated access to Thandi's digital vault and instantly execute <strong>3 underwriter claims (R85,000 total)</strong>.
+        </p>
+</div>
+<!-- Action Execution Manifest -->
+<div class="flex flex-col gap-3">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Automated Protocol Steps:</span>
+<div class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">mark_email_read</span>
+<div class="flex flex-col">
+<span class="font-body-sm-medium text-body-sm-medium text-on-surface">Underwriter Dispatch</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Claims packets dispatched via secure API to Old Mutual, AVBOB, and Sanlam.</span>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">phonelink_lock</span>
+<div class="flex flex-col">
+<span class="font-body-sm-medium text-body-sm-medium text-on-surface">Nominee Cryptographic Key Generation</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">SMS &amp; Email OTP unsealing key issued to Lerato Mokoena (+27 82 555 4412).</span>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">history_edu</span>
+<div class="flex flex-col">
+<span class="font-body-sm-medium text-body-sm-medium text-on-surface">POPIA &amp; FSCA Audit Registry</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Immutable audit log signed by Compliance Officer Naledi Khumalo (FSP #51842).</span>
+</div>
+</div>
+</div>
+<!-- Officer PIN Input -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="officerPin">Enter FSP Officer Signing PIN</label>
+<input class="h-11 px-4 text-center tracking-[0.5em] font-mono font-headline-sm rounded-xl bg-surface-container-low text-on-surface focus:outline-none focus:bg-surface-container" id="officerPin" maxlength="6" placeholder="• • • • • •" type="password"/>
+</div>
+<!-- Dialog Controls -->
+<div class="flex flex-col-reverse sm:flex-row items-center justify-end gap-3 pt-2">
+<button class="w-full sm:w-auto px-5 h-11 rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-body-sm-medium text-body-sm-medium" onclick="document.getElementById('unsealModal').classList.add('hidden')" type="button">
+          Cancel / Return to Review
+        </button>
+<button class="w-full sm:w-auto px-6 h-11 rounded-xl bg-primary text-on-primary hover:bg-primary-container transition-colors font-body-md-semibold text-body-md-semibold shadow-md flex items-center justify-center gap-2" onclick="alert('Vault #LFA-88102 unsealed successfully. 3 Claim packets dispatched.'); document.getElementById('unsealModal').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Confirm &amp; Unseal Vault</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Micro-interaction handlers for document view controls
+  document.addEventListener('DOMContentLoaded', () => {
+    const activeClasses = 'bg-primary-container text-on-primary font-body-md-semibold shadow-sm';
+    const navItems = document.querySelectorAll('aside nav a');
+    navItems.forEach(el => {
+      if (el.getAttribute('data-path') === 'verifications') {
+        el.className = 'flex items-center justify-between px-3.5 py-3 rounded-xl transition-colors ' + activeClasses;
+      }
+    });
+  });
+</script></main></div></body></html>

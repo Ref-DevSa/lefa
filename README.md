@@ -16,11 +16,11 @@ South Africans hold **17 million funeral policies**, yet roughly **R88.5 billion
 | Resource | Link |
 |---|---|
 | Live app | _TODO (Tue 24 Nov)_ |
-| Stitch project | _TODO_ |
+| Stitch project | [Lefa on Stitch](https://stitch.google.com/projects/15454914779053559520) |
 | Loom pitch + demo | _TODO_ |
 | Business case | [BUSINESS.md](BUSINESS.md) |
 | PRD | [docs/PRD.md](docs/PRD.md) |
-| Designs | [docs/designs/](docs/designs/) |
+| Designs (exports) | [docs/designs/](docs/designs/README.md) |
 | Implementation plan | [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) _(Mon 23 Nov)_ |
 
 ## 🔑 Test logins

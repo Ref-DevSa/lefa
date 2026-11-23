@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-bright":"#fcf9f4","surface-variant":"#e5e2dd","surface-tint":"#2b6953","on-primary-container":"#97d7bc","surface-container-highest":"#e5e2dd","inverse-primary":"#94d4b9","surface-container-low":"#f6f3ee","outline-variant":"#bfc9c2","on-tertiary-fixed":"#001d31","primary":"#004734","on-error-container":"#93000a","secondary":"#805600","inverse-on-surface":"#f3f0eb","on-background":"#1c1c19","on-secondary-fixed":"#281800","on-tertiary-fixed-variant":"#004b73","on-surface":"#1c1c19","primary-fixed-dim":"#94d4b9","tertiary-fixed-dim":"#94ccfd","inverse-surface":"#31302d","secondary-fixed":"#ffddaf","primary-container":"#1f5f4a","on-secondary-fixed-variant":"#614000","on-error":"#ffffff","on-primary-fixed-variant":"#0a513d","primary-fixed":"#b0f0d4","surface-container":"#f0ede9","on-tertiary-container":"#99cfff","on-secondary":"#ffffff","outline":"#707974","on-tertiary":"#ffffff","surface-dim":"#dcdad5","error":"#ba1a1a","on-secondary-container":"#724d00","error-container":"#ffdad6","surface-container-lowest":"#ffffff","surface-container-high":"#ebe8e3","background":"#fcf9f4","tertiary":"#004165","secondary-container":"#fdbe58","secondary-fixed-dim":"#fabc56","on-primary-fixed":"#002116","on-primary":"#ffffff","on-surface-variant":"#404944","tertiary-container":"#165984","tertiary-fixed":"#cce5ff","surface":"#fcf9f4"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-lg":"1.5rem","space-xl":"2rem","space-md":"1rem","margin-mobile":"1rem","space-xs":"0.25rem","gutter-mobile":"1rem","margin":"2rem","space-sm":"0.5rem","gutter":"1.5rem"},fontFamily:{"headline-xl":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"body-md-semibold":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-sm-medium":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"]},fontSize:{"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-xl-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.015em","fontWeight":"700"}],"body-md-semibold":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg-mobile":["26px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-sm":["14px",{"lineHeight":"20px","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.015em","fontWeight":"700"}],"label-sm":["11px",{"lineHeight":"16px","letterSpacing":"0.03em","fontWeight":"600"}],"body-sm-medium":["14px",{"lineHeight":"20px","fontWeight":"500"}],"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-[72px] px-6 flex items-center gap-3 bg-surface-container-low"><div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[22px]">shield_with_heart</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-tight tracking-tight">Lefa</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-wide uppercase">Broker Portal</span></div></div><div class="px-6 py-2"><div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm"><span class="material-symbols-outlined text-[13px]">lock</span><span>256-bit Encrypted Vault</span></div></div><nav class="px-4 mt-4 flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-body-md-semibold shadow-sm"><a aria-current="page" class="flex items-center justify-between px-3.5 py-3 rounded-xl transition-colors bg-primary-container text-on-primary font-body-md-semibold shadow-sm" data-path="dashboard" href="#"><div class="flex items-center gap-3.5"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-sm-medium text-body-sm-medium">Dashboard</span></div></a><a class="flex items-center justify-between px-3.5 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="verifications" href="#"><div class="flex items-center gap-3.5"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-body-sm-medium text-body-sm-medium">Verifications</span></div><span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm">2</span></a><a class="flex items-center justify-between px-3.5 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="claims" href="#"><div class="flex items-center gap-3.5"><span class="material-symbols-outlined text-[20px]">document_scanner</span><span class="font-body-sm-medium text-body-sm-medium">Claims</span></div><span class="px-2 py-0.5 rounded-full bg-tertiary text-on-tertiary font-label-sm text-label-sm">7</span></a><a class="flex items-center justify-between px-3.5 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="clients" href="#"><div class="flex items-center gap-3.5"><span class="material-symbols-outlined text-[20px]">groups</span><span class="font-body-sm-medium text-body-sm-medium">Clients</span></div></a></nav></div><div class="p-4 flex flex-col gap-3"><div class="p-3 rounded-xl bg-surface-container text-on-surface-variant flex flex-col gap-1"><div class="flex items-center gap-1.5 text-primary"><span class="material-symbols-outlined text-[16px]">verified</span><span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider">Compliance Status</span></div><p class="font-label-sm text-label-sm text-on-surface-variant leading-snug">FSP #51842 • POPIA Registered Estate Vault</p></div><div class="flex flex-col gap-1"><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="support" href="#"><span class="material-symbols-outlined text-[18px]">help_center</span><span class="font-body-sm text-body-sm">Help &amp; Support</span></a><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="sign-out" href="#"><span class="material-symbols-outlined text-[18px]">logout</span><span class="font-body-sm text-body-sm font-medium">Sign Out</span></a></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-[72px] bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-8"><div class="flex-1 max-w-lg"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px]">search</span><input class="w-full h-11 pl-11 pr-4 bg-surface-container-low rounded-xl text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:bg-surface-container transition-colors" placeholder="Search clients, deceased ID, policy #..." type="text"/></div></div><div class="flex items-center gap-5"><button aria-label="Notifications" class="relative w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></button><div class="flex items-center gap-3 pl-3 border-l border-surface-variant"><div class="flex flex-col text-right"><span class="font-body-sm-medium text-body-sm-medium text-on-surface">Naledi Khumalo</span><span class="font-label-sm text-label-sm text-on-surface-variant">FSP Compliance Officer</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-[72px] bg-background px-8 min-h-screen"><div class="flex flex-col w-full pb-16">
+<!-- Top Ambient Assurance Bar & Greeting Section -->
+<section class="relative pt-6 pb-8">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-surface-variant/70">
+<div class="flex flex-col max-w-2xl">
+<div class="flex items-center gap-2.5 mb-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            Monday, 24 Nov 2026 • 09:42 SAST
+          </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">format_image_left</span>
+            FSCA Broker Desk Live
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+          Good morning, Naledi
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1.5">
+          Licensed FSP Broker Console • Bereavement claim activations &amp; statutory Home Affairs verifications.
+        </p>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<button class="h-11 px-4 rounded-xl bg-surface-container-lowest text-primary font-body-sm-medium text-body-sm shadow-sm hover:bg-surface-container-high transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+          Export Report (PDF)
+        </button>
+<button class="h-11 px-5 rounded-xl bg-primary text-on-primary font-body-sm-medium text-body-sm shadow-sm hover:bg-primary-container transition-all flex items-center gap-2.5 shadow-[0_2px_10px_rgba(0,71,52,0.18)]" type="button">
+<span class="material-symbols-outlined text-[20px]">add_moderator</span>
+          Quick Verification
+        </button>
+</div>
+</div>
+</section>
+<!-- Four Key Metric Tiles -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 -mt-2">
+<!-- Tile 1: Clients -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Clients</span>
+<div class="w-9 h-9 rounded-xl bg-primary-fixed/40 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+</div>
+</div>
+<div class="mt-4 flex flex-col">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl text-on-background tracking-tight">42</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+            +3 new
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+          Active registered family vaults
+        </p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-variant/40 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Portfolio compliance</span>
+<span class="font-semibold text-primary">98.4%</span>
+</div>
+</div>
+<!-- Tile 2: Pending Verifications (Alert State) -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="absolute top-0 left-0 right-0 h-1 bg-secondary-container"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Pending verifications</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+          Immediate
+        </span>
+</div>
+<div class="mt-4 flex flex-col">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl text-secondary tracking-tight">2</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">SLA &lt; 24h</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+          DHA-1663 notice matching required
+        </p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-variant/40 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Oldest ticket</span>
+<span class="font-semibold text-error">26h elapsed</span>
+</div>
+</div>
+<!-- Tile 3: Open Claims -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Open claims</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">
+          Active review
+        </span>
+</div>
+<div class="mt-4 flex flex-col">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl text-tertiary tracking-tight">7</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3 underwriters</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+          Across AVBOB, Old Mutual &amp; Sanlam
+        </p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-variant/40 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Avg. payout turnaround</span>
+<span class="font-semibold text-on-surface">36 hours</span>
+</div>
+</div>
+<!-- Tile 4: Paid This Month -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Paid this month</span>
+<div class="w-9 h-9 rounded-xl bg-primary-fixed/40 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+</div>
+<div class="mt-4 flex flex-col">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl text-primary tracking-tight">R120 000</span>
+</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+            +18% vs Oct
+          </span>
+<span class="text-outline text-xs">•</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">4 estates settled</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-variant/40 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Zero payout disputes</span>
+<span class="font-semibold text-primary">100% verified</span>
+</div>
+</div>
+</section>
+<!-- Main Grid: Two Columns (~65% Left, ~35% Right) -->
+<section class="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Pending Death Reports Table (~65% = 8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-4">
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm p-6">
+<!-- Table Header Banner -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-surface-variant/60">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed/50 flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[22px]">assignment_late</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Pending death reports</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+                  2 Requires review
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Statutory Home Affairs validation required before policy schedule decryption.
+              </p>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 font-body-sm-medium text-body-sm text-primary hover:text-primary-container transition-colors group self-start sm:self-auto" href="#">
+<span>View full verification queue</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto -mx-6 px-6 mt-4">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider bg-surface-container-low/60 rounded-xl">
+<th class="py-3.5 px-4 font-semibold rounded-l-xl">Deceased Subject</th>
+<th class="py-3.5 px-4 font-semibold">Reported By (Nominee)</th>
+<th class="py-3.5 px-4 font-semibold">Dates &amp; Time</th>
+<th class="py-3.5 px-4 font-semibold">Documentation &amp; SLA</th>
+<th class="py-3.5 px-4 font-semibold text-right rounded-r-xl">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant/40">
+<!-- Row 1: Thandi Mokoena -->
+<tr class="hover:bg-surface-container-low/40 transition-colors group">
+<td class="py-4 px-4 align-top">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold flex-shrink-0">
+                      TM
+                    </div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md-semibold text-body-md text-on-surface group-hover:text-primary transition-colors">
+                        Thandi Mokoena
+                      </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono mt-0.5">
+                        680414 •••• 085
+                      </span>
+<span class="font-label-sm text-label-sm text-outline mt-0.5">
+                        58 yrs • Soweto, GP
+                      </span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-body-sm-medium text-body-sm text-on-surface">Lerato Mokoena</span>
+<span class="font-label-sm text-label-sm text-primary font-medium mt-0.5">Daughter • Primary Nominee</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-outline">call</span>
+                      +27 82 555 4412
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col font-body-sm text-body-sm">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-outline">event</span>
+<span>22 Nov 2026</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">
+                      Submitted: Today, 14:32
+                    </span>
+<span class="font-label-sm text-label-sm text-outline">
+                      (3h 10m ago)
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1.5">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container font-label-sm text-label-sm text-on-surface w-fit">
+<span class="material-symbols-outlined text-[16px] text-primary">description</span>
+<span class="truncate max-w-[140px]" title="DHA-1663_Medical_Notice.pdf">DHA-1663_Medical...</span>
+</div>
+<div class="inline-flex items-center gap-1 text-[11px] text-primary font-medium">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+<span>Verified Hash Match</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm w-fit font-semibold">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                      SLA: 1h left
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4 align-middle text-right">
+<button class="inline-flex items-center justify-center gap-2 h-10 px-4 rounded-xl bg-primary text-on-primary font-body-sm-medium text-body-sm hover:bg-primary-container shadow-sm hover:shadow transition-all group-hover:scale-[1.02]" type="button">
+<span class="material-symbols-outlined text-[18px]">lock_open</span>
+                    Review &amp; Unseal
+                  </button>
+</td>
+</tr>
+<!-- Row 2: Busisiwe Khumalo (Overdue Alert) -->
+<tr class="hover:bg-surface-container-low/40 transition-colors group bg-error-container/10">
+<td class="py-4 px-4 align-top">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold flex-shrink-0">
+                      BK
+                    </div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md-semibold text-body-md text-on-surface group-hover:text-primary transition-colors">
+                        Busisiwe Khumalo
+                      </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono mt-0.5">
+                        710920 •••• 081
+                      </span>
+<span class="font-label-sm text-label-sm text-outline mt-0.5">
+                        55 yrs • Diepkloof, GP
+                      </span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-body-sm-medium text-body-sm text-on-surface">Sipho Molefe</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium mt-0.5">Brother • Secondary Nominee</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-outline">call</span>
+                      +27 83 412 9901
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col font-body-sm text-body-sm">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-outline">event</span>
+<span>20 Nov 2026</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">
+                      Submitted: 22 Nov, 09:15
+                    </span>
+<span class="font-label-sm text-label-sm text-error font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+                      Overdue: 26h elapsed
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1.5">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container font-label-sm text-label-sm text-on-surface w-fit">
+<span class="material-symbols-outlined text-[16px] text-secondary">feed</span>
+<span class="truncate max-w-[140px]" title="Form_BI-1663_Baragwanath.pdf">Form_BI-1663_Barag...</span>
+</div>
+<div class="inline-flex items-center gap-1 text-[11px] text-secondary font-medium">
+<span class="material-symbols-outlined text-[13px]">pending</span>
+<span>Manual DHA Cross-Check</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm w-fit font-semibold">
+<span class="material-symbols-outlined text-[12px]">alarm</span>
+                      SLA Breached (+2h)
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4 align-middle text-right">
+<button class="inline-flex items-center justify-center gap-2 h-10 px-4 rounded-xl bg-primary text-on-primary font-body-sm-medium text-body-sm hover:bg-primary-container shadow-sm hover:shadow transition-all group-hover:scale-[1.02]" type="button">
+<span class="material-symbols-outlined text-[18px]">lock_open</span>
+                    Review &amp; Unseal
+                  </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Verification Pipeline Visual Progress Bar -->
+<div class="mt-6 p-4 rounded-xl bg-surface-container-low flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">sync_saved_locally</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-sm-semibold text-body-sm text-on-surface">Department of Home Affairs (HANIS) Gateway</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Direct API latency: 142ms • Daily batch synchronization operational</span>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto justify-end">
+<div class="flex items-center gap-1 text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+              Gateway Online
+            </div>
+<span class="text-outline text-xs">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Last ping 4m ago</span>
+</div>
+</div>
+</div>
+<!-- Underwriter Quick Status & Distribution Matrix -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm p-6">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Integrated Underwriter Portals</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3 Active Integrations</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="p-3.5 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-sm-semibold text-body-sm text-on-surface">AVBOB</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3 claims in progress</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">API Sync OK</span>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-sm-semibold text-body-sm text-on-surface">Old Mutual</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2 claims in progress</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">API Sync OK</span>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-sm-semibold text-body-sm text-on-surface">Sanlam</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2 claims in progress</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">Docs Pending</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Recent Claim Activity Feed (~35% = 4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm p-6">
+<div class="flex items-center justify-between pb-4 border-b border-surface-variant/60">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Recent claim activity</h3>
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-medium">
+            Live FSP Feed
+          </span>
+</div>
+<!-- Activity Timeline List -->
+<div class="relative mt-5 flex flex-col gap-6">
+<!-- Continuous Vertical Timeline Rule -->
+<div class="absolute left-4 top-2 bottom-2 w-0.5 bg-surface-variant"></div>
+<!-- Activity Item 1: Disbursed / Paid -->
+<div class="relative flex items-start gap-3.5 group">
+<div class="relative z-10 w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0 shadow-sm ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 bg-surface-container-low/50 p-3 rounded-xl hover:bg-surface-container-low transition-colors">
+<div class="flex items-center justify-between gap-2">
+<span class="font-body-sm-semibold text-body-sm text-on-surface">Claim payout disbursed</span>
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-semibold">Paid</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-primary font-bold mt-1">R40 000</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                Old Mutual Family Funeral Plan paid to Capitec (•••• 8821) for <span class="font-medium text-on-surface">Thandi Mokoena</span> estate.
+              </p>
+<div class="flex items-center gap-2 mt-2 pt-2 border-t border-surface-variant/40 font-label-sm text-label-sm text-outline">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+<span>25m ago • Ref #OM-77821-CLM</span>
+</div>
+</div>
+</div>
+<!-- Activity Item 2: Approved -->
+<div class="relative flex items-start gap-3.5 group">
+<div class="relative z-10 w-8 h-8 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center flex-shrink-0 shadow-sm ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 bg-surface-container-low/50 p-3 rounded-xl hover:bg-surface-container-low transition-colors">
+<div class="flex items-center justify-between gap-2">
+<span class="font-body-sm-semibold text-body-sm text-on-surface">Documents approved by AVBOB</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">Approved</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Certified ID and death notice acknowledged by underwriter desk for <span class="font-medium text-on-surface">Thabo Mokoena</span> (AVBOB #AV-1944-882).
+              </p>
+<div class="flex items-center gap-2 mt-2 pt-2 border-t border-surface-variant/40 font-label-sm text-label-sm text-outline">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+<span>2h ago • Desk Officer: J. Botha</span>
+</div>
+</div>
+</div>
+<!-- Activity Item 3: Underwriter Document Request -->
+<div class="relative flex items-start gap-3.5 group">
+<div class="relative z-10 w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center flex-shrink-0 shadow-sm ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-[16px]">upload_file</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 bg-surface-container-low/50 p-3 rounded-xl hover:bg-surface-container-low transition-colors">
+<div class="flex items-center justify-between gap-2">
+<span class="font-body-sm-semibold text-body-sm text-on-surface">Underwriter doc request</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">Docs Requested</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Sanlam requested updated SAPS-certified ID copy for <span class="font-medium text-on-surface">Sipho Molefe</span> vault. SMS push dispatched to nominee.
+              </p>
+<div class="flex items-center gap-2 mt-2 pt-2 border-t border-surface-variant/40 font-label-sm text-label-sm text-outline">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+<span>4h ago • SLA counter active</span>
+</div>
+</div>
+</div>
+<!-- Activity Item 4: New Death Report -->
+<div class="relative flex items-start gap-3.5 group">
+<div class="relative z-10 w-8 h-8 rounded-full bg-surface-container-high text-primary flex items-center justify-center flex-shrink-0 shadow-sm ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-[16px]">notification_important</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 bg-surface-container-low/50 p-3 rounded-xl hover:bg-surface-container-low transition-colors">
+<div class="flex items-center justify-between gap-2">
+<span class="font-body-sm-semibold text-body-sm text-on-surface">New death report filed</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">Verification Queue</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Lerato Mokoena filed DHA-1663 notice for <span class="font-medium text-on-surface">Thandi Mokoena</span> estate.
+              </p>
+<div class="flex items-center gap-2 mt-2 pt-2 border-t border-surface-variant/40 font-label-sm text-label-sm text-outline">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+<span>5h ago • Web Nominee Portal</span>
+</div>
+</div>
+</div>
+<!-- Activity Item 5: Vault Unsealed -->
+<div class="relative flex items-start gap-3.5 group">
+<div class="relative z-10 w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center flex-shrink-0 shadow-sm ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-[16px]">lock_open_right</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 bg-surface-container-low/50 p-3 rounded-xl hover:bg-surface-container-low transition-colors">
+<div class="flex items-center justify-between gap-2">
+<span class="font-body-sm-semibold text-body-sm text-on-surface">Vault unsealed</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">Unsealed</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Automatic nominee notification SMS &amp; email dispatched for <span class="font-medium text-on-surface">Thabo Mokoena</span> estate. Policy vault opened for probate.
+              </p>
+<div class="flex items-center gap-2 mt-2 pt-2 border-t border-surface-variant/40 font-label-sm text-label-sm text-outline">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+<span>Yesterday, 16:40 • Automated Trigger</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Full Audit Log Link -->
+<div class="mt-6 pt-4 border-t border-surface-variant/60 text-center">
+<a class="font-body-sm-medium text-body-sm text-primary hover:text-primary-container transition-colors inline-flex items-center gap-1" href="#">
+<span>View 30-day compliance audit ledger</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Security & Backup Assurance Widget -->
+<div class="p-5 rounded-2xl bg-surface-container text-on-surface-variant shadow-sm flex flex-col gap-3">
+<div class="flex items-center gap-2 text-primary font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-[20px]">encrypted</span>
+<span class="text-body-md-semibold font-body-md-semibold">Cryptographic Proof Seal</span>
+</div>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-surface-variant">
+          Every death notice reviewed automatically logs SHA-256 state hashes onto the immutable South African FSP broker ledger.
+        </p>
+<div class="flex items-center justify-between pt-2 border-t border-surface-variant/50 font-label-sm text-label-sm text-outline font-mono">
+<span>Active Vault Node #4</span>
+<span class="text-primary font-semibold">Zero Leaks Reported</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick FSP Compliance Footer Banner -->
+<footer class="mt-10 py-5 px-6 rounded-2xl bg-surface-container-low shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<span class="font-semibold text-on-surface">FSCA Authorized FSP License #51842</span> • POPIA Act No. 4 of 2013 compliant • End-to-end encrypted audit logging enabled.
+      </p>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant font-label-sm text-label-sm flex-shrink-0">
+<span class="inline-flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+        Vault Engine v3.4.1
+      </span>
+<span>•</span>
+<a class="hover:text-primary transition-colors" href="#">Privacy Terms</a>
+<span>•</span>
+<a class="hover:text-primary transition-colors" href="#">Statutory Legal Register</a>
+</div>
+</footer>
+</div></main></div></body></html>

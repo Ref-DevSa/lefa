@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Lefa Member Portal</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-container": "#165984",
+          "inverse-primary": "#94d4b9",
+          "surface": "#fcf9f4",
+          "outline": "#707974",
+          "surface-container": "#f0ede9",
+          "error": "#ba1a1a",
+          "secondary-fixed-dim": "#fabc56",
+          "on-surface-variant": "#404944",
+          "inverse-on-surface": "#f3f0eb",
+          "on-error-container": "#93000a",
+          "on-primary": "#ffffff",
+          "on-primary-container": "#97d7bc",
+          "surface-dim": "#dcdad5",
+          "on-secondary-container": "#724d00",
+          "on-tertiary": "#ffffff",
+          "on-tertiary-fixed": "#001d31",
+          "primary-fixed-dim": "#94d4b9",
+          "on-primary-fixed": "#002116",
+          "surface-container-highest": "#e5e2dd",
+          "tertiary": "#004165",
+          "on-surface": "#1c1c19",
+          "on-secondary": "#ffffff",
+          "error-container": "#ffdad6",
+          "surface-bright": "#fcf9f4",
+          "surface-container-lowest": "#ffffff",
+          "secondary": "#805600",
+          "on-secondary-fixed-variant": "#614000",
+          "on-tertiary-fixed-variant": "#004b73",
+          "primary-container": "#1f5f4a",
+          "inverse-surface": "#31302d",
+          "on-error": "#ffffff",
+          "background": "#fcf9f4",
+          "surface-tint": "#2b6953",
+          "primary-fixed": "#b0f0d4",
+          "surface-container-low": "#f6f3ee",
+          "tertiary-fixed": "#cce5ff",
+          "surface-container-high": "#ebe8e3",
+          "on-background": "#1c1c19",
+          "on-tertiary-container": "#99cfff",
+          "surface-variant": "#e5e2dd",
+          "secondary-fixed": "#ffddaf",
+          "on-secondary-fixed": "#281800",
+          "outline-variant": "#bfc9c2",
+          "on-primary-fixed-variant": "#0a513d",
+          "tertiary-fixed-dim": "#94ccfd",
+          "secondary-container": "#fdbe58",
+          "primary": "#004734"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "margin-mobile": "1rem",
+          "space-md": "1rem",
+          "space-lg": "1.5rem",
+          "space-xl": "2rem",
+          "margin": "2rem",
+          "space-xs": "0.25rem",
+          "gutter-mobile": "1rem",
+          "space-sm": "0.5rem",
+          "gutter": "1.5rem"
+        },
+        "fontFamily": {
+          "headline-xl-mobile": [
+            "Plus Jakarta Sans"
+          ],
+          "body-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-xl": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-lg-mobile": [
+            "Plus Jakarta Sans"
+          ],
+          "body-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "label-md": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-md": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "body-md-semibold": [
+            "Plus Jakarta Sans"
+          ],
+          "body-sm-medium": [
+            "Plus Jakarta Sans"
+          ],
+          "label-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "body-md": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-lg": [
+            "Plus Jakarta Sans"
+          ]
+        },
+        "fontSize": {
+          "headline-xl-mobile": [
+            "30px",
+            {
+              "lineHeight": "38px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-sm": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-xl": [
+            "40px",
+            {
+              "lineHeight": "48px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-lg-mobile": [
+            "26px",
+            {
+              "lineHeight": "34px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-lg": [
+            "18px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-md": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "600"
+            }
+          ],
+          "body-md-semibold": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm-medium": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "500"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.03em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-md": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "700"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1200px] mx-auto px-margin flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-xl"><a class="flex items-center gap-space-sm focus:outline-none" data-path="my-vault" href="#"><div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-[0_1px_3px_rgba(0,0,0,0.06)]"><span class="material-symbols-outlined text-[22px]">shield</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold text-primary tracking-tight leading-none">Lefa</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-0.5">Estate Vault</span></div></a><nav class="hidden lg:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-body-md-semibold text-body-md-semibold rounded-lg shadow-sm"><a aria-current="page" class="px-space-md py-space-sm transition-colors bg-primary-container text-on-primary font-body-md-semibold text-body-md-semibold rounded-lg shadow-sm" data-path="my-vault" href="#">My Vault</a><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="documents" href="#">Documents</a><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="nominees" href="#">Nominees</a><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="nominated-for-me" href="#">Nominated for me</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-space-xs bg-secondary-fixed/30 px-3 py-1.5 rounded-full"><span class="material-symbols-outlined text-secondary text-[16px]">lock</span><span class="font-label-sm text-label-sm font-semibold text-on-secondary-fixed-variant">Bank-grade AES-256</span></div><button aria-label="Notifications" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors relative" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-secondary-container"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden md:flex flex-col text-left"><span class="font-body-sm-medium text-body-sm-medium text-on-surface leading-tight">Thandi M.</span><span class="font-label-sm text-label-sm text-on-surface-variant">Member</span></div><button aria-label="User menu" class="hidden md:flex text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button></div></div></div></header><main class="w-full pt-20 bg-surface flex-1"><div class="max-w-[1200px] mx-auto px-margin py-space-xl"><div class="flex flex-col w-full">
+<!-- Top Greeting Banner -->
+<div class="relative overflow-hidden bg-surface-container-lowest rounded-xl p-space-lg md:p-space-xl shadow-sm mb-space-lg">
+<div class="absolute -right-8 -bottom-10 w-48 h-48 rounded-full bg-primary-fixed/30 blur-2xl pointer-events-none"></div>
+<div class="absolute right-24 -top-8 w-32 h-32 rounded-full bg-secondary-fixed/40 blur-xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="space-y-1.5 max-w-2xl">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          Vault Status • Active &amp; Monitored
+        </div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">
+          Dumela, Thandi
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Here is your family cover overview. All policies are encrypted and monitored for claim readiness.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-center">
+<button class="inline-flex items-center justify-center gap-2 px-space-lg h-12 rounded-[10px] bg-primary text-on-primary font-body-md-semibold text-body-md-semibold shadow-sm hover:bg-primary-container transition-all active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>+ Add policy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Stats Row (4 stat cards in responsive grid) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-xl">
+<!-- Stat 1: Total Cover -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-sm">
+<span class="font-label-md text-label-md font-semibold tracking-wide uppercase">Total Active Cover</span>
+<div class="w-8 h-8 rounded-lg bg-primary-fixed/40 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">
+          R85 000
+        </div>
+<div class="flex items-center gap-1.5 mt-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>Guaranteed payout sum</span>
+</div>
+</div>
+</div>
+<!-- Stat 2: Monthly Premiums -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-sm">
+<span class="font-label-md text-label-md font-semibold tracking-wide uppercase">Monthly Premiums</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+</div>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">
+          R487
+        </div>
+<div class="flex items-center gap-1 mt-1 font-label-sm text-label-sm text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">event_repeat</span>
+<span>Next debit 25 Nov 2024</span>
+</div>
+</div>
+</div>
+<!-- Stat 3: Policies -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-sm">
+<span class="font-label-md text-label-md font-semibold tracking-wide uppercase">Active Policies</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</div>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">
+          3
+        </div>
+<div class="flex items-center gap-2 mt-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-medium">2 Funeral</span>
+<span>•</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-medium">1 Life</span>
+</div>
+</div>
+</div>
+<!-- Stat 4: Documents Ready -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-sm">
+<span class="font-label-md text-label-md font-semibold tracking-wide uppercase">Documents Ready</span>
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed/50 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">folder_supervised</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">5 <span class="font-headline-sm text-headline-sm font-normal text-on-surface-variant">of 9</span></span>
+<span class="font-label-md text-label-md font-semibold text-secondary">55%</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden mt-2">
+<div class="bg-secondary h-full rounded-full transition-all duration-700" style="width: 55%"></div>
+</div>
+<p class="mt-2 font-label-sm text-label-sm text-on-surface-variant truncate">
+          Home Affairs &amp; schedules verified
+        </p>
+</div>
+</div>
+</div>
+<!-- Main Content 2/3 and 1/3 Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left Main Work Area (8 cols = ~2/3) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Section Header + Filter Tabs -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">
+            Active Policies <span class="text-on-surface-variant font-normal">(3)</span>
+</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Continuously reconciled with verified South African underwriter registries
+          </p>
+</div>
+<!-- Filter Tabs -->
+<div class="inline-flex p-1 bg-surface-container-high rounded-lg self-start sm:self-auto" id="policy-tabs">
+<button class="tab-btn px-3 py-1.5 rounded-md font-label-md text-label-md bg-surface-container-lowest text-primary shadow-sm transition-all" data-filter="all" type="button">
+            All (3)
+          </button>
+<button class="tab-btn px-3 py-1.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-filter="funeral" type="button">
+            Funeral (2)
+          </button>
+<button class="tab-btn px-3 py-1.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-filter="life" type="button">
+            Life (1)
+          </button>
+</div>
+</div>
+<!-- Policy Cards List -->
+<div class="flex flex-col gap-space-md" id="policy-list">
+<!-- Card 1: Old Mutual -->
+<div class="policy-card bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col gap-space-md" data-category="funeral">
+<div class="flex flex-wrap items-start justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-bold text-lg shadow-sm">
+                OM
+              </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Old Mutual</h3>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-fixed/40 text-on-primary-fixed-variant font-label-sm text-label-sm font-medium">
+                    Funeral
+                  </span>
+</div>
+<div class="flex items-center gap-2 mt-0.5 font-body-sm text-body-sm text-on-surface-variant">
+<span>Policy no.</span>
+<span class="font-mono text-on-surface font-medium">•••• 4821</span>
+<span>•</span>
+<span class="inline-flex items-center gap-1 text-primary text-xs font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Active
+                  </span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Cover Amount</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">R40 000</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md p-space-md bg-surface-container-low rounded-lg">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Premium Schedule</span>
+<div class="flex items-center gap-1.5 mt-0.5 text-on-surface font-body-md-semibold text-body-md-semibold">
+<span class="material-symbols-outlined text-primary text-[18px]">payments</span>
+<span>R199 <span class="text-on-surface-variant font-normal text-sm">• debits on the 25th</span></span>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Claim Readiness</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">3 of 3 docs ready</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 100%"></div>
+</div>
+<p class="font-label-sm text-label-sm text-primary flex items-center gap-1 mt-1 font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                All claims documentation verified
+              </p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">security</span>
+              Vault ID: LFA-OM-8834
+            </span>
+<button class="inline-flex items-center gap-1 px-4 py-2 rounded-[10px] bg-surface-container-high hover:bg-surface-container-highest text-primary font-body-sm-medium text-body-sm-medium transition-colors" type="button">
+<span>View policy</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Sanlam -->
+<div class="policy-card bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col gap-space-md" data-category="life">
+<div class="flex flex-wrap items-start justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary font-bold text-lg shadow-sm">
+                SN
+              </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Sanlam</h3>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-medium">
+                    Life
+                  </span>
+</div>
+<div class="flex items-center gap-2 mt-0.5 font-body-sm text-body-sm text-on-surface-variant">
+<span>Policy no.</span>
+<span class="font-mono text-on-surface font-medium">•••• 7309</span>
+<span>•</span>
+<span class="inline-flex items-center gap-1 text-primary text-xs font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Active
+                  </span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Cover Amount</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">R35 000</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md p-space-md bg-surface-container-low rounded-lg">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Premium Schedule</span>
+<div class="flex items-center gap-1.5 mt-0.5 text-on-surface font-body-md-semibold text-body-md-semibold">
+<span class="material-symbols-outlined text-primary text-[18px]">payments</span>
+<span>R168 <span class="text-on-surface-variant font-normal text-sm">• debits on the 1st</span></span>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Claim Readiness</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">2 of 3 docs</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 66%"></div>
+</div>
+<p class="font-label-sm text-label-sm text-secondary flex items-center gap-1 mt-1 font-medium">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                Missing certified ID copy
+              </p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">lock_clock</span>
+              Auto-claims link ready
+            </span>
+<button class="inline-flex items-center gap-1 px-4 py-2 rounded-[10px] bg-secondary-fixed text-on-secondary-fixed font-body-sm-medium text-body-sm-medium hover:bg-secondary-fixed-dim transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+<span>Upload doc</span>
+</button>
+</div>
+</div>
+<!-- Card 3: AVBOB -->
+<div class="policy-card bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col gap-space-md" data-category="funeral">
+<div class="flex flex-wrap items-start justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-bold text-lg shadow-sm">
+                AV
+              </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">AVBOB</h3>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-fixed/40 text-on-primary-fixed-variant font-label-sm text-label-sm font-medium">
+                    Funeral
+                  </span>
+</div>
+<div class="flex items-center gap-2 mt-0.5 font-body-sm text-body-sm text-on-surface-variant">
+<span>Policy no.</span>
+<span class="font-mono text-on-surface font-medium">•••• 1944</span>
+<span>•</span>
+<span class="inline-flex items-center gap-1 text-primary text-xs font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Active
+                  </span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Cover Amount</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">R10 000</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md p-space-md bg-surface-container-low rounded-lg">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Premium Schedule</span>
+<div class="flex items-center gap-1.5 mt-0.5 text-on-surface font-body-md-semibold text-body-md-semibold">
+<span class="material-symbols-outlined text-primary text-[18px]">payments</span>
+<span>R120 <span class="text-on-surface-variant font-normal text-sm">• debits on the 28th</span></span>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Claim Readiness</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">0 of 3 docs</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-outline-variant h-full rounded-full" style="width: 0%"></div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">sync_problem</span>
+                Schedule pending verification
+              </p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">hourglass_empty</span>
+              In automated review queue
+            </span>
+<button class="inline-flex items-center gap-1 px-4 py-2 rounded-[10px] bg-surface-container-high hover:bg-surface-container-highest text-primary font-body-sm-medium text-body-sm-medium transition-colors" type="button">
+<span>View policy</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Action Callout / Comprehensive Summary Download -->
+<div class="bg-gradient-to-r from-primary-container to-primary text-on-primary rounded-xl p-space-lg shadow-sm flex flex-col sm:flex-row items-center justify-between gap-space-md relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-36 h-36 rounded-full bg-surface-tint/20 blur-xl"></div>
+<div class="flex items-center gap-space-md z-10">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest/15 backdrop-blur-sm flex items-center justify-center text-primary-fixed shrink-0">
+<span class="material-symbols-outlined text-[28px]">description</span>
+</div>
+<div class="space-y-0.5">
+<h4 class="font-headline-sm text-headline-sm font-semibold tracking-tight text-on-primary">
+              Download Comprehensive Policy Summary (PDF)
+            </h4>
+<div class="flex items-center gap-2 font-label-sm text-label-sm text-on-primary-container font-mono">
+<span class="material-symbols-outlined text-[14px]">enhanced_encryption</span>
+<span>SHA-256 Verified Hash: e8b9...f201 • 256-bit encrypted</span>
+</div>
+</div>
+</div>
+<button class="z-10 shrink-0 inline-flex items-center gap-2 px-space-md py-2.5 rounded-[10px] bg-surface-container-lowest text-primary font-body-md-semibold text-body-md-semibold hover:bg-surface-bright transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Generate PDF</span>
+</button>
+</div>
+</div>
+<!-- Right Sidebar (4 cols = ~1/3) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Designated Vault Nominee Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">family_restroom</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">
+              Designated Vault Nominee
+            </h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed/40 text-on-primary-fixed-variant font-label-sm text-label-sm font-semibold">
+            Primary
+          </span>
+</div>
+<!-- Nominee Profile -->
+<div class="flex items-center gap-space-md p-space-md bg-surface-container-low rounded-lg">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-body-lg shadow-inner">
+            LM
+          </div>
+<div class="min-w-0 flex-1">
+<h4 class="font-body-md-semibold text-body-md-semibold text-on-surface truncate">Lerato Mokoena</h4>
+<div class="flex items-center gap-1.5 text-primary font-label-sm text-label-sm font-medium mt-0.5">
+<span>Daughter</span>
+<span>•</span>
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Accepted</span>
+</div>
+</div>
+</div>
+<!-- Privacy Guarantee Callout Box -->
+<div class="bg-surface rounded-lg p-space-md space-y-2">
+<div class="flex items-start gap-2.5">
+<div class="w-7 h-7 rounded-md bg-secondary-fixed/50 text-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+</div>
+<div>
+<p class="font-body-md-semibold text-body-md-semibold text-on-surface leading-tight">
+                Lerato can't see your vault until a death is verified.
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                Under our <strong class="text-on-surface font-semibold">Dignified Protocol</strong>, your policies, values, and debit details remain strictly private during your lifetime. Nominees receive access only upon certified Department of Home Affairs (BI-1663) confirmation.
+              </p>
+</div>
+</div>
+</div>
+<!-- Contact details & Manage link -->
+<div class="pt-space-xs space-y-3">
+<div class="flex flex-col gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<span class="font-mono">lerato.m***@gmail.com</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">call</span>
+<span class="font-mono">+27 82 ••• 4412</span>
+</div>
+</div>
+<a class="inline-flex items-center justify-between w-full p-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-body-sm-medium text-body-sm-medium transition-colors" href="#">
+<span>Manage nominees &amp; add backup</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Vault Health & Readiness Checklist -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Vault Readiness</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Claims clearance probability</p>
+</div>
+<div class="relative w-14 h-14 flex items-center justify-center shrink-0">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary transition-all duration-1000 ease-out" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="78, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-headline-sm text-headline-sm font-bold text-on-surface">78%</span>
+</div>
+</div>
+<div class="space-y-2.5 pt-space-xs">
+<!-- Item 1: Complete -->
+<div class="flex items-start gap-space-sm p-space-sm bg-surface rounded-lg">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="min-w-0">
+<p class="font-body-sm-medium text-body-sm-medium text-on-surface">Identity verified via Home Affairs</p>
+<p class="font-label-sm text-label-sm text-primary">NPR linked • SA Citizen</p>
+</div>
+</div>
+<!-- Item 2: Complete -->
+<div class="flex items-start gap-space-sm p-space-sm bg-surface rounded-lg">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="min-w-0">
+<p class="font-body-sm-medium text-body-sm-medium text-on-surface">Primary nominee accepted invite</p>
+<p class="font-label-sm text-label-sm text-primary">Lerato Mokoena (Daughter)</p>
+</div>
+</div>
+<!-- Item 3: Pending Action -->
+<div class="flex items-start gap-space-sm p-space-sm bg-surface rounded-lg">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">radio_button_unchecked</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<p class="font-body-sm-medium text-body-sm-medium text-on-surface">Upload marriage certificate</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Optional</span>
+</div>
+<p class="font-label-sm text-label-sm text-secondary">Speeds spousal claim payouts</p>
+<button class="mt-1 text-primary hover:text-primary-container font-label-md text-label-md font-semibold inline-flex items-center gap-1" type="button">
+<span>Upload now</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Item 4: Complete -->
+<div class="flex items-start gap-space-sm p-space-sm bg-surface rounded-lg">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="min-w-0">
+<p class="font-body-sm-medium text-body-sm-medium text-on-surface">Emergency funeral director preference</p>
+<p class="font-label-sm text-label-sm text-primary">Soweto Memorial Chapel</p>
+</div>
+</div>
+</div>
+<div class="p- space-sm bg-surface-container rounded-lg flex items-center gap-space-sm p-3">
+<span class="material-symbols-outlined text-secondary text-[20px]">bolt</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+            Reach 100% to qualify for instant bereavement advance payout within 4 hours.
+          </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive script for filter tabs -->
+<script>
+    (function() {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const cards = document.querySelectorAll('.policy-card');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Update active tab styles
+          tabBtns.forEach(b => {
+            b.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+            b.classList.add('text-on-surface-variant');
+          });
+          btn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+          btn.classList.remove('text-on-surface-variant');
+
+          const filter = btn.getAttribute('data-filter');
+
+          cards.forEach(card => {
+            const cat = card.getAttribute('data-category');
+            if (filter === 'all' || cat === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    })();
+  </script>
+</div></div></main><footer class="w-full bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] mt-auto"><div class="max-w-[1200px] mx-auto px-margin py-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex flex-col md:flex-row md:items-center gap-space-xs md:gap-space-md text-on-surface-variant font-body-sm text-body-sm text-center md:text-left"><span>Authorised Financial Services Provider • FSP 51842</span><span class="hidden md:inline">•</span><span>POPIA Compliant Secure Data Storage</span></div><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[16px]">support_agent</span></div><div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Bereavement &amp; Claims Support</span><span class="font-body-sm-medium text-body-sm-medium text-primary">0800 533 227 (Toll-free 24/7)</span></div></div></div></footer></body></html>

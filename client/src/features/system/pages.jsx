@@ -1,15 +1,20 @@
 import { SystemPage } from './SystemPage.jsx'
 import { alertIcon, lockIcon, searchIcon } from './icons.jsx'
+import { useAuth } from '../auth/useAuth.js'
+import { homeFor } from '../auth/roles.js'
 
-// "Go to my vault" points at /vault, which lands with auth (#7) and the vault (#10).
+// Sends people back to *their* home: members to the vault, brokers/admins to
+// the dashboard (a broker sent to /vault would just hit 403 again).
 export function ForbiddenPage() {
+  const { profile } = useAuth()
+  const isMember = !profile || profile.role === 'member'
   return (
     <SystemPage
       code="403"
       title="You don't have access to this page"
       message="This page belongs to another role or family. If you think that's wrong, ask your broker or admin."
-      actionTo="/vault"
-      actionLabel="Go to my vault"
+      actionTo={profile ? homeFor(profile.role) : '/vault'}
+      actionLabel={isMember ? 'Go to my vault' : 'Go to my dashboard'}
       icon={lockIcon}
     />
   )

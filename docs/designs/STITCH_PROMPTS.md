@@ -33,7 +33,7 @@ Subtext: "South Africans hold 17 million funeral policies, yet billions go uncla
 Buttons: "Start your free vault" (primary), "I'm a broker" (secondary). Hero image: warm illustration of a multi-generational
 Black South African family around a table with a phone showing a vault.
 Section "How it works" with 5 numbered steps: Record, Prepare, Nominate, Unlock, Claim & track (icon + 1 line each).
-Stats strip: "17m funeral policies", "R88bn unclaimed", "8.7m policies lapsed in 2025".
+Stats strip: "17m funeral policies in force", "R88bn in unclaimed financial assets", "8.7m risk policies lapsed in 2025".
 Pricing: 3 cards: Free R0 (3 policies, 1 nominee), Family Plus R29/month (unlimited, 3 nominees, reminders) highlighted,
 Brokers R15 per client/month. Trust section: "Your nominee sees nothing until a death is verified", POPIA, encrypted documents.
 Footer with links. Top nav: logo "Lefa", How it works, Pricing, Log in, Sign up.

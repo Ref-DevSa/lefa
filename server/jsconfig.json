@@ -5,6 +5,7 @@
     "moduleResolution": "NodeNext",
     "allowJs": true,
     "checkJs": true,
+    "maxNodeModuleJsDepth": 0,
     "noEmit": true,
     "skipLibCheck": true,
     "types": ["node", "jest"]

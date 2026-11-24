@@ -33,6 +33,19 @@ export function policiesRouter(supabase) {
     res.json({ policies: data })
   })
 
+  router.get('/:id', async (req, res) => {
+    const id = requireUuid(req.params.id, 'That policy')
+    const { data, error } = await res.locals.supabase
+      .from('policies')
+      .select(POLICY_COLUMNS)
+      .eq('id', id)
+      .eq('owner_id', res.locals.user.id)
+      .maybeSingle()
+    if (error) throw dbError(error)
+    if (!data) throw notFound()
+    res.json({ policy: data })
+  })
+
   router.post('/', async (req, res) => {
     const values = parseBody(createPolicySchema, req.body)
     const { data, error } = await res.locals.supabase.from('policies').insert(values).select(POLICY_COLUMNS).single()

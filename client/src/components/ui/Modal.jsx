@@ -1,12 +1,15 @@
 import { useEffect, useId, useRef } from 'react'
 import { createPortal } from 'react-dom'
+import { cn } from '../../lib/cn.js'
 
 /**
  * Accessible modal dialog: Escape and backdrop click close it, focus moves
  * into it on open and returns to the opener on close.
- * @param {{ open: boolean, onClose: () => void, title: string, children: React.ReactNode, footer?: React.ReactNode }} props
+ * Tall content scrolls inside the panel; `size="lg"` suits forms.
+ * @param {{ open: boolean, onClose: () => void, title: string, description?: string, size?: 'md' | 'lg',
+ *   children: React.ReactNode, footer?: React.ReactNode }} props
  */
-export function Modal({ open, onClose, title, children, footer }) {
+export function Modal({ open, onClose, title, description, size = 'md', children, footer }) {
   const titleId = useId()
   const panelRef = useRef(/** @type {HTMLDivElement | null} */ (null))
   const onCloseRef = useRef(onClose)
@@ -45,11 +48,16 @@ export function Modal({ open, onClose, title, children, footer }) {
         aria-modal="true"
         aria-labelledby={titleId}
         tabIndex={-1}
-        className="relative w-full max-w-md rounded-card bg-surface p-6 shadow-lg"
+        className={cn(
+          'relative max-h-[calc(100dvh-2rem)] w-full overflow-y-auto rounded-card bg-surface p-6 shadow-lg',
+          size === 'lg' ? 'max-w-2xl' : 'max-w-md',
+        )}
       >
-        <h2 id={titleId} className="mb-3 text-xl font-semibold text-ink">
+        <h2 id={titleId} className="mb-1 text-xl font-semibold text-ink">
           {title}
         </h2>
+        {description && <p className="mb-4 text-muted">{description}</p>}
+        {!description && <div className="mb-2" />}
         <div className="text-ink">{children}</div>
         {footer && <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">{footer}</div>}
       </div>

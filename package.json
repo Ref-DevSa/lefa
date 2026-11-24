@@ -21,10 +21,11 @@
     "db:migration": "supabase migration new",
     "db:check": "supabase db push --remote --dry-run",
     "db:push": "supabase db push --remote",
-    "db:test": "supabase test db --remote"
+    "db:test": "supabase test db --remote",
+    "db:seed": "node --env-file=server/.env.seed server/scripts/seed.js"
   },
   "engines": {
-    "node": ">=20.19"
+    "node": ">=22.9"
   },
   "devDependencies": {
     "@eslint/js": "^9",

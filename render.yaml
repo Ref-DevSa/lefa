@@ -1,0 +1,24 @@
+# Render Blueprint for the Lefa API (Express). Render reads this file when you
+# choose New > Blueprint and pick this repo. Secrets marked `sync: false` are
+# entered once in the Render dashboard; they are never stored in Git.
+services:
+  - type: web
+    name: lefa-api
+    runtime: node
+    plan: free
+    region: frankfurt # same region as the Supabase project (eu-central-1)
+    branch: main
+    # Install only the server workspace's runtime packages (no client, no dev tools).
+    buildCommand: npm ci --omit=dev --workspace server
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: CORS_ORIGIN # the Vercel website address, e.g. https://lefa.vercel.app
+        sync: false

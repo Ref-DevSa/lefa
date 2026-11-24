@@ -169,7 +169,7 @@ function PolicyList({ policies, documents }) {
                 onClick={() => setFilter(c.value)}
                 className={cn(
                   'min-h-9 rounded-[8px] px-3 text-sm font-medium',
-                  filter === c.value ? 'bg-primary text-white' : 'text-muted hover:text-ink',
+                  filter === c.value ? 'bg-primary text-on-primary' : 'text-muted hover:text-ink',
                 )}
               >
                 {c.label} ({c.count})

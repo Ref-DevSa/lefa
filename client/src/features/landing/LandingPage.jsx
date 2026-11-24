@@ -2,6 +2,7 @@ import { Link } from 'react-router'
 import { Card } from '../../components/ui/Card.jsx'
 import { Logo } from '../../components/layout/Logo.jsx'
 import { cn } from '../../lib/cn.js'
+import { ThemeToggle } from '../../components/ui/ThemeToggle.jsx'
 
 const STEPS = [
   { title: 'Record', text: 'Add every funeral, life and credit-life policy your family pays for.' },
@@ -32,7 +33,7 @@ const PLANS = [
 
 const buttonBase =
   'inline-flex min-h-11 items-center justify-center rounded-control px-5 font-semibold transition-colors'
-const primaryBtn = cn(buttonBase, 'bg-primary text-white hover:bg-primary-hover')
+const primaryBtn = cn(buttonBase, 'bg-primary text-on-primary hover:bg-primary-hover')
 const secondaryBtn = cn(buttonBase, 'border border-primary bg-surface text-primary hover:bg-cream')
 
 export default function LandingPage() {
@@ -48,6 +49,7 @@ export default function LandingPage() {
             <a href="#pricing" className="hidden font-medium text-muted hover:text-ink sm:inline">
               Pricing
             </a>
+            <ThemeToggle />
             <Link to="/login" className="px-2 font-medium text-primary">
               Log in
             </Link>
@@ -61,8 +63,8 @@ export default function LandingPage() {
       <main>
         <section className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:grid-cols-2 md:py-20">
           <div className="flex flex-col gap-5">
-            <h1 className="text-4xl font-bold leading-tight text-ink md:text-5xl">
-              Every policy. One vault. <span className="text-primary">Claim-ready</span> for the people you love.
+            <h1 className="text-[2.75rem] font-semibold leading-[1.05] text-ink md:text-6xl">
+              Every policy. One vault. <em className="font-medium text-primary">Claim-ready</em> for the people you love.
             </h1>
             <p className="text-lg text-muted">
               South Africans hold 17 million funeral policies, yet billions go unclaimed. Lefa makes sure your cover
@@ -80,12 +82,13 @@ export default function LandingPage() {
           <HeroArt />
         </section>
 
-        <section aria-label="Key numbers" className="bg-primary text-white">
+        <section aria-label="Key numbers" className="relative overflow-hidden bg-primary text-on-primary dark:border-y dark:border-border dark:bg-surface dark:text-ink">
+          <div aria-hidden="true" className="litema pointer-events-none absolute inset-0 bg-on-primary/10 dark:bg-accent/10" />
           <dl className="mx-auto grid max-w-6xl gap-6 px-4 py-8 text-center sm:grid-cols-3">
             {STATS.map((s) => (
               <div key={s.value} className="flex flex-col-reverse">
-                <dt className="text-white/80">{s.label}</dt>
-                <dd className="text-3xl font-bold">{s.value}</dd>
+                <dt className="text-on-primary/80 dark:text-muted">{s.label}</dt>
+                <dd className="font-display text-4xl font-semibold dark:text-accent">{s.value}</dd>
               </div>
             ))}
           </dl>
@@ -122,13 +125,13 @@ export default function LandingPage() {
                   <h3 className="flex items-center gap-2 font-semibold text-ink">
                     {p.name}
                     {p.highlight && (
-                      <span className="rounded-full bg-accent/15 px-2 py-0.5 text-xs font-semibold text-accent">
+                      <span className="rounded-full bg-accent/15 px-2 py-0.5 text-xs font-semibold text-warning">
                         Most popular
                       </span>
                     )}
                   </h3>
                   <p className="mt-1">
-                    <span className="text-3xl font-bold text-ink">{p.price}</span>
+                    <span className="font-display text-4xl font-semibold text-ink">{p.price}</span>
                     <span className="text-muted">{p.period}</span>
                   </p>
                 </div>
@@ -184,7 +187,7 @@ function HeroArt() {
   // Simple placeholder illustration until the Stitch hero image is exported.
   return (
     <div aria-hidden="true" className="relative mx-auto w-full max-w-md">
-      <div className="absolute -inset-4 rounded-[32px] bg-accent/10" />
+      <div className="litema absolute -inset-3 bg-accent/35 sm:-inset-5" />
       <Card className="relative flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <span className="font-semibold text-ink">Family vault</span>

@@ -1,27 +1,56 @@
 @import 'tailwindcss';
 
-/* Lefa design tokens (from docs/designs/STITCH_PROMPTS.md, prompt 0).
-   Update these once the Stitch exports are in docs/designs/. */
+/* `dark:` utilities follow Lefa's own theme switch, not only the OS setting. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* Lefa design tokens. Light ("cream") is the default; the midnight theme
+   below swaps the same names, so every component follows automatically. */
 @theme {
   --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  /* Headings: an editorial serif, calm and dignified, like a document worth keeping. */
+  --font-display: 'Newsreader', ui-serif, Georgia, serif;
 
   --color-primary: #1f5f4a;
   --color-primary-hover: #174a3a;
-  --color-accent: #c8902e;
-  --color-cream: #faf7f2;
-  --color-surface: #ffffff;
+  --color-on-primary: #ffffff; /* text/icons on a primary fill */
+  --color-accent: #c8902e; /* ochre */
+  --color-cream: #faf7f2; /* page */
+  --color-surface: #ffffff; /* cards */
   --color-border: #e7e1d7;
   --color-ink: #1c1c1c;
   --color-muted: #6b6b6b;
 
-  --color-success: #2e7d32;
-  --color-warning: #b26a00;
+  /* Status colours, darkened so text on their tinted chips passes WCAG AA (4.5:1). */
+  --color-success: #256b2a;
+  --color-warning: #8a5300;
   --color-danger: #b3261e;
+  --color-on-danger: #ffffff;
   --color-info: #1f5f8a;
 
   --radius-card: 12px;
   --radius-control: 10px;
   --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Midnight: deep ink with warm text and the same green + ochre, lifted so
+   they read on dark. Contrast checked with axe for AA. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-primary: #6cc3a0;
+  --color-primary-hover: #8ad3b5;
+  --color-on-primary: #0b1210;
+  --color-accent: #d9a441;
+  --color-cream: #0b0f1a;
+  --color-surface: #141b2b;
+  --color-border: #2a3650;
+  --color-ink: #ece7de;
+  --color-muted: #a7aec0;
+  --color-success: #7dd08f;
+  --color-warning: #eab55a;
+  --color-danger: #f28b82;
+  --color-on-danger: #1a0b0a;
+  --color-info: #8cc2ee;
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 @layer base {
@@ -30,8 +59,26 @@
   }
   body {
     @apply bg-cream font-sans text-ink antialiased;
+    /* Digits line up like a statement: R85 000 over R30 000. */
+    font-variant-numeric: tabular-nums;
+  }
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
   }
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-primary;
   }
+}
+
+/* Litema: the incised geometric patterns Basotho women carve into the walls
+   of their homes. "Lefa" is a Sesotho word, so the pattern is a quiet nod to
+   where the name comes from. Drawn as a mask so it takes any colour
+   (bg-accent, bg-white, …) and follows the theme. Decorative only. */
+.litema {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='28' viewBox='0 0 48 28'%3E%3Cg fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M0 13 12 3l12 10 12-10 12 10'/%3E%3Cpath d='M0 27 12 17l12 10 12-10 12 10'/%3E%3C/g%3E%3Ccircle cx='24' cy='20' r='1.6'/%3E%3Ccircle cx='0' cy='6' r='1.6'/%3E%3Ccircle cx='48' cy='6' r='1.6'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='28' viewBox='0 0 48 28'%3E%3Cg fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M0 13 12 3l12 10 12-10 12 10'/%3E%3Cpath d='M0 27 12 17l12 10 12-10 12 10'/%3E%3C/g%3E%3Ccircle cx='24' cy='20' r='1.6'/%3E%3Ccircle cx='0' cy='6' r='1.6'/%3E%3Ccircle cx='48' cy='6' r='1.6'/%3E%3C/svg%3E");
+  -webkit-mask-size: 48px 28px;
+  mask-size: 48px 28px;
 }

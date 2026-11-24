@@ -57,7 +57,6 @@ export default function ClaimsPipelinePage() {
                     <button
                       key={c.id}
                       type="button"
-                      aria-label={`${c.owner_name} · ${c.insurer}, ${formatZAR(c.cover_amount)}`}
                       onClick={() => setOpenId(c.id)}
                       className="flex flex-col gap-1 rounded-control border border-border bg-surface p-3 text-left text-sm shadow-soft hover:border-primary"
                     >

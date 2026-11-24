@@ -26,7 +26,7 @@ export function NomineePanel() {
           <p className="text-muted">Nobody can claim for your family yet. Choose someone you trust.</p>
           <Link
             to="/nominees"
-            className="inline-flex min-h-11 items-center justify-center self-start rounded-control bg-primary px-4 font-semibold text-white hover:bg-primary-hover"
+            className="inline-flex min-h-11 items-center justify-center self-start rounded-control bg-primary px-4 font-semibold text-on-primary hover:bg-primary-hover"
           >
             Nominate someone you trust
           </Link>

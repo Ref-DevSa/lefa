@@ -70,7 +70,7 @@ export default function BrokerDashboard() {
                           <Link
                             to={`/broker/reports/${r.id}`}
                             aria-label={`Review report for ${r.owner_name}`}
-                            className="inline-flex min-h-9 items-center rounded-control bg-primary px-3 font-semibold text-white hover:bg-primary-hover"
+                            className="inline-flex min-h-9 items-center rounded-control bg-primary px-3 font-semibold text-on-primary hover:bg-primary-hover"
                           >
                             Review
                           </Link>

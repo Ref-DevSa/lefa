@@ -10,8 +10,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
     />
+    <script>
+      // Apply the saved theme before the page paints, so there's no flash of
+      // the wrong colours. Cream is the default; midnight is opt-in.
+      try {
+        if (localStorage.getItem('lefa-theme') === 'dark') document.documentElement.dataset.theme = 'dark'
+      } catch {
+        /* storage blocked: stay on the default */
+      }
+    </script>
     <title>Lefa</title>
   </head>
   <body>

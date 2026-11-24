@@ -89,7 +89,7 @@ function PolicyForm({ policy, onDone }) {
               aria-pressed={form.insurer === name}
               className={cn(
                 'min-h-9 rounded-full border px-3 text-sm font-medium transition-colors',
-                form.insurer === name ? 'border-primary bg-primary text-white' : 'border-border bg-cream text-ink hover:border-primary',
+                form.insurer === name ? 'border-primary bg-primary text-on-primary' : 'border-border bg-cream text-ink hover:border-primary',
               )}
             >
               {name}

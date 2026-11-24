@@ -1,4 +1,5 @@
 import { Logo } from '../../components/layout/Logo.jsx'
+import { ThemeToggle } from '../../components/ui/ThemeToggle.jsx'
 
 /**
  * S2 split layout: a calm cream panel with the promise on the left (desktop),
@@ -17,8 +18,11 @@ export function AuthLayout({ title, subtitle, children }) {
             <circle cx="48" cy="44" r="6" fill="#C8902E" />
             <path d="M45 48h6l2 12h-10l2-12Z" fill="#C8902E" />
           </svg>
-          <p className="text-2xl font-semibold text-ink">Make sure your cover reaches your family</p>
+          <p className="font-display text-3xl leading-snug text-ink">
+            Make sure your cover <em className="text-primary">reaches</em> your family
+          </p>
         </div>
+        <div aria-hidden="true" className="litema -mx-10 h-10 bg-accent/40" />
         <p className="flex items-center gap-2 text-sm text-muted">
           <svg viewBox="0 0 24 24" className="size-4 text-accent" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
             <rect x="5" y="11" width="14" height="10" rx="2" />
@@ -28,9 +32,12 @@ export function AuthLayout({ title, subtitle, children }) {
         </p>
       </aside>
 
-      <main className="flex flex-col px-4 py-6 sm:px-8 lg:justify-center">
-        <div className="lg:hidden">
-          <Logo />
+      <main className="relative flex flex-col px-4 py-6 sm:px-8 lg:justify-center">
+        <div className="flex items-center justify-between lg:absolute lg:top-6 lg:right-8">
+          <div className="lg:hidden">
+            <Logo />
+          </div>
+          <ThemeToggle />
         </div>
         <div className="mx-auto w-full max-w-md pt-10 lg:pt-0">
           <h1 className="text-3xl font-bold text-ink">{title}</h1>

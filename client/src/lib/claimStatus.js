@@ -4,6 +4,6 @@ export const CLAIM_STATUS = {
   submitted: { label: 'Submitted', className: 'bg-info/10 text-info' },
   documents_requested: { label: 'Documents requested', className: 'bg-warning/10 text-warning' },
   approved: { label: 'Approved', className: 'bg-success/10 text-success' },
-  paid: { label: 'Paid', className: 'bg-success text-white' },
+  paid: { label: 'Paid', className: 'bg-success text-on-primary' },
   rejected: { label: 'Rejected', className: 'bg-danger/10 text-danger' },
 }

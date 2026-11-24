@@ -68,7 +68,7 @@ export default function UnlockedVaultPage() {
           <div>
             <div className="mb-2 flex flex-wrap gap-2 text-sm">
               <span className="rounded-full bg-success/10 px-2.5 py-0.5 font-medium text-success">Verified {formatDate(v.report.reviewed_at ?? v.report.date_of_death)}</span>
-              <span className="rounded-full bg-muted/10 px-2.5 py-0.5 font-medium text-muted">Read-only · nominee access</span>
+              <span className="rounded-full bg-muted/10 px-2.5 py-0.5 font-medium text-ink">Read-only · nominee access</span>
             </div>
             <h1 className="text-2xl font-bold text-ink sm:text-3xl">{v.owner.full_name}&rsquo;s vault</h1>
             <p className="mt-1 max-w-2xl text-muted">
@@ -160,7 +160,7 @@ function ClaimCard({ claim, vault }) {
         ) : (
           <ul className="mt-2 grid gap-2 sm:grid-cols-2">
             {docs.map((/** @type {any} */ d) => (
-              <li key={d.id} className="flex items-center justify-between gap-2 rounded-control bg-cream px-3 py-2">
+              <li key={d.id} className="flex min-w-0 items-center justify-between gap-2 rounded-control bg-cream px-3 py-2">
                 <span className="min-w-0">
                   <span className="block truncate text-sm font-medium text-ink">{d.file_name}</span>
                   <span className="text-xs text-muted">{docTypeLabel(d.doc_type)}</span>
@@ -211,20 +211,20 @@ function Stepper({ status }) {
     )
   }
   return (
-    <ol className="grid grid-cols-5 gap-1 rounded-card bg-cream p-2 text-center text-xs sm:text-sm" aria-label="Claim progress">
+    <ol className="flex flex-col gap-1 rounded-card bg-cream p-2 text-sm sm:grid sm:grid-cols-5 sm:text-center" aria-label="Claim progress">
       {stepState(status).map((s, i) => (
         <li
           key={s.step}
           aria-label={`${s.label}${s.state === 'current' ? ' (current step)' : s.state === 'done' ? ' (done)' : ''}`}
           aria-current={s.state === 'current' ? 'step' : undefined}
-          className={cn('flex flex-col items-center gap-1 rounded-control px-1 py-2', s.state === 'current' && 'bg-surface shadow-soft')}
+          className={cn('flex items-center gap-2 rounded-control px-2 py-1.5 sm:flex-col sm:gap-1 sm:px-1 sm:py-2', s.state === 'current' && 'bg-surface shadow-soft')}
         >
           <span
             aria-hidden="true"
             className={cn(
               'grid size-6 place-items-center rounded-full text-xs font-bold',
-              s.state === 'done' && 'bg-success text-white',
-              s.state === 'current' && 'bg-primary text-white',
+              s.state === 'done' && 'bg-success text-on-primary',
+              s.state === 'current' && 'bg-primary text-on-primary',
               s.state === 'upcoming' && 'border border-border bg-surface text-muted',
             )}
           >

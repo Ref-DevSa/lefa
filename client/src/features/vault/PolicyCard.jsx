@@ -61,10 +61,9 @@ export function PolicyCard({ policy, docsReady }) {
         )}
         <Link
           to={`/vault/policies/${policy.id}`}
-          aria-label={`View ${policy.insurer} policy`}
           className="inline-flex min-h-11 items-center gap-1 rounded-control px-3 font-semibold text-primary hover:bg-primary/5"
         >
-          View policy <span aria-hidden="true">→</span>
+          View policy<span className="sr-only"> for {policy.insurer}</span> <span aria-hidden="true">→</span>
         </Link>
       </div>
     </Card>

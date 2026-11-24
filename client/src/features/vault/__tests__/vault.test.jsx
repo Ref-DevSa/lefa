@@ -48,7 +48,7 @@ describe('My Vault (S3)', () => {
     expect(card.getByText('R199 · debits on the 25th')).toBeInTheDocument()
     expect(card.getByText('Funeral')).toBeInTheDocument()
     expect(card.getByText('Active')).toBeInTheDocument()
-    expect(card.getByRole('link', { name: 'View Old Mutual policy' })).toHaveAttribute('href', '/vault/policies/p1')
+    expect(card.getByRole('link', { name: 'View policy for Old Mutual' })).toHaveAttribute('href', '/vault/policies/p1')
   })
 
   test('warns about lapsed policies, because they will not pay out', async () => {

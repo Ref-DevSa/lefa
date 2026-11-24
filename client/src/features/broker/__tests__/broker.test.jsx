@@ -124,14 +124,14 @@ describe('Claims pipeline (S13)', () => {
   test('a column per status with each claim in its place', async () => {
     renderApp('/broker/claims', { supabase: signedInBroker, api: broker() })
     const submitted = within(await screen.findByRole('region', { name: 'Submitted (1)' }))
-    expect(submitted.getByRole('button', { name: /Mmabatho Ndlovu · Assupol/ })).toBeInTheDocument()
+    expect(submitted.getByRole('button', { name: /Mmabatho Ndlovu Assupol/ })).toBeInTheDocument()
     expect(within(screen.getByRole('region', { name: 'Paid (1)' })).getByText('R15 000')).toBeInTheDocument()
   })
 
   test('opening a claim shows its timeline and lets the broker move it on', async () => {
     const api = broker()
     const { user } = renderApp('/broker/claims', { supabase: signedInBroker, api })
-    await user.click(await screen.findByRole('button', { name: /Mmabatho Ndlovu · Assupol/ }))
+    await user.click(await screen.findByRole('button', { name: /Mmabatho Ndlovu Assupol/ }))
     const dialog = within(screen.getByRole('dialog', { name: 'Assupol · Mmabatho Ndlovu' }))
     expect(await dialog.findByText('Submitted by email')).toBeInTheDocument()
     await user.selectOptions(dialog.getByLabelText('New status'), 'approved')

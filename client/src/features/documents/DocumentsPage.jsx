@@ -65,7 +65,7 @@ export default function DocumentsPage() {
                       onClick={() => setFilter(t.value)}
                       className={cn(
                         'min-h-9 rounded-full border px-3 text-sm font-medium',
-                        filter === t.value ? 'border-primary bg-primary text-white' : 'border-border bg-surface text-muted hover:text-ink',
+                        filter === t.value ? 'border-primary bg-primary text-on-primary' : 'border-border bg-surface text-muted hover:text-ink',
                       )}
                     >
                       {t.label} ({t.value === 'all' ? list.length : list.filter((d) => d.doc_type === t.value).length})

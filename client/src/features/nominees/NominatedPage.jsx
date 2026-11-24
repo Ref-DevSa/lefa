@@ -139,7 +139,7 @@ function VaultState({ nomination }) {
         <p className="text-sm text-ink">
           The death was verified. You can now see {firstName}&apos;s policies and documents and track every claim.
         </p>
-        <Link to={`/vaults/${nomination.owner_id}`} className={`${linkButton} bg-primary text-white hover:bg-primary-hover`}>
+        <Link to={`/vaults/${nomination.owner_id}`} className={`${linkButton} bg-primary text-on-primary hover:bg-primary-hover`}>
           Open vault
         </Link>
       </div>

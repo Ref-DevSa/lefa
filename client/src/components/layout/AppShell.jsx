@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router'
 import { cn } from '../../lib/cn.js'
 import { Logo } from './Logo.jsx'
+import { ThemeToggle } from '../ui/ThemeToggle.jsx'
 
-/** @typedef {{ to: string, label: string, icon?: React.ReactNode, end?: boolean }} NavItem  end: highlight only on an exact match */
+/** @typedef {{ to: string, label: string, shortLabel?: string, icon?: React.ReactNode, end?: boolean }} NavItem  end: exact match; shortLabel: phone tab bar */
 
 /**
  * Signed-in layout: top nav on desktop, bottom tab bar on mobile.
@@ -37,7 +38,10 @@ export function AppShell({ navItems, actions, children }) {
               ))}
             </ul>
           </nav>
-          <div className="flex items-center gap-2">{actions}</div>
+          <div className="flex items-center gap-1">
+            <ThemeToggle />
+            {actions}
+          </div>
         </div>
       </header>
 
@@ -60,7 +64,7 @@ export function AppShell({ navItems, actions, children }) {
                 }
               >
                 {item.icon && <span aria-hidden="true">{item.icon}</span>}
-                {item.label}
+                {item.shortLabel ?? item.label}
               </NavLink>
             </li>
           ))}

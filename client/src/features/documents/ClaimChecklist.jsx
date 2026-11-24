@@ -54,7 +54,7 @@ export function ClaimChecklist({ policyId }) {
               aria-hidden="true"
               className={cn(
                 'mt-0.5 grid size-5 shrink-0 place-items-center rounded-full text-xs font-bold',
-                item.done ? 'bg-success text-white' : 'border-2 border-border',
+                item.done ? 'bg-success text-on-primary' : 'border-2 border-border',
               )}
             >
               {item.done ? '✓' : ''}

@@ -267,6 +267,38 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 
 > **In one sentence:** "You choose who can claim for your family, and they see nothing — not a policy, not an amount — until a broker has verified a death."
 
+### #13 The unlock: death report → broker verification → claims
+- **What:**
+  - **An accepted nominee reports a death** with the certificate, stored in a private `death-certificates` bucket.
+  - **The family's broker (or an admin) verifies it.** One database function then, all at once:
+    - marks it verified;
+    - **unlocks the vault** for the nominees;
+    - **creates a claim for every policy that can pay out.**
+  - **Rejecting** a report needs a reason, so the family knows what to fix.
+  - **Claims** move through *Not started → Submitted → Documents requested → Approved → Paid* (or Rejected). Every change is logged: who, when, from what, to what, and a note.
+  - **After verification the deceased's vault is frozen:** no adding, editing or deleting policies or documents, and no revoking nominees.
+- **Why each detail:**
+  - **All or nothing.** Verification and claim creation happen in one transaction, so a family can never be left "verified, but with no claims".
+  - **Only the family's own broker can verify.** Brokers are linked to their clients; a broker who doesn't look after a family can't see that family's reports or vault, let alone verify them. Fraud would need an accepted nominee **and** the family's own broker to be fooled.
+  - **Lapsed policies get no claim.** They won't pay out, so a claim would be false hope. The nominee can still see them and ask the insurer.
+  - **Nobody edits a report or claim directly.** Every change goes through a function that checks permission and writes the history. This is the audit trail insurers and regulators expect.
+  - **Pending isn't unlocked.** While a report waits for the broker, the nominee still sees nothing.
+- **How we know it works:**
+  - **On the live database: 35 new security tests** (107 in total), covering the whole story:
+    - a stranger can't report;
+    - pending stays locked;
+    - a nominee can't verify their own report, and neither can an unlinked broker;
+    - verification creates exactly 1 claim and skips the lapsed policy;
+    - only then does the nominee see the vault;
+    - claim changes are logged, the vault is frozen, and strangers still see nothing.
+  - **Live with the demo accounts:**
+    - Sipho sees Gogo Mmabatho's unlocked vault (AVBOB paid, Assupol submitted) but **not** Jabulani's, which is still pending;
+    - Sipho's own attempt to verify is refused;
+    - Lerato still sees nothing of Thandi's.
+
+> **In one sentence:** "A broker's verification is the only key: one step that unlocks the vault and opens a claim for every policy, with a full audit trail and no way for anyone to skip it."
+
+
 
 
 
@@ -330,4 +362,4 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 - **Validation:** checking input is sensible before saving it (e.g. no negative amounts).
 - **CRUD:** Create, Read, Update, Delete: the four basic things you can do with stored data.
 
-*Next up: #13 death reports, broker verification and claims (the unlock).*
+*Next up: #14 the Report-a-death and unlocked-vault screens, then #15 the broker screens.*

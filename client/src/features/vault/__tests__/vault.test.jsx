@@ -34,7 +34,8 @@ describe('My Vault (S3)', () => {
     const totals = within(await screen.findByRole('region', { name: 'Vault totals' }))
     expect(await totals.findByText('R85 000')).toBeInTheDocument()
     expect(totals.getByText('R487')).toBeInTheDocument()
-    expect(totals.getByText('2 of 3')).toBeInTheDocument()
+    expect(totals.getByText('Claim-ready docs')).toBeInTheDocument()
+    expect(totals.getByText('0 of 9')).toBeInTheDocument()
     expect(totals.getByText('across 2 insurers')).toBeInTheDocument()
   })
 

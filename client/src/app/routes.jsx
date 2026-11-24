@@ -3,6 +3,7 @@ import LoginPage from '../features/auth/LoginPage.jsx'
 import SignupPage from '../features/auth/SignupPage.jsx'
 import VaultPage from '../features/vault/VaultPage.jsx'
 import PolicyDetailPage from '../features/vault/PolicyDetailPage.jsx'
+import DocumentsPage from '../features/documents/DocumentsPage.jsx'
 import BrokerDashboard from '../features/broker/BrokerDashboard.jsx'
 import { RequireAuth, RequireRole } from '../features/auth/guards.jsx'
 import { ErrorPage, ForbiddenPage, NotFoundPage } from '../features/system/pages.jsx'
@@ -11,7 +12,7 @@ import { ErrorPage, ForbiddenPage, NotFoundPage } from '../features/system/pages
  * App route table. Shared by the browser router (App.jsx) and tests.
  *
  *   public:        /, /login, /signup, /403, 404
- *   member:        /vault, /vault/policies/:id
+ *   member:        /vault, /vault/policies/:id, /documents
  *   broker/admin:  /broker
  * @type {import('react-router').RouteObject[]}
  */
@@ -31,6 +32,7 @@ export const routes = [
             children: [
               { path: 'vault', element: <VaultPage /> },
               { path: 'vault/policies/:id', element: <PolicyDetailPage /> },
+              { path: 'documents', element: <DocumentsPage /> },
             ],
           },
           {

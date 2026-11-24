@@ -22,6 +22,7 @@ export class ApiError extends Error {
 }
 
 /** @typedef {Record<string, any>} Policy */
+/** @typedef {Record<string, any>} Document */
 /** @typedef {{ policy_count: number, active_count: number, total_active_cover: number, monthly_premiums: number, insurer_count: number }} VaultSummary */
 
 /**
@@ -43,14 +44,16 @@ export function createApi({ baseUrl = '', getToken, fetchImpl = (input, init) =>
     /** @type {Record<string, string>} */
     const headers = {}
     if (token) headers.Authorization = `Bearer ${token}`
-    if (body !== undefined) headers['Content-Type'] = 'application/json'
+    // Files go as a multipart form; the browser sets that Content-Type itself.
+    const isForm = typeof FormData !== 'undefined' && body instanceof FormData
+    if (body !== undefined && !isForm) headers['Content-Type'] = 'application/json'
 
     let res
     try {
       res = await fetchImpl(`${baseUrl}${path}`, {
         method,
         headers,
-        body: body === undefined ? undefined : JSON.stringify(body),
+        body: body === undefined ? undefined : isForm ? body : JSON.stringify(body),
       })
     } catch {
       throw new ApiError(0, 'network_error', "We couldn't reach Lefa. Check your connection and try again.")
@@ -67,6 +70,7 @@ export function createApi({ baseUrl = '', getToken, fetchImpl = (input, init) =>
   }
 
   const policyPath = (/** @type {string} */ id) => `/api/policies/${encodeURIComponent(id)}`
+  const documentPath = (/** @type {string} */ id) => `/api/documents/${encodeURIComponent(id)}`
 
   return {
     /** @returns {Promise<Policy[]>} */
@@ -82,6 +86,26 @@ export function createApi({ baseUrl = '', getToken, fetchImpl = (input, init) =>
     /** @param {string} id @returns {Promise<void>} */
     deletePolicy: async (id) => {
       await request('DELETE', policyPath(id))
+    },
+
+    /** @returns {Promise<Document[]>} */
+    listDocuments: async () => (await request('GET', '/api/documents')).documents,
+    /**
+     * @param {{ file: File, doc_type: string, policy_id?: string | null }} input
+     * @returns {Promise<Document>}
+     */
+    uploadDocument: async ({ file, doc_type, policy_id }) => {
+      const form = new FormData()
+      form.append('doc_type', doc_type)
+      form.append('policy_id', policy_id ?? '')
+      form.append('file', file, file.name)
+      return (await request('POST', '/api/documents', form)).document
+    },
+    /** A short-lived (60s) link to view a private file. @param {string} id @returns {Promise<string>} */
+    getDocumentUrl: async (id) => (await request('GET', `${documentPath(id)}/url`)).url,
+    /** @param {string} id @returns {Promise<void>} */
+    deleteDocument: async (id) => {
+      await request('DELETE', documentPath(id))
     },
   }
 }

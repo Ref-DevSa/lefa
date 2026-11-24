@@ -12,6 +12,8 @@ import { PolicyCard } from './PolicyCard.jsx'
 import { PolicyFormModal } from './PolicyFormModal.jsx'
 import { POLICY_TYPES, nextDebit } from './policyFormat.js'
 import { usePolicies, useVaultSummary } from './queries.js'
+import { checklistFor, readiness } from '../documents/docFormat.js'
+import { useDocuments } from '../documents/queries.js'
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -20,6 +22,7 @@ export default function VaultPage() {
   const { profile } = useAuth()
   const policies = usePolicies()
   const summary = useVaultSummary()
+  const documents = useDocuments()
   const [adding, setAdding] = useState(false)
   const slow = useSlow(policies.isPending)
   const firstName = profile?.full_name.split(' ')[0] || 'there'
@@ -67,9 +70,9 @@ export default function VaultPage() {
 
         {policies.isSuccess && list.length > 0 && (
           <>
-            <Totals summary={summary.data} policies={list} />
+            <Totals summary={summary.data} policies={list} documents={documents.data} />
             <LapsedWarning policies={list} />
-            <PolicyList policies={list} />
+            <PolicyList policies={list} documents={documents.data} />
           </>
         )}
       </div>
@@ -80,11 +83,13 @@ export default function VaultPage() {
 }
 
 /**
- * @param {{ summary?: import('../../lib/api.js').VaultSummary, policies: Array<Record<string, any>> }} props
+ * @param {{ summary?: import('../../lib/api.js').VaultSummary, policies: Array<Record<string, any>>,
+ *   documents?: Array<Record<string, any>> }} props
  */
-function Totals({ summary, policies }) {
+function Totals({ summary, policies, documents }) {
   const next = nextDebit(/** @type {any} */ (policies), new Date())
   const lapsed = policies.filter((p) => p.status === 'lapsed').length
+  const docs = documents ? readiness(policies, /** @type {any} */ (documents)) : null
   return (
     <section aria-label="Vault totals" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <StatTile
@@ -92,11 +97,15 @@ function Totals({ summary, policies }) {
         value={summary ? formatZAR(summary.total_active_cover) : '…'}
         hint={summary ? `across ${summary.insurer_count} insurer${summary.insurer_count === 1 ? '' : 's'}` : undefined}
       />
-      <StatTile label="Monthly premiums" value={summary ? formatZAR(summary.monthly_premiums) : '…'} hint="for active policies" />
       <StatTile
-        label="Active policies"
-        value={summary ? `${summary.active_count} of ${summary.policy_count}` : '…'}
-        hint={lapsed ? `${lapsed} lapsed` : 'none lapsed'}
+        label="Monthly premiums"
+        value={summary ? formatZAR(summary.monthly_premiums) : '…'}
+        hint={summary ? `${summary.active_count} active${lapsed ? ` · ${lapsed} lapsed` : ''}` : undefined}
+      />
+      <StatTile
+        label="Claim-ready docs"
+        value={docs ? `${docs.ready} of ${docs.needed}` : '…'}
+        hint={docs && docs.ready < docs.needed ? 'ID, bank letter and schedules' : 'All documents ready'}
       />
       <StatTile
         label="Next debit"
@@ -129,8 +138,8 @@ function LapsedWarning({ policies }) {
   )
 }
 
-/** @param {{ policies: Array<Record<string, any>> }} props */
-function PolicyList({ policies }) {
+/** @param {{ policies: Array<Record<string, any>>, documents?: Array<Record<string, any>> }} props */
+function PolicyList({ policies, documents }) {
   const [filter, setFilter] = useState('all')
   const types = POLICY_TYPES.filter((t) => policies.some((p) => p.type === t.value))
   const shown = filter === 'all' ? policies : policies.filter((p) => p.type === filter)
@@ -165,7 +174,11 @@ function PolicyList({ policies }) {
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
         {shown.map((p) => (
-          <PolicyCard key={p.id} policy={p} />
+          <PolicyCard
+            key={p.id}
+            policy={p}
+            docsReady={documents ? checklistFor(p.id, /** @type {any} */ (documents)).filter((i) => i.done).length : undefined}
+          />
         ))}
       </div>
     </section>

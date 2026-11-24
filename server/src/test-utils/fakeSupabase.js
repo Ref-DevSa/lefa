@@ -28,9 +28,10 @@ const POLICY_DEFAULTS = {
 }
 
 /**
- * @param {{ users?: FakeUser[], policies?: Row[], authDown?: boolean, dbError?: boolean }} [options]
+ * @param {{ users?: FakeUser[], policies?: Row[], documents?: Row[], files?: Record<string, Buffer>,
+ *   authDown?: boolean, dbError?: boolean, storageDown?: boolean }} [options]
  */
-export function createFakeSupabase({ users = [], policies = [], authDown = false, dbError = false } = {}) {
+export function createFakeSupabase({ users = [], policies = [], documents = [], files = {}, authDown = false, dbError = false, storageDown = false } = {}) {
   /** @type {string[]} tokens each user client was created with */
   const clientsCreatedWith = []
 
@@ -46,11 +47,15 @@ export function createFakeSupabase({ users = [], policies = [], authDown = false
       updated_at: new Date().toISOString(),
       ...p,
     })),
+    documents: documents.map((d) => ({ id: randomUUID(), policy_id: null, created_at: new Date().toISOString(), ...d })),
   }
+  /** Files in the private "vault" bucket, by path. */
+  const storage = new Map(Object.entries(files))
 
   return {
     clientsCreatedWith,
     tables,
+    storage,
     /** @param {string} token */
     forUser(token) {
       clientsCreatedWith.push(token)
@@ -70,7 +75,35 @@ export function createFakeSupabase({ users = [], policies = [], authDown = false
         /** @param {string} table */
         from(table) {
           if (!tables[table]) throw new Error(`fake supabase: unexpected table ${table}`)
-          return new Query(tables[table], table, me, dbError)
+          return new Query(tables[table], table, me, dbError, tables)
+        },
+        // Storage with the same rule as the real bucket: only your own folder.
+        storage: {
+          /** @param {string} bucket */
+          from(bucket) {
+            if (bucket !== 'vault') throw new Error(`fake supabase: unexpected bucket ${bucket}`)
+            const mine = (/** @type {string} */ path) => !!me && (me.role === 'admin' || path.startsWith(`${me.id}/`))
+            const denied = { statusCode: '403', message: 'new row violates row-level security policy' }
+            return {
+              /** @param {string} path @param {Buffer} body */
+              async upload(path, body) {
+                if (storageDown) return { data: null, error: { statusCode: '500', message: 'storage unavailable' } }
+                if (!me || !path.startsWith(`${me.id}/`)) return { data: null, error: denied }
+                storage.set(path, body)
+                return { data: { path }, error: null }
+              },
+              /** @param {string[]} paths */
+              async remove(paths) {
+                for (const p of paths) if (mine(p)) storage.delete(p)
+                return { data: [], error: null }
+              },
+              /** @param {string} path @param {number} expiresIn */
+              async createSignedUrl(path, expiresIn) {
+                if (!mine(path) || !storage.has(path)) return { data: null, error: { statusCode: '404', message: 'Object not found' } }
+                return { data: { signedUrl: `https://storage.test/vault/${path}?token=signed&expires=${expiresIn}` }, error: null }
+              },
+            }
+          },
         },
       }
     },
@@ -81,8 +114,10 @@ class Query {
   /**
    * @param {Row[]} rows @param {string} table
    * @param {FakeUser | undefined} me @param {boolean} dbError
+   * @param {Record<string, Row[]>} [allTables]
    */
-  constructor(rows, table, me, dbError) {
+  constructor(rows, table, me, dbError, allTables = {}) {
+    this.allTables = allTables
     this.rows = rows
     this.table = table
     this.me = me
@@ -161,17 +196,21 @@ class Query {
         const row = {
           id: randomUUID(),
           owner_id: this.me?.id,
-          ...POLICY_DEFAULTS,
+          ...(this.table === 'policies' ? POLICY_DEFAULTS : { policy_id: null }),
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          ...(this.table === 'policies' ? { updated_at: new Date().toISOString() } : {}),
           ...input,
         }
-        if (row.owner_id !== this.me?.id) {
-          return { data: null, error: { code: '42501', message: 'new row violates row-level security policy' } }
+        const rls = { data: null, error: { code: '42501', message: 'new row violates row-level security policy' } }
+        if (row.owner_id !== this.me?.id) return rls
+        // documents: may only link to one of the owner's own policies
+        if (this.table === 'documents' && row.policy_id) {
+          const policy = (this.allTables.policies ?? []).find((p) => p.id === row.policy_id)
+          if (!policy || policy.owner_id !== this.me?.id) return rls
         }
-        const duplicate = this.rows.some(
-          (r) => r.owner_id === row.owner_id && r.insurer === row.insurer && r.policy_number === row.policy_number,
-        )
+        const duplicate =
+          this.table === 'policies' &&
+          this.rows.some((r) => r.owner_id === row.owner_id && r.insurer === row.insurer && r.policy_number === row.policy_number)
         if (duplicate) {
           return { data: null, error: { code: '23505', message: 'duplicate key value violates unique constraint' } }
         }
@@ -183,7 +222,7 @@ class Query {
 
     if (this.op === 'update') {
       const hit = matches()
-      for (const row of hit) Object.assign(row, this.payload, { updated_at: new Date().toISOString() })
+      for (const row of hit) Object.assign(row, this.payload, this.table === 'policies' ? { updated_at: new Date().toISOString() } : {})
       return { data: this.returning ? hit : null, error: null }
     }
 

@@ -21,7 +21,8 @@ export function notFound(_req, res) {
 export function errorHandler(logger) {
   return (err, req, res, _next) => {
     if (err instanceof HttpError) {
-      res.status(err.status).json({ error: { code: err.code, message: err.message } })
+      const body = { code: err.code, message: err.message, ...(err.fields && { fields: err.fields }) }
+      res.status(err.status).json({ error: body })
       return
     }
     if (err?.type === 'entity.parse.failed') {

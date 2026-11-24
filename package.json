@@ -22,7 +22,8 @@
     "db:check": "supabase db push --remote --dry-run",
     "db:push": "supabase db push --remote",
     "db:test": "supabase test db --remote",
-    "db:seed": "node --env-file=server/.env --env-file=server/.env.seed server/scripts/seed.js"
+    "db:seed": "node --env-file=server/.env --env-file=server/.env.seed server/scripts/seed.js",
+    "db:reset-demo": "node --env-file=server/.env.seed server/scripts/reset-demo.js"
   },
   "engines": {
     "node": ">=22.9"

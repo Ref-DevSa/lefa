@@ -1,4 +1,5 @@
 import { createApp } from './app.js'
+import { parseOrigins } from './lib/cors.js'
 import { createSupabaseFactory } from './lib/supabase.js'
 
 const port = Number(process.env.PORT) || 3001
@@ -10,6 +11,8 @@ if (!url || !anonKey) {
   process.exit(1)
 }
 
-createApp({ supabase: createSupabaseFactory({ url, anonKey }) }).listen(port, () => {
-  console.log(`Lefa API listening on http://localhost:${port}`)
+const corsOrigins = parseOrigins(process.env.CORS_ORIGIN)
+
+createApp({ supabase: createSupabaseFactory({ url, anonKey }), corsOrigins }).listen(port, () => {
+  console.log(`Lefa API listening on port ${port}; allowing browser calls from ${corsOrigins.join(', ')}`)
 })

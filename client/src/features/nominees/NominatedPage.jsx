@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import { Button } from '../../components/ui/Button.jsx'
 import { Card } from '../../components/ui/Card.jsx'
 import { EmptyState } from '../../components/ui/EmptyState.jsx'
@@ -64,14 +65,12 @@ export default function NominatedPage() {
                     </span>
                     <div>
                       <h3 className="font-semibold text-ink">{n.owner_name}</h3>
-                      <p className="text-sm text-muted">You are their nominee ({relationshipLabel(n.relationship).toLowerCase()})</p>
+                      <p className="text-sm text-muted">
+                        You are their nominee{n.relationship !== 'other' && ` (${relationshipLabel(n.relationship).toLowerCase()})`}
+                      </p>
                     </div>
                   </div>
-                  <LockNote>
-                    <strong>Vault locked</strong>
-                    <br />
-                    You&apos;ll see their policies and documents only after a death is verified by a broker.
-                  </LockNote>
+                  <VaultState nomination={n} />
                 </Card>
               ))}
             </div>
@@ -118,5 +117,61 @@ function Invitation({ nomination }) {
         </Button>
       </div>
     </Card>
+  )
+}
+
+const linkButton =
+  'inline-flex min-h-11 items-center justify-center self-start rounded-control px-4 font-semibold transition-colors'
+
+/**
+ * Where this person's vault stands: locked (report a death), under review,
+ * rejected (with the broker's reason) or unlocked (open it).
+ * @param {{ nomination: Record<string, any> }} props
+ */
+function VaultState({ nomination }) {
+  const state = nomination.vault?.state ?? 'locked'
+  const firstName = nomination.owner_name.split(' ')[0]
+
+  if (state === 'unlocked') {
+    return (
+      <div className="flex flex-col gap-3 rounded-card border border-success/30 bg-success/5 p-4">
+        <p className="font-semibold text-success">Vault unlocked</p>
+        <p className="text-sm text-ink">
+          The death was verified. You can now see {firstName}&apos;s policies and documents and track every claim.
+        </p>
+        <Link to={`/vaults/${nomination.owner_id}`} className={`${linkButton} bg-primary text-white hover:bg-primary-hover`}>
+          Open vault
+        </Link>
+      </div>
+    )
+  }
+  if (state === 'under_review') {
+    return (
+      <div className="rounded-card border border-info/30 bg-info/5 p-4">
+        <p className="font-semibold text-info">Death report pending verification</p>
+        <p className="mt-1 text-sm text-ink">A broker is checking the certificate, usually within 24 hours. We&apos;ll unlock the vault as soon as it&apos;s verified.</p>
+      </div>
+    )
+  }
+  return (
+    <div className="flex flex-col gap-3">
+      {state === 'rejected' && (
+        <div className="rounded-card border border-danger/30 bg-danger/5 p-4 text-sm">
+          <p className="font-semibold text-danger">The report was not accepted</p>
+          <p className="mt-1 text-ink">Reason: {nomination.vault.rejection_reason}</p>
+        </div>
+      )}
+      <LockNote>
+        <strong>Vault locked</strong>
+        <br />
+        You&apos;ll see their policies and documents only after a death is verified by a broker.
+      </LockNote>
+      <Link
+        to={`/nominated/${nomination.owner_id}/report`}
+        className={`${linkButton} border border-primary bg-surface text-primary hover:bg-cream`}
+      >
+        {state === 'rejected' ? 'Report again' : 'Report a death'}
+      </Link>
+    </div>
   )
 }

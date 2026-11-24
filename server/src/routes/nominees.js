@@ -74,10 +74,32 @@ export function nomineesRouter(supabase) {
   })
 
   // Only the owner's name, relationship and status: nothing from the vault.
+  // Only the owner's name, relationship and status, plus where their vault
+  // stands: locked (no report), under review (pending), rejected (with the
+  // broker's reason) or unlocked (verified). Never any vault contents.
   router.get('/nominations', async (_req, res) => {
-    const { data, error } = await res.locals.supabase.rpc('my_nominations')
+    const db = res.locals.supabase
+    const { data, error } = await db.rpc('my_nominations')
     if (error) throw dbError(error)
-    res.json({ nominations: data ?? [] })
+    const reports = await db.from('death_reports').select('owner_id, status, rejection_reason, created_at').order('created_at', { ascending: false })
+    if (reports.error) throw dbError(reports.error)
+
+    const STATE = { verified: 'unlocked', pending: 'under_review', rejected: 'rejected' }
+    const nominations = (data ?? []).map((/** @type {any} */ nomination) => {
+      const mine = (reports.data ?? []).filter((/** @type {any} */ r) => r.owner_id === nomination.owner_id)
+      // An open (pending/verified) report wins over older rejected ones.
+      const latest = mine.find((/** @type {any} */ r) => r.status !== 'rejected') ?? mine[0]
+      const visible = nomination.status === 'accepted' && latest
+      return {
+        ...nomination,
+        vault: {
+          state: visible ? STATE[/** @type {keyof typeof STATE} */ (latest.status)] : 'locked',
+          report_status: visible ? latest.status : null,
+          rejection_reason: visible && latest.status === 'rejected' ? latest.rejection_reason : null,
+        },
+      }
+    })
+    res.json({ nominations })
   })
 
   router.patch('/nominees/:id', async (req, res) => {

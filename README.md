@@ -32,9 +32,9 @@ All demo accounts use the password **`LefaDemo2026!`** (see [PRD §9](docs/PRD.m
 | Role | Email | What you'll see |
 |---|---|---|
 | Member (policyholder) | thandi@lefa.test | My Vault: 3 policies, R85 000 active cover, 1 lapsed _(cards from #10)_ |
-| Member (nominee, locked) | lerato@lefa.test | Her own empty vault; Thandi's vault stays locked |
-| Member (nominee, unlocked) | sipho@lefa.test | Unlocked vault + claims _(from #13–#14)_ |
-| Broker | broker@lefa.test | Broker dashboard; members' pages return 403 |
+| Member (nominee, locked) | lerato@lefa.test | Thandi's accepted nominee: sees only her name until a death is verified |
+| Member (nominee, unlocked) | sipho@lefa.test | Gogo Mmabatho's vault unlocked after a verified death: AVBOB claim paid, Assupol submitted; Jabulani's report pending |
+| Broker | broker@lefa.test | Looks after all demo families; 1 death report waiting for verification |
 | Admin | admin@lefa.test | Broker dashboard with admin access |
 
 > **Demo environment.** These passwords are public, so please don't enter real personal or policy details. The API runs on Render's free plan and sleeps after 15 minutes idle: the first request can take up to a minute (the site pings it on load to wake it).

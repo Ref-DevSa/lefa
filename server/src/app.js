@@ -1,6 +1,8 @@
 import express from 'express'
 import { errorHandler, notFound } from './middleware/errors.js'
 import { meRouter } from './routes/me.js'
+import { policiesRouter } from './routes/policies.js'
+import { vaultRouter } from './routes/vault.js'
 
 /**
  * Build the Express app. Exported separately from listen() so Supertest can
@@ -22,6 +24,8 @@ export function createApp({ supabase, logger = console } = {}) {
 
   // Signed-in
   app.use('/api/me', meRouter(supabase))
+  app.use('/api/policies', policiesRouter(supabase))
+  app.use('/api/vault', vaultRouter(supabase))
 
   app.use('/api', notFound)
   app.use(errorHandler(logger))

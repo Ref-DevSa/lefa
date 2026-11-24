@@ -112,6 +112,32 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 
 > **In one sentence:** "Every request is checked at the door and then handled with the user's own permissions, so the database's privacy rules apply no matter which route the request takes."
 
+### #9 The vault: policies in the database and API
+- **What:**
+  - **A `policies` table:** one row per insurance policy a member records: insurer, policy number, type (funeral / life / credit life / other), cover amount, monthly premium, debit day, status (active / lapsed / paid-up), beneficiaries and notes.
+  - **Database rules on that table:**
+    - insurer and policy number are required, and amounts must be R0 or more;
+    - the debit day must be 1–31;
+    - the same policy can't be added twice to one vault;
+    - the "last edited" time is always set by the database, so it can't be faked;
+    - when an account is deleted, its policies are deleted too (POPIA: no orphaned personal data).
+  - **RLS:** you see, add, edit and delete only *your own* policies, and admins can read all for support. Nominee and broker access come later (#12, #13), once the tables they depend on exist.
+  - **API:** list, add, edit and delete policies (`/api/policies`), plus `/api/vault/summary` with total active cover, monthly premiums, policy count and number of insurers.
+- **Why each detail:**
+  - **Rules in both the API and the database.** The API gives the form a clear message per field ("Debit day must be between 1 and 31."). The database is the final guard, even if someone bypasses the app.
+  - **Money in exact cents.** Amounts are stored as `numeric(12,2)` and added up in whole cents, so R199.10 + R0.20 is exactly R199.30. A finance app that's out by a cent loses trust.
+  - **Only *active* policies count in the totals.** Lapsed cover won't pay out, so including it would give a family false comfort. Showing the real number is the point of Lefa.
+  - **You can't choose the owner.** The API rejects any `owner_id` in a request; the owner is always the logged-in person, and the database enforces this too.
+  - **Someone else's policy gets "not found" (404), not "forbidden" (403).** "Forbidden" would confirm the policy exists; "not found" reveals nothing.
+- **How we know it works:**
+  - **On the live database: 18 new security tests** (34 in total), including:
+    - another member sees 0 of Thandi's policies and can't change or delete them;
+    - nobody can add a policy into someone else's vault or hand theirs to someone else;
+    - bad values are refused.
+  - **For the API: 21 new tests** covering logins, roles, validation messages, duplicates, 404s and the totals maths.
+
+> **In one sentence:** "The vault shows a family the true value of their active cover in exact rands, and each family's policies are locked to them by the database itself."
+
 ---
 
 ## 4. Keys and secrets
@@ -167,4 +193,7 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 - **Middleware:** a check that runs before an API route, like the doorman before the waiter.
 - **401 / 403 / 404 / 500 / 503:** standard response codes: not logged in / not allowed / not found / our bug / temporarily down.
 
-*Next up: #9 the policies table and API (the vault itself).*
+- **Validation:** checking input is sensible before saving it (e.g. no negative amounts).
+- **CRUD:** Create, Read, Update, Delete: the four basic things you can do with stored data.
+
+*Next up: #10 the My Vault screens (S3–S5).*

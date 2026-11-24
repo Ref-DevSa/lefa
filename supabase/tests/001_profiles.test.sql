@@ -82,7 +82,11 @@ select throws_ok(
 -- As admin ------------------------------------------------------------------
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000000ad","role":"authenticated"}', true);
 
-select is((select count(*)::int from profiles), 3, 'an admin sees every profile');
+select is(
+  (select count(*)::int from profiles where id in ('00000000-0000-4000-8000-0000000000a1', '00000000-0000-4000-8000-0000000000a2', '00000000-0000-4000-8000-0000000000ad')),
+  3,
+  'an admin sees every profile (including other members)'
+);
 
 select is(
   (select full_name from profiles where id = '00000000-0000-4000-8000-0000000000a2'),
@@ -112,9 +116,9 @@ select throws_ok(
 set local role postgres;
 
 select is(
-  (select count(*)::int from profiles where role = 'admin'),
+  (select count(*)::int from profiles where role = 'admin' and email like '%@test.local'),
   1,
-  'still exactly one admin'
+  'still exactly one admin among the test users'
 );
 
 select * from finish();

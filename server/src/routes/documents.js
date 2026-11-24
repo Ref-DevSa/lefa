@@ -1,41 +1,18 @@
 import { randomUUID } from 'node:crypto'
 import { Router } from 'express'
-import multer from 'multer'
 import { requireAuth, requireRole } from '../middleware/auth.js'
 import { HttpError } from '../lib/httpError.js'
 import { dbError } from '../lib/dbError.js'
 import { requireUuid } from '../lib/validate.js'
 import { detectFileType, safeStorageName } from '../lib/fileType.js'
-import { MAX_FILE_BYTES, documentFieldsSchema } from '../schemas/document.js'
+import { documentFieldsSchema } from '../schemas/document.js'
+import { decodeFileName, singleFileUpload } from '../lib/upload.js'
 
 const BUCKET = 'vault'
 const SIGNED_URL_SECONDS = 60 // PRD §7: download links live for 60 seconds
 export const DOCUMENT_COLUMNS = 'id, owner_id, policy_id, doc_type, file_name, storage_path, mime_type, size_bytes, created_at'
 
 const notFound = () => new HttpError(404, 'not_found', 'That document was not found.')
-
-// Files are held in memory (max 5 MB) only long enough to check and store them.
-const receiveFile = multer({
-  storage: multer.memoryStorage(),
-  limits: { fileSize: MAX_FILE_BYTES, files: 1, fields: 5 },
-}).single('file')
-
-/**
- * Run multer, turning its errors into friendly API errors.
- * @param {import('express').Request} req
- * @param {import('express').Response} res
- * @param {import('express').NextFunction} next
- */
-function fileUpload(req, res, next) {
-  receiveFile(req, res, (err) => {
-    if (!err) return next()
-    if (err.code === 'LIMIT_FILE_SIZE') return next(new HttpError(413, 'file_too_large', 'Files can be up to 5 MB. Try a smaller scan or photo.'))
-    return next(new HttpError(400, 'invalid_upload', "We couldn't read that upload. Try again."))
-  })
-}
-
-/** Multer reads file names as latin1; browsers send UTF-8. @param {string} name */
-const decodeName = (name) => Buffer.from(name, 'latin1').toString('utf8').trim().slice(0, 200) || 'document'
 
 /**
  * /api/documents: a member's claim documents (PRD M4, §6).
@@ -60,7 +37,7 @@ export function documentsRouter(supabase) {
     res.json({ documents: data })
   })
 
-  router.post('/', fileUpload, async (req, res) => {
+  router.post('/', singleFileUpload('file'), async (req, res) => {
     // 1. Check the form fields and that a file came with them.
     const parsed = documentFieldsSchema.safeParse(req.body ?? {})
     /** @type {Record<string, string>} */
@@ -75,7 +52,7 @@ export function documentsRouter(supabase) {
 
     // 3. Store it in the member's own folder: vault/{owner_id}/{uuid}-{name}
     const db = res.locals.supabase
-    const fileName = decodeName(req.file.originalname)
+    const fileName = decodeFileName(req.file.originalname)
     const path = `${res.locals.user.id}/${randomUUID()}-${safeStorageName(fileName, type.ext)}`
     const stored = await db.storage.from(BUCKET).upload(path, req.file.buffer, { contentType: type.mime, upsert: false })
     if (stored.error) {

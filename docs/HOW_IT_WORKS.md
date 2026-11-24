@@ -298,6 +298,41 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 
 > **In one sentence:** "A broker's verification is the only key: one step that unlocks the vault and opens a claim for every policy, with a full audit trail and no way for anyone to skip it."
 
+### #14 Report a death and the unlocked vault (the nominee's side)
+- **What:**
+  - **"Nominated for me" shows where each vault stands:**
+    - **Vault locked**, with a **Report a death** button;
+    - **Pending verification**;
+    - **Not accepted**, with the broker's reason and **Report again**;
+    - **Vault unlocked**, with **Open vault**.
+  - **Report a death (S9)** is a short, gentle form: "We're sorry for your loss. We'll help you claim everything Thandi was covered for." It asks for:
+    - the date of death and a photo or scan of the certificate;
+    - optionally the DHA / BI-1663 reference and a note for the broker.
+
+    It ends on "Report submitted. Under review."
+  - **The unlocked vault (S10):**
+    - "Cover being claimed: R35 000 · 2 claims · 1 paid";
+    - a **claim card per policy**, showing the policy number, cover, a **stepper** (*Not started → Submitted → Documents requested → Approved → Paid*), the documents to send the insurer, **Update status** with a note, and the full history;
+    - policies **without** a claim (e.g. lapsed) are listed, with what to do about them.
+- **Why each detail:**
+  - **Few, kind words.** Whoever uses this has just lost someone. The form asks only what the broker needs, and says plainly what happens next.
+  - **The certificate is checked like every upload:** by its real file type, at most 5 MB, in a private bucket. If filing the report fails, the certificate is deleted again.
+  - **Only an accepted nominee can report, and only once per person.** A second report while one is open is refused before any file is stored.
+  - **The vault page asks the database, not the screen,** whether it's unlocked. A locked vault returns "403 vault locked", even if someone types the address directly.
+  - **The ID and bank letter appear under every claim**, because every insurer asks for them. This is where preparing documents in #11 pays off.
+  - **Every claim update is logged with a note**, so the family and the broker see the same truth: who changed what, when and why.
+- **How we know it works:**
+  - **24 new automated tests** across the API and website. The website suite also became more robust under load: it ran **3 times in a row** with all 188 tests passing.
+  - **Live as Sipho, against the real database:**
+    - Mmabatho's vault opens (AVBOB paid, Assupol submitted, her ID and bank letter attached);
+    - Jabulani's vault is "locked" while it's pending.
+  - **Refused, live:**
+    - Lerato reporting Mmabatho's death, opening her vault, or changing her claim;
+    - Sipho filing a second report.
+
+> **In one sentence:** "In the worst week of their life, a family reports the death once, and when the broker verifies it they see every policy, the documents insurers want, and exactly where each payout stands."
+
+
 
 
 
@@ -362,4 +397,4 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 - **Validation:** checking input is sensible before saving it (e.g. no negative amounts).
 - **CRUD:** Create, Read, Update, Delete: the four basic things you can do with stored data.
 
-*Next up: #14 the Report-a-death and unlocked-vault screens, then #15 the broker screens.*
+*Next up: #15 the broker screens: dashboard, verifying deaths and the claims pipeline.*

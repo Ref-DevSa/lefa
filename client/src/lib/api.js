@@ -119,6 +119,27 @@ export function createApi({ baseUrl = '', getToken, fetchImpl = (input, init) =>
     updateNominee: async (id, action) => request('PATCH', `/api/nominees/${encodeURIComponent(id)}`, { action }),
     /** Where I'm the nominee (owner's name only). @returns {Promise<Record<string, any>[]>} */
     listNominations: async () => (await request('GET', '/api/nominations')).nominations,
+
+    /**
+     * Report a death with the certificate (accepted nominees only).
+     * @param {{ ownerId: string, dateOfDeath: string, dhaReference?: string, notes?: string, certificate: File }} input
+     */
+    reportDeath: async ({ ownerId, dateOfDeath, dhaReference = '', notes = '', certificate }) => {
+      const form = new FormData()
+      form.append('owner_id', ownerId)
+      form.append('date_of_death', dateOfDeath)
+      form.append('dha_reference', dhaReference)
+      form.append('notes', notes)
+      form.append('certificate', certificate, certificate.name)
+      return (await request('POST', '/api/death-reports', form)).report
+    },
+    /** A deceased member's unlocked vault. @param {string} ownerId */
+    getVault: async (ownerId) => (await request('GET', `/api/vaults/${encodeURIComponent(ownerId)}`)).vault,
+    /** @param {string} ownerId @param {string} docId @returns {Promise<string>} */
+    getVaultDocumentUrl: async (ownerId, docId) =>
+      (await request('GET', `/api/vaults/${encodeURIComponent(ownerId)}/documents/${encodeURIComponent(docId)}/url`)).url,
+    /** @param {string} id @param {{ status: string, note?: string }} values */
+    updateClaim: async (id, values) => (await request('PATCH', `/api/claims/${encodeURIComponent(id)}`, values)).claim,
   }
 }
 

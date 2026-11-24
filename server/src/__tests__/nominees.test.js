@@ -82,6 +82,7 @@ describe('GET /api/nominations (nominated for me)', () => {
         relationship: 'child',
         status: 'invited',
         created_at: expect.any(String),
+        vault: { state: 'locked', report_status: null, rejection_reason: null },
       },
     ])
     expect(JSON.stringify(res.body)).not.toMatch(/\+2782|thandi@/)

@@ -6,14 +6,18 @@ import { useToast } from '../../components/ui/useToast.js'
  * The tab is opened immediately (inside the click) so pop-up blockers allow
  * it, then pointed at the link once the API returns it.
  */
-export function useOpenDocument() {
+/**
+ * @param {string} [vaultOwnerId] open a document from someone else's
+ *   unlocked vault (as their nominee) instead of your own
+ */
+export function useOpenDocument(vaultOwnerId) {
   const api = useApi()
   const toast = useToast()
   return async (/** @type {Record<string, any>} */ doc) => {
     const tab = window.open('', '_blank')
     if (tab) tab.opener = null // the new page can't reach back into Lefa
     try {
-      const url = await api.getDocumentUrl(doc.id)
+      const url = vaultOwnerId ? await api.getVaultDocumentUrl(vaultOwnerId, doc.id) : await api.getDocumentUrl(doc.id)
       if (tab) tab.location.href = url
       else window.location.assign(url)
     } catch (err) {

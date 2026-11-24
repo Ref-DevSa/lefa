@@ -13,9 +13,10 @@ import { ApiError } from '../lib/api.js'
  *   invite 'limit@x.co'           -> 422 nominee_limit
  *
  * @param {{ policies?: Array<Record<string, any>>, documents?: Array<Record<string, any>>,
- *   nominees?: Array<Record<string, any>>, nominations?: Array<Record<string, any>>, failList?: boolean }} [options]
+ *   nominees?: Array<Record<string, any>>, nominations?: Array<Record<string, any>>,
+ *   vaults?: Record<string, Record<string, any>>, failList?: boolean }} [options]
  */
-export function createFakeApi({ policies = [], documents = [], nominees = [], nominations = [], failList = false } = {}) {
+export function createFakeApi({ policies = [], documents = [], nominees = [], nominations = [], vaults = {}, failList = false } = {}) {
   let nextId = policies.length + 1
   /** @type {Array<Record<string, any>>} */
   let rows = policies.map((p, i) => ({
@@ -38,7 +39,15 @@ export function createFakeApi({ policies = [], documents = [], nominees = [], no
   /** @type {Array<Record<string, any>>} people Thandi nominated */
   let myNominees = nominees.map((n, i) => ({ id: `n${i + 1}`, owner_id: 'u-thandi', nominee_id: null, status: 'invited', created_at: `2026-11-1${i}T08:00:00Z`, ...n }))
   /** @type {Array<Record<string, any>>} where the signed-in user is the nominee */
-  let forMe = nominations.map((n, i) => ({ id: `m${i + 1}`, status: 'invited', created_at: '2026-11-20T08:00:00Z', ...n }))
+  let forMe = nominations.map((n, i) => ({
+    id: `m${i + 1}`,
+    status: 'invited',
+    created_at: '2026-11-20T08:00:00Z',
+    vault: { state: 'locked', report_status: null, rejection_reason: null },
+    ...n,
+  }))
+  /** @type {Record<string, Record<string, any>>} unlocked vaults by owner id */
+  const vaultStore = JSON.parse(JSON.stringify(vaults))
   let nextDoc = documents.length + 1
   /** @type {Array<Record<string, any>>} */
   let docs = documents.map((d, i) => ({
@@ -179,6 +188,43 @@ export function createFakeApi({ policies = [], documents = [], nominees = [], no
       theirs.status = to
       forMe = forMe.filter((n) => n.status === 'invited' || n.status === 'accepted')
       return { nomination: { id, status: to } }
+    },
+
+    /** @param {{ ownerId: string, dateOfDeath: string, dhaReference?: string, notes?: string, certificate: File }} input */
+    async reportDeath(input) {
+      calls.push(['reportDeath', { ownerId: input.ownerId, dateOfDeath: input.dateOfDeath, dhaReference: input.dhaReference, file: input.certificate.name }])
+      if (input.certificate.name.endsWith('.bad')) throw new ApiError(415, 'unsupported_file_type', 'Upload the certificate as a PDF, JPG or PNG.')
+      const n = forMe.find((x) => x.owner_id === input.ownerId)
+      if (n) n.vault = { state: 'under_review', report_status: 'pending', rejection_reason: null }
+      return { id: 'r-new', owner_id: input.ownerId, status: 'pending' }
+    },
+
+    /** @param {string} ownerId */
+    async getVault(ownerId) {
+      calls.push(['getVault', ownerId])
+      const v = vaultStore[ownerId]
+      if (!v) throw new ApiError(403, 'vault_locked', 'This vault is locked. It opens once a broker has verified the death.')
+      return JSON.parse(JSON.stringify(v))
+    },
+
+    /** @param {string} ownerId @param {string} docId */
+    async getVaultDocumentUrl(ownerId, docId) {
+      calls.push(['getVaultDocumentUrl', ownerId, docId])
+      return `https://storage.test/vault/${ownerId}/${docId}?token=signed`
+    },
+
+    /** @param {string} id @param {{ status: string, note?: string }} values */
+    async updateClaim(id, values) {
+      calls.push(['updateClaim', id, values])
+      for (const v of Object.values(vaultStore)) {
+        const claim = v.claims.find((/** @type {any} */ c) => c.id === id)
+        if (!claim) continue
+        if (claim.status === values.status) throw new ApiError(409, 'invalid_transition', `The claim is already ${values.status}`)
+        claim.events.push({ id: `e${claim.events.length + 1}`, claim_id: id, from_status: claim.status, to_status: values.status, note: values.note ?? '', created_at: '2026-11-30T10:00:00Z' })
+        claim.status = values.status
+        return { id, status: values.status }
+      }
+      throw new ApiError(403, 'forbidden', "You can't update this claim.")
     },
 
     async listNominations() {

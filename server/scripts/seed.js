@@ -146,11 +146,20 @@ function demoPdf(title) {
  */
 async function seedDocuments(ownerId, policies) {
   const oldMutual = policies.find((p) => p.insurer === 'Old Mutual')
-  const docs = [
+  await storeDemoDocuments(ownerId, [
     { doc_type: 'certified_id', file_name: 'Thandi Mokoena - certified ID.pdf', slug: 'certified-id', policy_id: null },
     { doc_type: 'bank_letter', file_name: 'Bank confirmation letter.pdf', slug: 'bank-letter', policy_id: null },
     { doc_type: 'policy_schedule', file_name: 'Old Mutual policy schedule.pdf', slug: 'old-mutual-schedule', policy_id: oldMutual?.id ?? null },
-  ]
+  ])
+  console.log('  ✓ 3 demo documents for Thandi (7 of 9 claim-ready)')
+}
+
+/**
+ * Store labelled DEMO PDFs in someone's vault folder and record them.
+ * @param {string} ownerId
+ * @param {Array<{ doc_type: string, file_name: string, slug: string, policy_id: string | null }>} docs
+ */
+async function storeDemoDocuments(ownerId, docs) {
   for (const d of docs) {
     const file = demoPdf(d.file_name)
     const path = `${ownerId}/seed-${d.slug}.pdf` // fixed path, so re-running updates instead of duplicating
@@ -170,7 +179,6 @@ async function seedDocuments(ownerId, policies) {
     )
     if (error) throw error
   }
-  console.log(`  ✓ ${docs.length} demo documents for Thandi (7 of 9 claim-ready)`)
 }
 
 /**
@@ -197,6 +205,11 @@ async function seedUnlockStory(ids) {
   await policiesFor(ids.mmabatho, [
     { insurer: 'AVBOB', policy_number: 'AV-220417', type: 'funeral', cover_amount: 15000, monthly_premium: 120, debit_day: 7, status: 'active', beneficiaries: 'Sipho Ndlovu (grandson)' },
     { insurer: 'Assupol', policy_number: 'AS-99812', type: 'funeral', cover_amount: 20000, monthly_premium: 165, debit_day: 25, status: 'active', beneficiaries: 'Sipho Ndlovu (grandson)' },
+  ])
+  // Mmabatho prepared her ID and bank letter before she died: they now help Sipho claim.
+  await storeDemoDocuments(ids.mmabatho, [
+    { doc_type: 'certified_id', file_name: 'Mmabatho Ndlovu - certified ID.pdf', slug: 'certified-id', policy_id: null },
+    { doc_type: 'bank_letter', file_name: 'Mmabatho - bank confirmation letter.pdf', slug: 'bank-letter', policy_id: null },
   ])
   await policiesFor(ids.jabu, [
     { insurer: 'Sanlam', policy_number: 'SL-781104', type: 'life', cover_amount: 60000, monthly_premium: 310, debit_day: 1, status: 'active', beneficiaries: 'Sipho Ndlovu (son)' },

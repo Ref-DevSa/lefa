@@ -27,6 +27,7 @@ South Africans hold **17 million funeral policies**, yet roughly **R88.5 billion
 | Product requirements | [docs/PRD.md](docs/PRD.md) |
 | How it works (plain language) | [docs/HOW_IT_WORKS.md](docs/HOW_IT_WORKS.md) |
 | Implementation plan | [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) |
+| Demo script / submission checklist | [docs/LOOM_SCRIPT.md](docs/LOOM_SCRIPT.md) · [docs/SUBMISSION.md](docs/SUBMISSION.md) |
 | Author's portfolio | [refilwe-segoe.vercel.app](https://refilwe-segoe.vercel.app) |
 
 ## 🔑 Test logins
@@ -167,7 +168,8 @@ In Supabase → Authentication → Sign In / Providers → Email, turn **Confirm
 **3. Demo data (optional).** Copy `server/.env.seed.example` to `server/.env.seed`, add a **secret / service_role** key (local only, never commit it), then:
 
 ```bash
-npm run db:seed     # 5 demo logins + the stories above (safe to re-run)
+npm run db:seed        # 5 demo logins + the stories above (safe to re-run)
+npm run db:reset-demo  # put Jabulani's death report back to pending (re-run the demo)
 ```
 
 **4. Run.**

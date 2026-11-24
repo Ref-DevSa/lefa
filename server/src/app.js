@@ -5,6 +5,7 @@ import { meRouter } from './routes/me.js'
 import { policiesRouter } from './routes/policies.js'
 import { vaultRouter } from './routes/vault.js'
 import { documentsRouter } from './routes/documents.js'
+import { nomineesRouter } from './routes/nominees.js'
 
 /**
  * Build the Express app. Exported separately from listen() so Supertest can
@@ -34,6 +35,7 @@ export function createApp({ supabase, logger = console, corsOrigins = ['http://l
   app.use('/api/policies', policiesRouter(supabase))
   app.use('/api/vault', vaultRouter(supabase))
   app.use('/api/documents', documentsRouter(supabase))
+  app.use('/api', nomineesRouter(supabase)) // /api/nominees and /api/nominations
 
   app.use('/api', notFound)
   app.use(errorHandler(logger))

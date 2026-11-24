@@ -14,6 +14,7 @@ import { POLICY_TYPES, nextDebit } from './policyFormat.js'
 import { usePolicies, useVaultSummary } from './queries.js'
 import { checklistFor, readiness } from '../documents/docFormat.js'
 import { useDocuments } from '../documents/queries.js'
+import { NomineePanel } from '../nominees/NomineePanel.jsx'
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -72,7 +73,12 @@ export default function VaultPage() {
           <>
             <Totals summary={summary.data} policies={list} documents={documents.data} />
             <LapsedWarning policies={list} />
-            <PolicyList policies={list} documents={documents.data} />
+            <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_20rem]">
+              <PolicyList policies={list} documents={documents.data} />
+              <div className="xl:pt-12">
+                <NomineePanel />
+              </div>
+            </div>
           </>
         )}
       </div>

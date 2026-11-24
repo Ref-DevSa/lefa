@@ -10,10 +10,7 @@ import { PolicyFormModal } from './PolicyFormModal.jsx'
 import { PolicyStatusPill, TypePill } from './PolicyPills.jsx'
 import { ordinal, statusLabel, typeLabel } from './policyFormat.js'
 import { useDeletePolicy, usePolicy } from './queries.js'
-
-// Standard SA claim documents (PRD M4). Upload and ticking arrive in #11.
-const OWNER_DOCS = ['Certified ID copy', 'Bank confirmation letter', 'Policy schedule']
-const CLAIM_TIME_DOCS = ['Death certificate', 'BI-1663 notice of death', "Claimant's ID and proof of relationship"]
+import { ClaimChecklist } from '../documents/ClaimChecklist.jsx'
 
 function BackLink() {
   return (
@@ -108,32 +105,7 @@ export default function PolicyDetailPage() {
             </dl>
           </Card>
 
-          <Card as="section" aria-labelledby="checklist-heading">
-            <h2 id="checklist-heading" className="text-lg font-semibold text-ink">
-              Claim-ready checklist
-            </h2>
-            <p className="mt-1 text-sm text-muted">Have these ready so your family can claim without delays.</p>
-            <ul className="mt-4 flex flex-col gap-2">
-              {OWNER_DOCS.map((doc) => (
-                <li key={doc} className="flex items-start gap-3 rounded-control bg-cream px-3 py-2.5">
-                  <span aria-hidden="true" className="mt-0.5 size-5 shrink-0 rounded-full border-2 border-border" />
-                  <span>
-                    <span className="block font-medium text-ink">{doc}</span>
-                    <span className="text-sm text-muted">Not uploaded yet</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-2 text-sm text-muted">Document uploads open with the Documents page.</p>
-
-            <h3 className="mt-6 text-sm font-semibold tracking-wide text-muted uppercase">Needed at claim time</h3>
-            <p className="mt-1 text-sm text-muted">Your nominee will upload these, and Lefa guides them step by step.</p>
-            <ul className="mt-2 list-disc pl-5 text-sm text-ink">
-              {CLAIM_TIME_DOCS.map((doc) => (
-                <li key={doc}>{doc}</li>
-              ))}
-            </ul>
-          </Card>
+          <ClaimChecklist policyId={p.id} />
         </div>
       </div>
 

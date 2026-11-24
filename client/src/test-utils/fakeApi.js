@@ -8,9 +8,11 @@ import { ApiError } from '../lib/api.js'
  *   policy_number 'DUP'          -> 409 duplicate_policy
  *   insurer 'Server Says No'     -> 400 with a field message on insurer
  *
- * @param {{ policies?: Array<Record<string, any>>, failList?: boolean }} [options]
+ *   upload with a file named '*.bad'  -> 415 unsupported_file_type
+ *
+ * @param {{ policies?: Array<Record<string, any>>, documents?: Array<Record<string, any>>, failList?: boolean }} [options]
  */
-export function createFakeApi({ policies = [], failList = false } = {}) {
+export function createFakeApi({ policies = [], documents = [], failList = false } = {}) {
   let nextId = policies.length + 1
   /** @type {Array<Record<string, any>>} */
   let rows = policies.map((p, i) => ({
@@ -29,6 +31,17 @@ export function createFakeApi({ policies = [], failList = false } = {}) {
   }))
   /** @type {any[]} */
   const calls = []
+  let nextDoc = documents.length + 1
+  /** @type {Array<Record<string, any>>} */
+  let docs = documents.map((d, i) => ({
+    id: `d${i + 1}`,
+    owner_id: 'u-thandi',
+    policy_id: null,
+    mime_type: 'application/pdf',
+    size_bytes: 120000,
+    created_at: `2026-11-2${i}T08:00:00Z`,
+    ...d,
+  }))
 
   /** @param {string} id */
   const find = (id) => {
@@ -40,6 +53,7 @@ export function createFakeApi({ policies = [], failList = false } = {}) {
   return {
     calls,
     rows: () => rows,
+    docs: () => docs,
 
     async listPolicies() {
       calls.push(['listPolicies'])
@@ -93,6 +107,43 @@ export function createFakeApi({ policies = [], failList = false } = {}) {
       calls.push(['deletePolicy', id])
       find(id)
       rows = rows.filter((r) => r.id !== id)
+      docs = docs.map((d) => (d.policy_id === id ? { ...d, policy_id: null } : d))
+    },
+
+    async listDocuments() {
+      calls.push(['listDocuments'])
+      return [...docs].sort((a, b) => (a.created_at < b.created_at ? 1 : -1))
+    },
+
+    /** @param {{ file: File, doc_type: string, policy_id?: string | null }} input */
+    async uploadDocument({ file, doc_type, policy_id }) {
+      calls.push(['uploadDocument', { name: file.name, doc_type, policy_id: policy_id || null }])
+      if (file.name.endsWith('.bad')) throw new ApiError(415, 'unsupported_file_type', 'Upload a PDF, JPG or PNG file.')
+      const doc = {
+        id: `d${nextDoc++}`,
+        owner_id: 'u-thandi',
+        policy_id: policy_id || null,
+        doc_type,
+        file_name: file.name,
+        mime_type: file.type,
+        size_bytes: file.size,
+        created_at: '2026-11-30T09:00:00Z',
+      }
+      docs.push(doc)
+      return doc
+    },
+
+    /** @param {string} id */
+    async getDocumentUrl(id) {
+      calls.push(['getDocumentUrl', id])
+      if (!docs.some((d) => d.id === id)) throw new ApiError(404, 'not_found', 'That document was not found.')
+      return `https://storage.test/${id}?token=signed`
+    },
+
+    /** @param {string} id */
+    async deleteDocument(id) {
+      calls.push(['deleteDocument', id])
+      docs = docs.filter((d) => d.id !== id)
     },
   }
 }

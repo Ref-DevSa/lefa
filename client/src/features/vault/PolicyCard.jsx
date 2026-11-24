@@ -5,8 +5,11 @@ import { formatZAR } from '../../lib/format.js'
 import { PolicyStatusPill, TypePill } from './PolicyPills.jsx'
 import { initials, maskPolicyNumber, ordinal } from './policyFormat.js'
 
-/** One policy on My Vault (S3). @param {{ policy: Record<string, any> }} props */
-export function PolicyCard({ policy }) {
+/**
+ * One policy on My Vault (S3).
+ * @param {{ policy: Record<string, any>, docsReady?: number }} props docsReady: checklist items done (of 3)
+ */
+export function PolicyCard({ policy, docsReady }) {
   const headingId = useId()
   const schedule = policy.debit_day
     ? `${formatZAR(policy.monthly_premium)} · debits on the ${ordinal(policy.debit_day)}`
@@ -45,6 +48,17 @@ export function PolicyCard({ policy }) {
           <p className="text-xs text-muted">Premium</p>
           <p className="font-medium text-ink">{schedule}</p>
         </div>
+        {docsReady !== undefined && (
+          <p
+            className={
+              docsReady === 3
+                ? 'rounded-full bg-success/10 px-2.5 py-0.5 text-sm font-medium text-success'
+                : 'rounded-full bg-accent/15 px-2.5 py-0.5 text-sm font-medium text-ink'
+            }
+          >
+            {docsReady} of 3 docs
+          </p>
+        )}
         <Link
           to={`/vault/policies/${policy.id}`}
           aria-label={`View ${policy.insurer} policy`}

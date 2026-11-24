@@ -207,6 +207,37 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 
 > **In one sentence:** "My Vault turns a drawer of paper into one screen: what you're covered for, what you pay and when, and which policy needs attention before it's too late."
 
+### #11 Claim documents, stored privately
+- **What:**
+  - **A Documents page:**
+    - drag in (or choose) a PDF, JPG or PNG of up to 5 MB;
+    - say what it is (certified ID, bank letter, policy schedule, marriage or birth certificate, other);
+    - optionally link it to a policy.
+
+    You can view, filter and delete your documents.
+  - **A claim-ready checklist on every policy:**
+    - ticks for what's uploaded;
+    - a one-tap **Upload** button for anything missing, already filled in with the right type and policy.
+
+    Cards show **"2 of 3 docs"**, and My Vault shows **"Claim-ready docs: 7 of 9"**.
+  - **Storage:** a **private** bucket where every member has their own folder, plus a `documents` table that records each file.
+- **Why each detail:**
+  - **ID and bank letter count for every policy.** Insurers ask for the same ones, so you upload them once.
+  - **The server checks what a file really is,** by reading its first bytes, not its name. A program renamed `invoice.pdf` is refused before it's stored.
+  - **Files are private, and "View" creates a link that dies after 60 seconds.** A forwarded link stops working a minute later; ID documents and death certificates should never have a permanent web address.
+  - **Two locks on every file.** Our API checks you're the owner, and the storage bucket independently refuses anyone outside their own folder. We tested going straight to storage, around our API: refused.
+  - **No orphaned files.** If saving the record fails (for example, linking someone else's policy), the uploaded file is deleted again. Personal data never lingers unaccounted for (POPIA).
+- **How we know it works:**
+  - **On the live database: 17 new security tests** (51 in total), including:
+    - another member sees 0 of Thandi's documents **and 0 of her files**;
+    - nobody can store a file in someone else's folder or link to someone else's policy;
+    - the type and size limits hold.
+  - **Live uploads:** a real upload, a program disguised as a PDF (refused), a 60-second view link, and Lerato trying the API and then storage directly (both refused).
+  - **74 new automated tests** across the API and website.
+
+> **In one sentence:** "Families prepare their claim documents once, privately, and Lefa shows exactly what's still missing for each policy, so the claim is ready the day it's needed."
+
+
 
 ---
 
@@ -268,4 +299,4 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 - **Validation:** checking input is sensible before saving it (e.g. no negative amounts).
 - **CRUD:** Create, Read, Update, Delete: the four basic things you can do with stored data.
 
-*Next up: #11 documents and the claim-ready checklist.*
+*Next up: #12 nominees: invite someone you trust, locked until a death is verified.*

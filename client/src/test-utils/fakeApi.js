@@ -14,9 +14,11 @@ import { ApiError } from '../lib/api.js'
  *
  * @param {{ policies?: Array<Record<string, any>>, documents?: Array<Record<string, any>>,
  *   nominees?: Array<Record<string, any>>, nominations?: Array<Record<string, any>>,
- *   vaults?: Record<string, Record<string, any>>, failList?: boolean }} [options]
+ *   vaults?: Record<string, Record<string, any>>, broker?: { overview?: Record<string, any>, activity?: any[],
+ *   reports?: Array<Record<string, any>>, claims?: Array<Record<string, any>>, events?: Record<string, any[]> },
+ *   failList?: boolean }} [options]
  */
-export function createFakeApi({ policies = [], documents = [], nominees = [], nominations = [], vaults = {}, failList = false } = {}) {
+export function createFakeApi({ policies = [], documents = [], nominees = [], nominations = [], vaults = {}, broker = {}, failList = false } = {}) {
   let nextId = policies.length + 1
   /** @type {Array<Record<string, any>>} */
   let rows = policies.map((p, i) => ({
@@ -48,6 +50,16 @@ export function createFakeApi({ policies = [], documents = [], nominees = [], no
   }))
   /** @type {Record<string, Record<string, any>>} unlocked vaults by owner id */
   const vaultStore = JSON.parse(JSON.stringify(vaults))
+  const brokerState = JSON.parse(
+    JSON.stringify({
+      overview: { clients: 0, pending_reports: 0, open_claims: 0, paid_this_month: 0 },
+      activity: [],
+      reports: [],
+      claims: [],
+      events: {},
+      ...broker,
+    }),
+  )
   let nextDoc = documents.length + 1
   /** @type {Array<Record<string, any>>} */
   let docs = documents.map((d, i) => ({
@@ -224,7 +236,59 @@ export function createFakeApi({ policies = [], documents = [], nominees = [], no
         claim.status = values.status
         return { id, status: values.status }
       }
+      const brokerClaim = brokerState.claims.find((/** @type {any} */ c) => c.id === id)
+      if (brokerClaim) {
+        if (brokerClaim.status === values.status) throw new ApiError(409, 'invalid_transition', `The claim is already ${values.status}`)
+        ;(brokerState.events[id] ??= []).push({ id: `be${Date.now()}`, claim_id: id, from_status: brokerClaim.status, to_status: values.status, note: values.note ?? '', created_at: '2026-11-30T10:00:00Z' })
+        brokerClaim.status = values.status
+        return { id, status: values.status }
+      }
       throw new ApiError(403, 'forbidden', "You can't update this claim.")
+    },
+
+    async getBrokerOverview() {
+      calls.push(['getBrokerOverview'])
+      return { overview: { ...brokerState.overview }, activity: [...brokerState.activity] }
+    },
+    /** @param {string} [status] */
+    async listReports(status = 'pending') {
+      calls.push(['listReports', status])
+      return brokerState.reports.filter((/** @type {any} */ r) => r.status === status).map((/** @type {any} */ r) => ({ ...r }))
+    },
+    /** @param {string} id */
+    async getReport(id) {
+      calls.push(['getReport', id])
+      const r = brokerState.reports.find((/** @type {any} */ x) => x.id === id)
+      if (!r) throw new ApiError(404, 'not_found', 'That report was not found.')
+      return JSON.parse(JSON.stringify(r))
+    },
+    /** @param {string} id */
+    async verifyReport(id) {
+      calls.push(['verifyReport', id])
+      const r = brokerState.reports.find((/** @type {any} */ x) => x.id === id)
+      if (!r || r.status !== 'pending') throw new ApiError(409, 'invalid_transition', 'This report is already reviewed')
+      r.status = 'verified'
+      brokerState.overview.pending_reports -= 1
+      return { report: { id, status: 'verified' }, claims_created: (r.policies ?? []).filter((/** @type {any} */ p) => p.will_claim).length }
+    },
+    /** @param {string} id @param {string} reason */
+    async rejectReport(id, reason) {
+      calls.push(['rejectReport', id, reason])
+      const r = brokerState.reports.find((/** @type {any} */ x) => x.id === id)
+      if (!r) throw new ApiError(404, 'not_found', 'That report was not found.')
+      r.status = 'rejected'
+      r.rejection_reason = reason
+      brokerState.overview.pending_reports -= 1
+      return { report: { id, status: 'rejected' } }
+    },
+    async listBrokerClaims() {
+      calls.push(['listBrokerClaims'])
+      return brokerState.claims.map((/** @type {any} */ c) => ({ ...c }))
+    },
+    /** @param {string} id */
+    async getClaimEvents(id) {
+      calls.push(['getClaimEvents', id])
+      return (brokerState.events[id] ?? []).map((/** @type {any} */ e) => ({ ...e }))
     },
 
     async listNominations() {

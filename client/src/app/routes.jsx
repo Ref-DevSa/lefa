@@ -8,6 +8,8 @@ import NomineesPage from '../features/nominees/NomineesPage.jsx'
 import NominatedPage from '../features/nominees/NominatedPage.jsx'
 import ReportDeathPage from '../features/unlock/ReportDeathPage.jsx'
 import UnlockedVaultPage from '../features/unlock/UnlockedVaultPage.jsx'
+import VerifyReportPage from '../features/broker/VerifyReportPage.jsx'
+import ClaimsPipelinePage from '../features/broker/ClaimsPipelinePage.jsx'
 import BrokerDashboard from '../features/broker/BrokerDashboard.jsx'
 import { RequireAuth, RequireRole } from '../features/auth/guards.jsx'
 import { ErrorPage, ForbiddenPage, NotFoundPage } from '../features/system/pages.jsx'
@@ -18,7 +20,7 @@ import { ErrorPage, ForbiddenPage, NotFoundPage } from '../features/system/pages
  *   public:        /, /login, /signup, /403, 404
  *   member:        /vault, /vault/policies/:id, /documents, /nominees, /nominated,
  *                  /nominated/:ownerId/report, /vaults/:ownerId
- *   broker/admin:  /broker
+ *   broker/admin:  /broker, /broker/reports/:id, /broker/claims
  * @type {import('react-router').RouteObject[]}
  */
 export const routes = [
@@ -46,7 +48,11 @@ export const routes = [
           },
           {
             element: <RequireRole roles={['broker', 'admin']} />,
-            children: [{ path: 'broker', element: <BrokerDashboard /> }],
+            children: [
+              { path: 'broker', element: <BrokerDashboard /> },
+              { path: 'broker/reports/:id', element: <VerifyReportPage /> },
+              { path: 'broker/claims', element: <ClaimsPipelinePage /> },
+            ],
           },
         ],
       },

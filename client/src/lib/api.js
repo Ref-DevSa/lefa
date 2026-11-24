@@ -140,6 +140,21 @@ export function createApi({ baseUrl = '', getToken, fetchImpl = (input, init) =>
       (await request('GET', `/api/vaults/${encodeURIComponent(ownerId)}/documents/${encodeURIComponent(docId)}/url`)).url,
     /** @param {string} id @param {{ status: string, note?: string }} values */
     updateClaim: async (id, values) => (await request('PATCH', `/api/claims/${encodeURIComponent(id)}`, values)).claim,
+
+    // ---- Broker / admin ----------------------------------------------------
+    /** Dashboard numbers + recent claim activity. */
+    getBrokerOverview: async () => request('GET', '/api/broker/overview'),
+    /** @param {'pending' | 'verified' | 'rejected'} [status] */
+    listReports: async (status = 'pending') => (await request('GET', `/api/broker/reports?status=${status}`)).reports,
+    /** @param {string} id */
+    getReport: async (id) => (await request('GET', `/api/broker/reports/${encodeURIComponent(id)}`)).report,
+    /** @param {string} id @returns {Promise<{ report: Record<string, any>, claims_created: number }>} */
+    verifyReport: async (id) => request('POST', `/api/broker/reports/${encodeURIComponent(id)}/verify`),
+    /** @param {string} id @param {string} reason */
+    rejectReport: async (id, reason) => request('POST', `/api/broker/reports/${encodeURIComponent(id)}/reject`, { reason }),
+    listBrokerClaims: async () => (await request('GET', '/api/broker/claims')).claims,
+    /** @param {string} id */
+    getClaimEvents: async (id) => (await request('GET', `/api/broker/claims/${encodeURIComponent(id)}/events`)).events,
   }
 }
 

@@ -8,6 +8,7 @@ import { documentsRouter } from './routes/documents.js'
 import { nomineesRouter } from './routes/nominees.js'
 import { deathReportsRouter } from './routes/deathReports.js'
 import { vaultsRouter } from './routes/vaults.js'
+import { brokerRouter } from './routes/broker.js'
 
 /**
  * Build the Express app. Exported separately from listen() so Supertest can
@@ -40,6 +41,7 @@ export function createApp({ supabase, logger = console, corsOrigins = ['http://l
   app.use('/api', nomineesRouter(supabase)) // /api/nominees and /api/nominations
   app.use('/api/death-reports', deathReportsRouter(supabase))
   app.use('/api', vaultsRouter(supabase)) // /api/vaults/:ownerId and /api/claims/:id
+  app.use('/api', brokerRouter(supabase)) // /api/broker/* (brokers and admins)
 
   app.use('/api', notFound)
   app.use(errorHandler(logger))

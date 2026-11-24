@@ -138,6 +138,35 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 
 > **In one sentence:** "The vault shows a family the true value of their active cover in exact rands, and each family's policies are locked to them by the database itself."
 
+### #16 Live on the internet
+- **What:**
+
+  | Piece | Host | Address |
+  |---|---|---|
+  | Website (the dining room) | **Vercel** | https://lefa-nine.vercel.app |
+  | API (the waiter) | **Render**, Frankfurt | https://lefa-api.onrender.com |
+  | Database, logins, files (the kitchen) | **Supabase**, Frankfurt | (private) |
+
+  - **Every merge to `main` goes live automatically:** Vercel rebuilds the website and Render rebuilds the API.
+  - **Five demo logins** (member, two nominees, broker, admin) are created by a re-runnable **seed script**.
+- **Why each choice:**
+  - **Two hosts.** The website is just files, so Vercel serves them fast and free from servers worldwide. The API is a running program, so it needs a server: Render.
+  - **The API sits in Frankfurt, next to the database.** Every API request talks to the database, so keeping them in the same city keeps the app fast.
+  - **The guest list (CORS).** The API only accepts browser calls from the Lefa website, so a copycat site can't use our API with a visitor's login.
+  - **The master key never leaves the laptop.** The seed script uses it once, locally, and the live servers only ever have the public key. A hacked server can't bypass the privacy rules.
+  - **Security headers on the website.** They stop other sites from embedding Lefa in a hidden frame (clickjacking) and limit what the browser shares.
+  - **Free-plan trade-off.** Render's free API sleeps after 15 minutes. The website pings it the moment someone opens Lefa, so it's usually awake by the time they've logged in. A paid plan (about $7/month) removes this before launch.
+- **How we know it works:** we tested the live API with the demo logins:
+  - Thandi sees her R85 000.
+  - Lerato sees zeros (not Thandi's vault).
+  - A broker is refused the vault (403).
+  - Fake logins are refused (401).
+  - Only the Lefa website is allowed to call the API.
+
+  We also confirmed the master key is **not** in the public website code.
+
+> **In one sentence:** "Lefa runs on managed cloud services that cost nothing during the pilot, deploy automatically on every approved change, and keep the master key off the internet entirely."
+
 ---
 
 ## 4. Keys and secrets
@@ -167,7 +196,9 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 ## 6. Before real customers (go-live checklist)
 
 - [ ] Turn **Confirm email** back on (Supabase → Authentication) with a proper email provider (custom SMTP). It's off during the MVP so testing and demos are quick.
-- [ ] Use a separate production Supabase project, keeping the demo/test data apart.
+- [ ] Use a separate production Supabase project, keeping the demo/test data apart (the demo logins and their passwords are public).
+- [ ] Upgrade the Render API to a paid plan so it never sleeps.
+- [ ] Delete the seed secret key from Supabase once demo data is final.
 - [ ] Get a POPIA review of the privacy notice and of how long death certificates are kept.
 - [ ] Run backups and a restore test.
 - [ ] Add rate limiting on sign-up and log-in.

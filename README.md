@@ -15,7 +15,8 @@ South Africans hold **17 million funeral policies**, yet roughly **R88.5 billion
 
 | Resource | Link |
 |---|---|
-| Live app | _TODO (Tue 24 Nov)_ |
+| **Live app** | **[lefa-nine.vercel.app](https://lefa-nine.vercel.app)** |
+| Live API (health check) | [lefa-api.onrender.com/api/health](https://lefa-api.onrender.com/api/health) |
 | Stitch project | [Lefa on Stitch](https://stitch.google.com/projects/15454914779053559520) |
 | Loom pitch + demo | _TODO_ |
 | Business case | [BUSINESS.md](BUSINESS.md) |
@@ -26,22 +27,24 @@ South Africans hold **17 million funeral policies**, yet roughly **R88.5 billion
 
 ## 🔑 Test logins
 
-_Seeded on deploy. See [PRD §9](docs/PRD.md#9-test-logins-seeded-on-deploy)._
+All demo accounts use the password **`LefaDemo2026!`** (see [PRD §9](docs/PRD.md#9-test-logins-seeded-on-deploy)).
 
-| Role | Email | Password |
+| Role | Email | What you'll see |
 |---|---|---|
-| Member (policyholder) | thandi@lefa.test | _TBC_ |
-| Member (nominee, locked) | lerato@lefa.test | _TBC_ |
-| Member (nominee, unlocked) | sipho@lefa.test | _TBC_ |
-| Broker | broker@lefa.test | _TBC_ |
-| Admin | admin@lefa.test | _TBC_ |
+| Member (policyholder) | thandi@lefa.test | My Vault: 3 policies, R85 000 active cover, 1 lapsed _(cards from #10)_ |
+| Member (nominee, locked) | lerato@lefa.test | Her own empty vault; Thandi's vault stays locked |
+| Member (nominee, unlocked) | sipho@lefa.test | Unlocked vault + claims _(from #13–#14)_ |
+| Broker | broker@lefa.test | Broker dashboard; members' pages return 403 |
+| Admin | admin@lefa.test | Broker dashboard with admin access |
+
+> **Demo environment.** These passwords are public, so please don't enter real personal or policy details. The API runs on Render's free plan and sleeps after 15 minutes idle: the first request can take up to a minute (the site pings it on load to wake it).
 
 ## 🧱 Tech stack
 
 | Layer | Technology |
 |---|---|
 | Frontend | React 19, Vite, Tailwind CSS 4, React Router 7, TanStack Query |
-| API | Node.js 20+, Express 5, zod |
+| API | Node.js 22+, Express 5, zod |
 | Database | Supabase: PostgreSQL, Auth, Row Level Security, Storage |
 | Tests / CI | Jest, React Testing Library, Supertest, GitHub Actions |
 | Hosting | Vercel (client) · Render (API) · Supabase Cloud |

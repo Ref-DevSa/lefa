@@ -65,6 +65,10 @@ export function createFakeSupabase({ users = [], signedInAs, profileError = fals
         return { data: { user: session.user, session }, error: null }
       },
 
+      async getSession() {
+        return { data: { session }, error: null }
+      },
+
       async signOut() {
         calls.push(['signOut'])
         session = null

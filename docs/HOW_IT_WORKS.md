@@ -167,6 +167,47 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 
 > **In one sentence:** "Lefa runs on managed cloud services that cost nothing during the pilot, deploy automatically on every approved change, and keep the master key off the internet entirely."
 
+### #10 My Vault screens: seeing and managing policies
+- **What:**
+  - **My Vault (S3):** a greeting and four totals:
+    - total active cover ("across 2 insurers");
+    - monthly premiums;
+    - active policies ("2 of 3 · 1 lapsed");
+    - **next debit** (date, amount and insurer).
+
+    Below that, a card per policy (insurer, type, masked number "•••• 4821", cover, premium and debit day), **type filters**, a **lapsed-policy warning**, and a friendly first-time screen ("Add your first policy. It takes 2 minutes").
+  - **Add / edit policy (S4):**
+    - one-tap suggestions for common SA insurers;
+    - the policy type as four big buttons;
+    - amounts typed the South African way ("30 000", "199,50");
+    - a clear message next to each field that needs fixing.
+  - **Policy detail (S5):**
+    - every field in full;
+    - Edit, and Remove (with an "are you sure?" step);
+    - a claim-ready checklist (ID, bank letter, policy schedule; uploads arrive in #11);
+    - what the nominee will need at claim time (death certificate, BI-1663, claimant ID).
+- **Why each detail:**
+  - **The next debit tile** reminds people when money must be in the account. Missed debits are the main cause of the 8.7 million lapses a year.
+  - **The lapse warning says it plainly:** "Lapsed cover won't pay out. Call the insurer soon." Catching a lapse early is often the difference between reinstating a policy and losing it.
+  - **Masked policy numbers** in lists stop a glance over someone's shoulder from revealing them. The full number shows only on the detail page.
+  - **Amounts typed the way people actually type them.** Users don't have to learn our format; the app learns theirs.
+  - **A "waking up the server" note.** If the free API is asleep, the vault explains the wait instead of showing an endless spinner.
+  - **No data shared between users on one device.** Saved data is labelled with the user, so if one person logs out and another logs in on the same phone, the second person never sees the first person's vault.
+  - **Left out on purpose:** the design's invented claims ("AES-256", "FSP 51842", "verified via Home Affairs", "78% claims probability", "Generate PDF"). We only show what Lefa actually does.
+- **How we know it works:** 60 new website tests, including:
+  - totals that exclude the lapsed policy;
+  - masked numbers;
+  - filters and the empty vault;
+  - form checks, with nothing sent when the form is invalid;
+  - adding a policy (totals refresh to R100 000);
+  - duplicate and server messages;
+  - editing (the lapse warning appears) and removing (with confirmation, back to the vault);
+  - "policy not found";
+  - the date maths for "next debit", including a 31st in February.
+
+> **In one sentence:** "My Vault turns a drawer of paper into one screen: what you're covered for, what you pay and when, and which policy needs attention before it's too late."
+
+
 ---
 
 ## 4. Keys and secrets
@@ -227,4 +268,4 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 - **Validation:** checking input is sensible before saving it (e.g. no negative amounts).
 - **CRUD:** Create, Read, Update, Delete: the four basic things you can do with stored data.
 
-*Next up: #10 the My Vault screens (S3–S5).*
+*Next up: #11 documents and the claim-ready checklist.*

@@ -12,6 +12,7 @@ import { createContext } from 'react'
  *   signUp: (input: SignupInput) => Promise<{ error: string | null, needsConfirmation?: boolean }>,
  *   signOut: () => Promise<void>,
  *   retry: () => void,
+ *   getToken: () => Promise<string | null>,
  * }} AuthValue
  */
 
@@ -30,5 +31,6 @@ export const AuthContext = createContext(
     signUp: unavailable,
     signOut: async () => {},
     retry: () => {},
+    getToken: async () => null,
   }),
 )

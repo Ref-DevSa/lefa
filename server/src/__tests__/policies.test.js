@@ -70,6 +70,24 @@ describe('GET /api/policies', () => {
   })
 })
 
+describe('GET /api/policies/:id', () => {
+  test('returns one of the member’s policies', async () => {
+    const ctx = setup()
+    const id = ctx.supabase.tables.policies.find((p) => p.policy_number === 'SL-1002')?.id
+    const res = await ctx.as(thandi).get(`/api/policies/${id}`)
+    expect(res.status).toBe(200)
+    expect(res.body.policy).toMatchObject({ id, insurer: 'Sanlam', cover_amount: 55000 })
+  })
+
+  test('someone else’s policy, a missing one or a malformed id is 404', async () => {
+    const ctx = setup()
+    const id = ctx.supabase.tables.policies.find((p) => p.policy_number === 'SL-1002')?.id
+    expect((await ctx.as(lerato).get(`/api/policies/${id}`)).status).toBe(404)
+    expect((await ctx.as(thandi).get('/api/policies/00000000-0000-4000-8000-000000000999')).status).toBe(404)
+    expect((await ctx.as(thandi).get('/api/policies/nope')).status).toBe(404)
+  })
+})
+
 describe('POST /api/policies', () => {
   test('creates a policy in the caller’s vault (201)', async () => {
     const { as, supabase } = setup()

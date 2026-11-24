@@ -1,27 +1,15 @@
-import { act, render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { createMemoryRouter } from 'react-router'
-import { RouterProvider } from 'react-router/dom'
-import { routes } from '../../../app/routes.jsx'
-import { AuthProvider } from '../AuthProvider.jsx'
-import { createFakeSupabase } from '../../../test-utils/fakeSupabase.js'
+import { act, screen } from '@testing-library/react'
+import { renderApp as renderWholeApp } from '../../../test-utils/renderApp.jsx'
 
 const thandi = { email: 'thandi@lefa.test', password: 'Vault2026!', full_name: 'Thandi Mokoena', phone: '+27820000001', role: /** @type {const} */ ('member') }
 const naledi = { email: 'naledi@lefa.test', password: 'Broker2026!', full_name: 'Naledi Dube', phone: null, role: /** @type {const} */ ('broker') }
 
 /**
  * @param {string} path
- * @param {Parameters<typeof createFakeSupabase>[0]} [options]
+ * @param {Parameters<typeof import('../../../test-utils/fakeSupabase.js').createFakeSupabase>[0]} [options]
  */
 function renderApp(path, options = { users: [thandi, naledi] }) {
-  const client = createFakeSupabase(options)
-  const router = createMemoryRouter(routes, { initialEntries: [path] })
-  render(
-    <AuthProvider client={client}>
-      <RouterProvider router={router} />
-    </AuthProvider>,
-  )
-  return { client, router, user: userEvent.setup() }
+  return renderWholeApp(path, { supabase: options })
 }
 
 describe('log in', () => {

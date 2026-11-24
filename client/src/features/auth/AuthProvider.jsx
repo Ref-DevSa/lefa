@@ -14,6 +14,7 @@ import { friendlyAuthError } from './authErrors.js'
  *     signInWithPassword: (credentials: { email: string, password: string }) => Promise<{ error: any }>,
  *     signUp: (input: { email: string, password: string, options?: { data?: Record<string, string> } }) => Promise<{ data: { session: any }, error: any }>,
  *     signOut: () => Promise<{ error: any }>,
+ *     getSession: () => Promise<{ data: { session: any } }>,
  *   },
  *   from: (table: string) => any,
  * }} AuthClient
@@ -92,14 +93,21 @@ export function AuthProvider({ client, children }) {
     await client.auth.signOut()
   }, [client])
 
+  // The current access token for API calls. getSession() returns a fresh
+  // token (Supabase refreshes it automatically before it expires).
+  const getToken = useCallback(async () => {
+    const { data } = await client.auth.getSession()
+    return data.session?.access_token ?? null
+  }, [client])
+
   const retry = useCallback(() => {
     setState({ status: 'loading', profile: null })
     setAttempt((n) => n + 1)
   }, [])
 
   const value = useMemo(
-    () => ({ ...state, signIn, signUp, signOut, retry }),
-    [state, signIn, signUp, signOut, retry],
+    () => ({ ...state, signIn, signUp, signOut, retry, getToken }),
+    [state, signIn, signUp, signOut, retry, getToken],
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

@@ -237,6 +237,37 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 
 > **In one sentence:** "Families prepare their claim documents once, privately, and Lefa shows exactly what's still missing for each policy, so the claim is ready the day it's needed."
 
+### #12 Nominees: trusted, but locked out until it matters
+- **What:**
+  - **Nominees page:**
+    - invite up to 3 people by email, with their relationship;
+    - see their status (Invited, Accepted, Declined, Revoked);
+    - revoke (it asks first) or re-invite;
+    - a **"Share on WhatsApp"** button sends a ready-written message saying which email to sign up with.
+  - **Nominated for me:**
+    - invitations you can **Accept** or **Decline**;
+    - "People who trust you" cards showing **"Vault locked"**.
+  - **My Vault:** a "Your nominees" panel, which nudges you to nominate someone if nobody can claim yet.
+- **Why each detail:**
+  - **Accepting unlocks nothing.** There is simply no rule letting a nominee read policies, documents or the owner's profile. Unlocking will require a broker-**verified death** (#13). Until then, a nominee sees exactly what a stranger sees: a name.
+  - **The nominee learns only the owner's name,** through a special database function that returns nothing else. Letting them read the owner's profile would have exposed their phone and email.
+  - **The rules live in the database:**
+    - only the nominee can accept or decline;
+    - only the owner can revoke or re-invite;
+    - nobody can nominate themselves;
+    - a revoked invitation can't be accepted.
+
+    Even a bug in our screens can't break these.
+  - **Invitations match on the login email,** so only the person who controls that inbox can accept.
+  - **WhatsApp sharing** because Lefa doesn't send emails yet, and WhatsApp is how South African families actually talk.
+- **How we know it works:**
+  - **On the live database: 21 new tests** (72 in total), centred on **"an accepted nominee sees 0 policies, 0 documents, 0 files and none of the owner's profile"**.
+  - **Live as Lerato:** she sees "Thandi Mokoena", and nothing else, through our API **and** when going straight to the database.
+  - **37 new automated tests** across the API and website.
+
+> **In one sentence:** "You choose who can claim for your family, and they see nothing — not a policy, not an amount — until a broker has verified a death."
+
+
 
 
 ---
@@ -299,4 +330,4 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 - **Validation:** checking input is sensible before saving it (e.g. no negative amounts).
 - **CRUD:** Create, Read, Update, Delete: the four basic things you can do with stored data.
 
-*Next up: #12 nominees: invite someone you trust, locked until a death is verified.*
+*Next up: #13 death reports, broker verification and claims (the unlock).*

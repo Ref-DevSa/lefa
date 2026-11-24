@@ -107,6 +107,18 @@ export function createApi({ baseUrl = '', getToken, fetchImpl = (input, init) =>
     deleteDocument: async (id) => {
       await request('DELETE', documentPath(id))
     },
+
+    /** People I've nominated. @returns {Promise<Record<string, any>[]>} */
+    listNominees: async () => (await request('GET', '/api/nominees')).nominees,
+    /** @param {{ email: string, relationship: string }} values @returns {Promise<Record<string, any>>} */
+    inviteNominee: async (values) => (await request('POST', '/api/nominees', values)).nominee,
+    /**
+     * accept / decline (as the nominee) or revoke / reinvite (as the owner).
+     * @param {string} id @param {'accept' | 'decline' | 'revoke' | 'reinvite'} action
+     */
+    updateNominee: async (id, action) => request('PATCH', `/api/nominees/${encodeURIComponent(id)}`, { action }),
+    /** Where I'm the nominee (owner's name only). @returns {Promise<Record<string, any>[]>} */
+    listNominations: async () => (await request('GET', '/api/nominations')).nominations,
   }
 }
 

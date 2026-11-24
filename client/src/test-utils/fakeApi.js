@@ -10,9 +10,12 @@ import { ApiError } from '../lib/api.js'
  *
  *   upload with a file named '*.bad'  -> 415 unsupported_file_type
  *
- * @param {{ policies?: Array<Record<string, any>>, documents?: Array<Record<string, any>>, failList?: boolean }} [options]
+ *   invite 'limit@x.co'           -> 422 nominee_limit
+ *
+ * @param {{ policies?: Array<Record<string, any>>, documents?: Array<Record<string, any>>,
+ *   nominees?: Array<Record<string, any>>, nominations?: Array<Record<string, any>>, failList?: boolean }} [options]
  */
-export function createFakeApi({ policies = [], documents = [], failList = false } = {}) {
+export function createFakeApi({ policies = [], documents = [], nominees = [], nominations = [], failList = false } = {}) {
   let nextId = policies.length + 1
   /** @type {Array<Record<string, any>>} */
   let rows = policies.map((p, i) => ({
@@ -31,6 +34,11 @@ export function createFakeApi({ policies = [], documents = [], failList = false 
   }))
   /** @type {any[]} */
   const calls = []
+  let nextNominee = nominees.length + 1
+  /** @type {Array<Record<string, any>>} people Thandi nominated */
+  let myNominees = nominees.map((n, i) => ({ id: `n${i + 1}`, owner_id: 'u-thandi', nominee_id: null, status: 'invited', created_at: `2026-11-1${i}T08:00:00Z`, ...n }))
+  /** @type {Array<Record<string, any>>} where the signed-in user is the nominee */
+  let forMe = nominations.map((n, i) => ({ id: `m${i + 1}`, status: 'invited', created_at: '2026-11-20T08:00:00Z', ...n }))
   let nextDoc = documents.length + 1
   /** @type {Array<Record<string, any>>} */
   let docs = documents.map((d, i) => ({
@@ -54,6 +62,8 @@ export function createFakeApi({ policies = [], documents = [], failList = false 
     calls,
     rows: () => rows,
     docs: () => docs,
+    nominees: () => myNominees,
+    nominations: () => forMe,
 
     async listPolicies() {
       calls.push(['listPolicies'])
@@ -112,7 +122,7 @@ export function createFakeApi({ policies = [], documents = [], failList = false 
 
     async listDocuments() {
       calls.push(['listDocuments'])
-      return [...docs].sort((a, b) => (a.created_at < b.created_at ? 1 : -1))
+      return docs.map((d) => ({ ...d })).sort((a, b) => (a.created_at < b.created_at ? 1 : -1))
     },
 
     /** @param {{ file: File, doc_type: string, policy_id?: string | null }} input */
@@ -138,6 +148,42 @@ export function createFakeApi({ policies = [], documents = [], failList = false 
       calls.push(['getDocumentUrl', id])
       if (!docs.some((d) => d.id === id)) throw new ApiError(404, 'not_found', 'That document was not found.')
       return `https://storage.test/${id}?token=signed`
+    },
+
+    async listNominees() {
+      calls.push(['listNominees'])
+      return myNominees.map((n) => ({ ...n })) // fresh copies, like a real API
+    },
+
+    /** @param {{ email: string, relationship: string }} values */
+    async inviteNominee(values) {
+      calls.push(['inviteNominee', values])
+      if (values.email === 'limit@x.co') throw new ApiError(422, 'nominee_limit', 'You can have up to 3 nominees. Revoke one to invite someone else.')
+      if (myNominees.some((n) => n.nominee_email === values.email)) throw new ApiError(409, 'duplicate_nominee', "You've already invited this person.")
+      const row = { id: `n${nextNominee++}`, owner_id: 'u-thandi', nominee_email: values.email, relationship: values.relationship, status: 'invited', nominee_id: null, created_at: '2026-11-30T08:00:00Z' }
+      myNominees.unshift(row)
+      return row
+    },
+
+    /** @param {string} id @param {string} action */
+    async updateNominee(id, action) {
+      calls.push(['updateNominee', id, action])
+      const to = { accept: 'accepted', decline: 'declined', revoke: 'revoked', reinvite: 'invited' }[action]
+      const mine = myNominees.find((n) => n.id === id)
+      if (mine) {
+        mine.status = to
+        return { nominee: { ...mine } }
+      }
+      const theirs = forMe.find((n) => n.id === id)
+      if (!theirs) throw new ApiError(404, 'not_found', 'That nomination was not found.')
+      theirs.status = to
+      forMe = forMe.filter((n) => n.status === 'invited' || n.status === 'accepted')
+      return { nomination: { id, status: to } }
+    },
+
+    async listNominations() {
+      calls.push(['listNominations'])
+      return forMe.map((n) => ({ ...n }))
     },
 
     /** @param {string} id */

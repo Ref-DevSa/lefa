@@ -28,10 +28,10 @@ const POLICY_DEFAULTS = {
 }
 
 /**
- * @param {{ users?: FakeUser[], policies?: Row[], documents?: Row[], files?: Record<string, Buffer>,
+ * @param {{ users?: FakeUser[], policies?: Row[], documents?: Row[], nominees?: Row[], files?: Record<string, Buffer>,
  *   authDown?: boolean, dbError?: boolean, storageDown?: boolean }} [options]
  */
-export function createFakeSupabase({ users = [], policies = [], documents = [], files = {}, authDown = false, dbError = false, storageDown = false } = {}) {
+export function createFakeSupabase({ users = [], policies = [], documents = [], nominees = [], files = {}, authDown = false, dbError = false, storageDown = false } = {}) {
   /** @type {string[]} tokens each user client was created with */
   const clientsCreatedWith = []
 
@@ -48,6 +48,14 @@ export function createFakeSupabase({ users = [], policies = [], documents = [], 
       ...p,
     })),
     documents: documents.map((d) => ({ id: randomUUID(), policy_id: null, created_at: new Date().toISOString(), ...d })),
+    nominees: nominees.map((n) => ({
+      id: randomUUID(),
+      nominee_id: null,
+      status: 'invited',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      ...n,
+    })),
   }
   /** Files in the private "vault" bucket, by path. */
   const storage = new Map(Object.entries(files))
@@ -71,6 +79,23 @@ export function createFakeSupabase({ users = [], policies = [], documents = [], 
             if (!match) return { data: { user: null }, error: { name: 'AuthApiError', status: 403, message: 'invalid JWT' } }
             return { data: { user: { id: match.id, email: match.email } }, error: null }
           },
+        },
+        /** Database functions (supabase.rpc). @param {string} fn */
+        async rpc(fn) {
+          if (dbError) return { data: null, error: { code: 'XX000', message: 'connection reset (secret detail)' } }
+          if (fn !== 'my_nominations') throw new Error(`fake supabase: unexpected rpc ${fn}`)
+          if (!me) return { data: [], error: null }
+          const rows = tables.nominees
+            .filter((n) => (n.nominee_id === me.id || n.nominee_email === me.email) && ['invited', 'accepted'].includes(n.status))
+            .map((n) => ({
+              id: n.id,
+              owner_id: n.owner_id,
+              owner_name: tables.profiles.find((p) => p.id === n.owner_id)?.full_name ?? '',
+              relationship: n.relationship,
+              status: n.status,
+              created_at: n.created_at,
+            }))
+          return { data: rows, error: null }
         },
         /** @param {string} table */
         from(table) {
@@ -183,7 +208,11 @@ class Query {
   visible(row) {
     if (!this.me) return false
     if (this.me.role === 'admin') return true
-    return this.table === 'profiles' ? row.id === this.me.id : row.owner_id === this.me.id
+    if (this.table === 'profiles') return row.id === this.me.id
+    if (this.table === 'nominees') {
+      return row.owner_id === this.me.id || row.nominee_id === this.me.id || row.nominee_email === this.me.email
+    }
+    return row.owner_id === this.me.id
   }
 
   async run() {
@@ -196,7 +225,11 @@ class Query {
         const row = {
           id: randomUUID(),
           owner_id: this.me?.id,
-          ...(this.table === 'policies' ? POLICY_DEFAULTS : { policy_id: null }),
+          ...(this.table === 'policies'
+            ? POLICY_DEFAULTS
+            : this.table === 'nominees'
+              ? { nominee_id: null, status: 'invited', updated_at: new Date().toISOString() }
+              : { policy_id: null }),
           created_at: new Date().toISOString(),
           ...(this.table === 'policies' ? { updated_at: new Date().toISOString() } : {}),
           ...input,
@@ -208,9 +241,11 @@ class Query {
           const policy = (this.allTables.policies ?? []).find((p) => p.id === row.policy_id)
           if (!policy || policy.owner_id !== this.me?.id) return rls
         }
+        if (this.table === 'nominees' && row.nominee_email === this.me?.email) return rls // no self-nomination
         const duplicate =
-          this.table === 'policies' &&
-          this.rows.some((r) => r.owner_id === row.owner_id && r.insurer === row.insurer && r.policy_number === row.policy_number)
+          (this.table === 'policies' &&
+            this.rows.some((r) => r.owner_id === row.owner_id && r.insurer === row.insurer && r.policy_number === row.policy_number)) ||
+          (this.table === 'nominees' && this.rows.some((r) => r.owner_id === row.owner_id && r.nominee_email === row.nominee_email))
         if (duplicate) {
           return { data: null, error: { code: '23505', message: 'duplicate key value violates unique constraint' } }
         }

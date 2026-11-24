@@ -89,6 +89,16 @@ async function main() {
 
   await seedDocuments(ids.thandi, policies)
 
+  // Lerato is Thandi's accepted nominee: vault locked until a death is verified.
+  const nominee = await db
+    .from('nominees')
+    .upsert(
+      { owner_id: ids.thandi, nominee_email: 'lerato@lefa.test', nominee_id: ids.lerato, relationship: 'child', status: 'accepted' },
+      { onConflict: 'owner_id,nominee_email' },
+    )
+  if (nominee.error) throw nominee.error
+  console.log('  ✓ Lerato is Thandi’s nominee (accepted, vault locked)')
+
   console.log(`Done. All demo logins use the password: ${password}`)
 }
 

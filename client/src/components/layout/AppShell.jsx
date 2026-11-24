@@ -2,7 +2,7 @@ import { NavLink } from 'react-router'
 import { cn } from '../../lib/cn.js'
 import { Logo } from './Logo.jsx'
 
-/** @typedef {{ to: string, label: string, icon?: React.ReactNode }} NavItem */
+/** @typedef {{ to: string, label: string, icon?: React.ReactNode, end?: boolean }} NavItem  end: highlight only on an exact match */
 
 /**
  * Signed-in layout: top nav on desktop, bottom tab bar on mobile.
@@ -23,6 +23,7 @@ export function AppShell({ navItems, actions, children }) {
                 <li key={item.to}>
                   <NavLink
                     to={item.to}
+                    end={item.end}
                     className={({ isActive }) =>
                       cn(
                         'rounded-control px-3 py-2 font-medium',
@@ -50,6 +51,7 @@ export function AppShell({ navItems, actions, children }) {
             <li key={item.to} className="flex-1">
               <NavLink
                 to={item.to}
+                end={item.end}
                 className={({ isActive }) =>
                   cn(
                     'flex min-h-14 flex-col items-center justify-center gap-0.5 text-xs font-medium',

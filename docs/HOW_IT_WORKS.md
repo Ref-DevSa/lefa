@@ -332,6 +332,36 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 
 > **In one sentence:** "In the worst week of their life, a family reports the death once, and when the broker verifies it they see every policy, the documents insurers want, and exactly where each payout stands."
 
+### #15 The broker's side: dashboard, verification and the claims pipeline
+- **What:**
+  - **Dashboard (S11):**
+    - four numbers: *clients, pending verifications, open claims, paid this month*;
+    - a **Pending death reports** table: who died, who reported it and their relationship, when, and **Review**;
+    - a **Recent claim activity** feed.
+  - **Verify a death (S12):**
+    - the **certificate shown on the page** next to the facts: deceased, phone on file, date of death, reporter and relationship, DHA/BI-1663 reference, the family's notes;
+    - each policy marked **"Becomes a claim"** or **"Lapsed: no claim"**;
+    - **Verify & unlock vault** asks first, spelling out the consequence: *"This will give Sipho Ndlovu access to Jabulani Khumalo's vault and create 1 claim."*;
+    - **Reject** requires a reason, which the family sees.
+  - **Claims pipeline (S13):**
+    - a column per stage, with cards showing client, insurer, cover and days open;
+    - opening a card shows the timeline and lets the broker move the claim on, with a note the family sees.
+  - **A small database change (migration 006):** a broker can now read **their own clients'** nominees, and the **name of whoever reported a death for one of their clients**, so they know who they're dealing with. Nothing wider.
+- **Why each detail:**
+  - **Brokers are the paying customer.** This is the screen they'd pay R15 per client per month for: what needs attention today, and where every family's money stands.
+  - **Verification can't be undone,** so the confirmation names the person who'll get access and how many claims will open.
+  - **A rejection with no reason leaves a grieving family stuck.** The reason goes straight to their "Nominated for me" card, next to **Report again**.
+  - **Brokers only ever see their own families.** Members get 403 on every broker address. Another broker sees nothing of these families, which the database tests prove.
+  - **Every claim move is logged and visible to the family,** so there's one shared version of the truth instead of WhatsApp messages and phone calls.
+- **How we know it works:**
+  - **On the live database: 8 new security tests** (115 in total).
+  - **API: 17 new tests** (103 in total), including 403 for members on every broker route.
+  - **Website: 9 new tests** (197 in total).
+  - **Live as Naledi** (read-only, so the demo's pending report stays pending): 5 clients, 1 pending, 1 open claim, R15 000 paid; the certificate link opens the PDF; Thandi (a member) gets 403.
+
+> **In one sentence:** "The broker sees which families need them today, verifies a death with the certificate in front of them, and moves every claim to paid, with the family watching the same timeline."
+
+
 
 
 
@@ -397,4 +427,4 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 - **Validation:** checking input is sensible before saving it (e.g. no negative amounts).
 - **CRUD:** Create, Read, Update, Delete: the four basic things you can do with stored data.
 
-*Next up: #15 the broker screens: dashboard, verifying deaths and the claims pipeline.*
+*All Must features are built. Next up: #17 polish (mobile, accessibility, dark mode), #18 README, #19 Loom demo.*

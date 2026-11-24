@@ -221,9 +221,15 @@ function accessRules(tables, me) {
       if (isAdmin()) return true
       switch (table) {
         case 'profiles':
-          return row.id === me.id || isUnlocked(row.id) || isBrokerOf(row.id)
+          return (
+            row.id === me.id ||
+            isUnlocked(row.id) ||
+            isBrokerOf(row.id) ||
+            // migration 006: the broker sees whoever reported a death for one of their clients
+            tables.death_reports.some((d) => d.reported_by === row.id && isBrokerOf(d.owner_id))
+          )
         case 'nominees':
-          return row.owner_id === me.id || row.nominee_id === me.id || row.nominee_email === me.email
+          return row.owner_id === me.id || row.nominee_id === me.id || row.nominee_email === me.email || isBrokerOf(row.owner_id)
         case 'death_reports':
           return row.reported_by === me.id || isNomineeOf(row.owner_id) || isBrokerOf(row.owner_id)
         case 'claims':

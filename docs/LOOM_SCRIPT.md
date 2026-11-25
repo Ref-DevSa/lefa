@@ -30,9 +30,9 @@ Loom's free plan stops at 5 minutes, so each part has a target time. **Say the l
 
 > "Hi, I'm Refilwe Segoe, and this is **Lefa**, which means *inheritance* in Sesotho.
 >
-> When Gogo Mmabatho passed away, her family knew she *had a funeral policy*, but not which insurer, or the number. They borrowed R25 000 from a mashonisa to bury her. Months later they found one policy in a drawer. Another had lapsed because the debit date didn't match her SASSA day.
+> Imagine a family like Gogo Mmabatho's. When she passes away, they know she *had a funeral policy*, but not which insurer, or the number. They borrow R25 000 from a mashonisa to bury her. Months later they find one policy in a drawer. Another lapsed because the debit date didn't match her SASSA day.
 >
-> That's not rare. South Africans hold **17 million funeral policies**, around **R88 billion** in assets sits unclaimed, and **8.7 million policies lapsed last year**."
+> That's a made-up family, but the problem is real. South Africans hold **17 million funeral policies**, around **R88 billion** in assets sits unclaimed, and **8.7 million policies lapsed in 2025**."
 
 ## 0:35 – 1:00 · The idea and who pays
 
@@ -83,7 +83,7 @@ Loom's free plan stops at 5 minutes, so each part has a target time. **Say the l
 > "When he submits the claim, he updates it here, and the broker sees the same timeline."
 
 *Go back and open **Gogo Mmabatho's** vault.*
-> "And for his grandmother's AVBOB policy, the claim went all the way to **paid**: R15 000, without a mashonisa."
+> "Remember Gogo Mmabatho? With Lefa, her story ends differently. In this demo, her AVBOB claim goes all the way to **paid**: R15 000, and nobody had to guess which insurer to call."
 
 ## 4:05 – 4:40 · How it's built (any window, or show the README on GitHub)
 

@@ -21,7 +21,7 @@ South Africans hold **17 million funeral policies**, yet roughly **R88.5 billion
 |---|---|
 | **Live app** | **[lefa-nine.vercel.app](https://lefa-nine.vercel.app)** |
 | Live API (health check) | [lefa-api.onrender.com/api/health](https://lefa-api.onrender.com/api/health) |
-| Loom pitch + demo | _TODO_ |
+| Loom pitch + demo (4:10 in two parts) | [Part 1: what Lefa is and how it helps](https://www.loom.com/share/4915d785cd64414998dac0c98906395c) · [Part 2: broker, verification and claims](https://www.loom.com/share/a7976bb5088e42c2874d4011feb47e01) |
 | Stitch designs | [Lefa on Stitch](https://stitch.google.com/projects/15454914779053559520) · [exports](docs/designs/README.md) |
 | Business case | [BUSINESS.md](BUSINESS.md) |
 | Product requirements | [docs/PRD.md](docs/PRD.md) |

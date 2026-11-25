@@ -48,7 +48,7 @@ Loom's free plan stops at 5 minutes, so each part has a target time. **Say the l
 *Point to the orange banner.*
 > "Lefa warns her that her Clientele policy has **lapsed**. It won't pay out, so she needs to act now, not after a funeral."
 
-*Click **View Old Mutual policy**.*
+*On the Old Mutual card, click **View policy**.*
 > "Each policy has a **claim-ready checklist**: her ID, bank letter and policy schedule are uploaded, privately. View links expire after 60 seconds."
 
 *Click **Back to My Vault**, point to **Your nominees**.*
@@ -104,7 +104,7 @@ Loom's free plan stops at 5 minutes, so each part has a target time. **Say the l
 ## After recording
 
 1. In Loom, copy the **share link**.
-2. Send it to me, or paste it into the README's *Loom pitch + demo* row.
+2. Add it to the README's *Loom pitch + demo* row and to the final message.
 3. Run `npm run db:reset-demo` so reviewers also find a report to verify.
 
 ## If something goes wrong while recording

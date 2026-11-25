@@ -66,6 +66,7 @@ All demo accounts use the password **`LefaDemo2026!`**.
 | ![Nominated for me](docs/screenshots/08-nominated-for-me.png) **Nominated for me** | ![Unlocked vault](docs/screenshots/09-unlocked-vault.png) **Unlocked vault + claims** |
 | ![Broker dashboard](docs/screenshots/10-broker-dashboard.png) **Broker dashboard** | ![Verify report](docs/screenshots/11-verify-report.png) **Verify a death report** |
 | ![Claims pipeline](docs/screenshots/12-claims-pipeline.png) **Claims pipeline** | ![Mobile](docs/screenshots/13-mobile-vault.png) **Mobile** |
+| ![Dark mode](docs/screenshots/14-dark-mode.png) **Dark mode** (moon icon in the header) | |
 
 ## 🏗️ Architecture
 
@@ -184,7 +185,7 @@ npm run dev         # API on :3001, website on :5173 (Vite forwards /api)
 |---|---|---|---|
 | Database security | pgTAP | **115** | `npm run db:test` |
 | API | Jest + Supertest | **103** | `npm test -w server` |
-| Website | Jest + React Testing Library | **197** | `npm test -w client` |
+| Website | Jest + React Testing Library | **199** | `npm test -w client` |
 
 - **Database:** each migration has a test file that plays the roles: an owner, a nominee before and after a death, a stranger, the family's broker, another broker and an anonymous visitor. It checks what each can and can't see or change. The key test is *"an accepted nominee sees 0 policies until a death is verified"*.
 - **API:** every route runs against an in-memory fake of Supabase that mirrors the RLS rules. Tests cover logins (401), roles (403), validation (400), duplicates (409), uploads (real file type, 5 MB) and the full report → verify → claim flow.

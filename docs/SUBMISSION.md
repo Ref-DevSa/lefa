@@ -12,7 +12,7 @@ Work after 15:30 isn't counted, so aim to post by **15:00**.
 - [x] Live link: https://lefa-nine.vercel.app (API: https://lefa-api.onrender.com/api/health)
 - [x] Log-in with roles, hosted database with migrations, CI on every PR
 - [x] **All Must features working on the live link** (M1–M5)
-- [x] Tests passing: pgTAP 115 · API 103 · website 197
+- [x] Tests passing: pgTAP 115 · API 103 · website 199
 - [x] README: screenshots, architecture, setup, tests, known issues, test logins
 - [ ] **Loom recorded** (script: `docs/LOOM_SCRIPT.md`) and its link added to the README
 - [ ] `npm run db:reset-demo` run after recording, so reviewers can verify a death too
@@ -24,8 +24,8 @@ Work after 15:30 isn't counted, so aim to post by **15:00**.
 - [x] Live: https://refilwe-segoe.vercel.app
 - [x] About, projects (Lefa first, group projects, individual builds) with screenshots, problem, role, stack, live and GitHub links
 - [x] Skills, responsive, no broken links, README
-- [ ] **Contact:** email, LinkedIn URL
-- [ ] **CV download** (PDF)
+- [x] **Contact:** email, LinkedIn, GitHub
+- [x] **CV download** (PDF)
 
 ## Final message (paste in the channel)
 
@@ -46,11 +46,14 @@ Portfolio repo: https://github.com/Ref-DevSa/portfolio
 Name: Refilwe Segoe
 Business / app name: Lefa
 Done since last check-in:
-- All Must features live on https://lefa-nine.vercel.app: documents (private storage, claim checklist), nominees (locked until a verified death), report a death, broker verification that unlocks the vault and opens claims, unlocked vault with claim tracker, broker dashboard and claims pipeline
-- Tests: 115 database security (pgTAP), 103 API, 197 front-end; CI green on every PR
-- README complete: screenshots, architecture, setup, tests, known issues
-- Portfolio live: https://refilwe-segoe.vercel.app
-Next: Loom recording, polish (mobile and accessibility pass, dark mode), portfolio contact + CV
+- All Must features live: documents, nominees, death reports, broker verification, claims
+- Polish done: dark mode, mobile and accessibility
+- Tests: 115 database, 103 API, 199 front-end; CI green
+- README done (Loom link still to add)
+- Portfolio complete: projects, contact, LinkedIn, CV
+Next: Loom recording and final submission
 Blockers: None
-Repo link: https://github.com/Ref-DevSa/lefa
+Live: https://lefa-nine.vercel.app
+Portfolio: https://refilwe-segoe.vercel.app
+Repo: https://github.com/Ref-DevSa/lefa
 ```

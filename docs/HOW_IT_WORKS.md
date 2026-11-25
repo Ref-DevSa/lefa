@@ -361,11 +361,21 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 
 > **In one sentence:** "The broker sees which families need them today, verifies a death with the certificate in front of them, and moves every claim to paid, with the family watching the same timeline."
 
+### #17 Polish: Lefa's own look, dark mode, and working for everyone
+- **What:**
+  - **Dark mode:** a moon/sun button in every header. Cream stays the default and the choice is remembered on that device.
+  - **A look of its own:** serif headings, and a *litema* pattern, the geometric designs Basotho women carve into the walls of their homes. "Lefa" is a Sesotho word, so the pattern points back to where the name comes from.
+  - **Accessibility:** stronger colour contrast, and link names that match the words on screen.
+  - **Mobile:** nothing scrolls sideways on a 360px-wide phone, and the claim tracker stacks vertically.
+- **How:** every colour is a named "token" (such as *surface* or *ink*). Dark mode swaps the values behind the names in one file, so the screens follow without being rewritten.
+- **Why it matters:**
+  - **Families:** people use Lefa on ordinary phones, at a hard time. Text they can read and buttons they can reach aren't extras.
+  - **The business:** trust sells insurance. A product that looks considered, and works for people with poor eyesight, should lose fewer customers at sign-up. One set of colour tokens also makes later design changes cheaper.
+- **How we know it works:**
+  - **An automated accessibility check (axe)** on the live site: 13 pages, at desktop and phone width, in light and dark mode, with 0 problems and no sideways scrolling. Automated checks can't find everything, so testing with real users comes next.
+  - **Website: 2 new tests** (199 in total).
 
-
-
-
-
+> **In one sentence:** "Lefa has its own South African look, a dark mode, and works on a small phone for people who need stronger contrast."
 
 ---
 
@@ -427,4 +437,4 @@ South Africans hold **17 million funeral policies**, yet about **R88 billion** i
 - **Validation:** checking input is sensible before saving it (e.g. no negative amounts).
 - **CRUD:** Create, Read, Update, Delete: the four basic things you can do with stored data.
 
-*All Must features are built. Next up: #17 polish (mobile, accessibility, dark mode), #18 README, #19 Loom demo.*
+*All Must features are built, polished and live.*
